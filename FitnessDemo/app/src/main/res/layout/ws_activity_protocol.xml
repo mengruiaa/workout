@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ws.ProtocolActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="#666666"
+            android:layout_height="60dp">
+
+            <ImageView
+                android:id="@+id/iv_protocol"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:padding="6dp"
+                android:src="@drawable/back3" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/iv_protocol"
+                android:gravity="center"
+                android:text="用户协议"
+                android:textColor="@android:color/white"
+                android:textSize="28sp"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/ptv_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fit 用户协议"
+                    android:textStyle="bold"
+                    android:textSize="30sp"/>
+                <TextView
+                    android:id="@+id/ptv_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="导言"
+                    android:textStyle="bold"
+                    android:layout_marginTop="15dp"
+                    android:textSize="20dp"
+                    android:layout_below="@id/ptv_one"/>
+                <TextView
+                    android:id="@+id/ptv_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="尊敬的用户："
+                    android:layout_marginTop="15dp"
+                    android:textSize="20dp"
+                    android:layout_below="@id/ptv_two"/>
+                <TextView
+                    android:id="@+id/ptv_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="       非常感谢您注册使用 Fit 产品，为让您更好地使用Fit提供的产品和服务，请您务必审慎阅读、充分理解《Fit用户协议》（以下称「用户协议」或 「本协议」）各条款内容，特别是免除或者限制责任的条款并选择接受或不接受。本协议中限制、免责条款可能以加粗形式提醒您注意。"
+                    android:layout_marginTop="15dp"
+                    android:textSize="20dp"
+                    android:layout_below="@id/ptv_three"/>
+                <TextView
+                    android:id="@+id/ptv_five"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="       除非您已阅读并接受本协议所有条款，否则您无权下载、安装或使用 Fit 提供相关产品和服务。您的下载、安装、使用、登陆等行为即视为您已阅读并同意本协议的约束。"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20dp"
+                    android:layout_below="@id/ptv_four"/>
+                <TextView
+                    android:id="@+id/ptv_six"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="协议的范围"
+                    android:layout_marginTop="15dp"
+                    android:textSize="20dp"
+                    android:layout_below="@id/ptv_five"/>
+                <TextView
+                    android:id="@+id/ptv_seven"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="        1.1 FitApp 及 www.fit.com （以下统称「 Fit 产品」）是由石家庄波比科技有限公司及关联公司（以下称「 Fit 」或「我们」）提供的互联网产品和服务。"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20dp"
+                    android:layout_below="@id/ptv_six"/>
+                <TextView
+                    android:id="@+id/ptv_eight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="        1.2 本用户协议是用户（您）与Fit 之间关于使用Fit提供的产品和服务所订立的协议，本协议条款的效力及于 Fit 所提供的一切产品和服务，用户在享受Fit 任何单项服务时，应当受本协议的约束。"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20dp"
+                    android:layout_below="@id/ptv_seven"/>
+                <TextView
+                    android:id="@+id/ptv_nine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="        1.3 本协议项下的产品和服务是指由 Fit 发布的包括但不限于网络媒体、互联网增值、互动娱乐、电子商务、智能硬件和广告等的互联网产品和服务（形式包括但不限于在线视频、评论、跟帖、弹幕、图片、软件、技术代码等）。"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20dp"
+                    android:layout_below="@id/ptv_eight"/>
+                <TextView
+                    android:id="@+id/ptv_ten"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="        1.4 本协议内容同时包括《隐私政策》及所有 Fit 已经发布或未来可能发布的各类规则、公告或通知，且您在使用 Fit某一特定产品或服务时，可能会另有单独的协议、相关服务规则等，前述规则、公告、通知和协议一经发布即为本协议不可分割的组成部分，您同样应当遵守。如您不同意本协议的约定，您应立即停止注册/激活并停止使用 Fit 的相关产品和服务。"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20dp"
+                    android:layout_below="@id/ptv_nine"/>
+                <TextView
+                    android:id="@+id/ptv_eleven"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="        1.5 Fit 有权根据需要不时地修订本协议及/或各类规则（包括但不限于制定新的条款和修改既有条款），并以在线公告的方式进行变更公告，无须另行单独通知您。修订后的协议和规则一经公布，立即或在公告明确的特定时间自动生效。若您在前述公告修订后继续使用Fit 的产品或服务，即视为您已阅读、理解并接受经过修订的协议和规则。若您不同意修订，应当立即停止使用 Fit提供的产品和服务。"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20dp"
+                    android:layout_below="@id/ptv_ten"/>
+                <TextView
+                    android:id="@+id/ptv_twelve"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="        1.6 除本协议明确规定外，对于利用Fit 开发/发布的产品和服务，Fit有权在本协议的基础上通过单独的产品和服务协议（以下称「单项产品协议」）加以规范，用户须在使用有关产品或服务时另行了解与确认。单项产品协议与本协议有冲突的地方，以单项产品协议为准。如用户使用该产品或服务，即视为对相关单项产品协议的接受。"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20dp"
+                    android:layout_below="@id/ptv_eleven"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

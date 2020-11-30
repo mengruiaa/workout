@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ws.LoginActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:background="@drawable/loginimg">
+
+        <TextView
+            android:id="@+id/tv_logincenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="— 智能运动  连接生活 —"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv_logincenter"
+            android:layout_centerHorizontal="true"
+            android:text="SPORT"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edit_loginusernum"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_editview"
+            android:gravity="center_vertical"
+            android:hint="请输入账号"
+            android:inputType="phone"
+            android:singleLine="true" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/edit_loginuserpwd"
+                android:layout_width="360dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_editview"
+                android:gravity="center_vertical"
+                android:hint="请输入密码"
+                android:inputType="numberPassword"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_circle_shape"
+            android:text="登录"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="normal" />
+
+        <RelativeLayout
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/tv_findpwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="忘记密码？"
+                android:textColor="#888888"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/tv_registeruser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="立即注册"
+                android:textColor="#888888"
+                android:textSize="16dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:text="——————  第三方登录  ——————"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_qq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/qq" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_weixin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/weixin" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/iv_weibo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/weibo" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_loginpro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:text="登录即代表同意APP用户协议和隐私政策" />
+    </LinearLayout>
+</LinearLayout>

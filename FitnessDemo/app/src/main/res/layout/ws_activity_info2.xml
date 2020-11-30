@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ws.Info2Activity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/layout_circle_shape2">
+            <TextView
+                android:id="@+id/tv_infoaim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的目标"
+                android:layout_marginLeft="20dp"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"/>
+            <Button
+                android:id="@+id/btn_infoaimone"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="减脂"
+                android:layout_below="@+id/tv_infoaim"
+                android:background="@drawable/rounded_editview"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="22sp"/>
+            <Button
+                android:id="@+id/btn_infoaimtwo"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="平衡"
+                android:layout_marginRight="15dp"
+                android:layout_below="@+id/btn_infoaimone"
+                android:background="@drawable/rounded_editview"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="22sp"/>
+            <Button
+                android:id="@+id/btn_infoaimthree"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_infoaim"
+                android:text="增肌"
+    android:layout_toRightOf="@+id/btn_infoaimone"
+                android:background="@drawable/rounded_editview"
+                android:layout_marginBottom="15dp"
+                android:textSize="22sp"/>
+            <Button
+                android:id="@+id/btn_infoaimfour"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="塑性"
+                android:layout_toRightOf="@+id/btn_infoaimtwo"
+                android:background="@drawable/rounded_editview"
+                android:layout_below="@+id/btn_infoaimthree"
+                android:layout_marginBottom="15dp"
+                android:textSize="22sp"/>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_circle_shape2">
+            <TextView
+                android:id="@+id/tv_infoshuiping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的水平"
+                android:layout_marginLeft="30dp"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"/>
+            <Button
+                android:id="@+id/btn_infoone"
+                android:layout_width="240dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_infoshuiping"
+                android:background="@drawable/rounded_editview"
+                android:layout_marginBottom="15dp"
+                android:text="入门"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/btn_infotwo"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_infoone"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/rounded_editview"
+                android:layout_marginBottom="15dp"
+                android:text="进阶"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/btn_infothree"
+                android:layout_width="240dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_infotwo"
+                android:background="@drawable/rounded_editview"
+                android:text="专业"
+                android:textSize="22sp" />
+
+        </RelativeLayout>
+
+        <Button
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/button_circle_shape2"
+            android:text="完成"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/circle2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/circle2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
