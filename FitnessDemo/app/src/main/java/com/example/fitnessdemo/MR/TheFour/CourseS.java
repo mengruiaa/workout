@@ -46,6 +46,7 @@ public class CourseS extends Fragment {
                     String result = (String) msg.obj;
                     Type type= new TypeToken<List<Course>>(){}.getType();
                     List<Course> cs=gson.fromJson(result,type);
+                    Log.i("zlrs", "handleMessage: "+cs.size());
                     break;
                 case 2:
                     //获取Message中封装的Bitmap对象
@@ -60,12 +61,12 @@ public class CourseS extends Fragment {
         root = inflater.inflate(R.layout.course, container, false);
         userName= ConfigUtil.user_Name;
 //        getReMen();
-//        new Thread(){
-//            @Override
-//            public void run() {
-//                getZuiXin();
-//            }
-//        }.start();
+        new Thread(){
+            @Override
+            public void run() {
+                getZuiXin();
+            }
+        }.start();
         return root;
     }
 

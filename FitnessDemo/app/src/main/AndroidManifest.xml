@@ -27,7 +27,8 @@
         android:supportsRtl="true"
         android:name=".MyApplication"
         android:theme="@style/AppTheme">
-        <activity android:name=".MR.ShouYeActivity"></activity>
+        <activity android:name=".MR.ShouYeActivity">
+        </activity>
         <activity android:name=".ws.Info2Activity"></activity>
         <activity android:name=".ws.Info1Activity" />
         <activity android:name=".ws.CustomerserviceActivity" />
