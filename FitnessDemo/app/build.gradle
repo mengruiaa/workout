@@ -58,7 +58,7 @@ android {
 //    }
 
     compileSdkVersion 28
-    buildToolsVersion "30.0.1"
+    buildToolsVersion '30.0.1'
     defaultConfig {
         applicationId "com.example.fitnessdemo"
         minSdkVersion 16
@@ -87,6 +87,9 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-
+    //瀑布流包
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha05'
+    //垂直纵向的TabLayout
+    implementation 'q.rorbin:VerticalTabLayout:1.2.5'
 
 }
