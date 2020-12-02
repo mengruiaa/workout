@@ -9,4 +9,6 @@
     <color name="colorBackGround2">#F6F6F8</color>
     <color name="colorAAA">#888888</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorGray">#DCDCDC</color>
+    <color name="colorBlack">#222222</color>
 </resources>

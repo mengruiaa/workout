@@ -1,38 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/colorGray"
     tools:context=".ZFT.PlanInfoActivity">
 
     <ImageView
-        android:id="@+id/planInfo_img"
+        android:id="@+id/iv_planInfo_img"
         android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:src="@drawable/primaryInfo" />
+        android:layout_height="210dp" />
 
     <TextView
-        android:text="HIIT是'High-intensity Interval Training'的缩写，意为”高强度间歇训练“，变化的高强度训练可以持久减脂，刺激激素的分泌，间歇运动可以促进脂肪代谢，强效减脂。对于才开始健身要减脂的人来说，HIIT无疑是一种很好的减脂方法。初级减脂的人，根据自身情况而定，尽量在规定时间内动作次数越多越好。"
+        android:layout_below="@+id/iv_planInfo_img"
+        android:id="@+id/tv_planInfo"
         android:textSize="16sp"
+        android:textStyle="bold"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <TextView
+        android:textColor="@color/colorBlack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="适应人群: 需要快速减脂的人，不适应过度肥胖的人。"
-        android:textSize="16sp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp" />
+        android:lineSpacingExtra="3sp"/>
     <TextView
+        android:layout_below="@+id/tv_planInfo"
+        android:id="@+id/tv_peopleWhoCan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="训练时长: 10分钟"
+        android:text="适应人群: "
         android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"/>
-</LinearLayout>
+        android:layout_marginRight="5dp"
+        android:lineSpacingExtra="3sp"/>
+    <TextView
+        android:layout_below="@+id/tv_peopleWhoCan"
+        android:id="@+id/tv_planTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="训练时长: "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:lineSpacingExtra="3sp" />
+
+    <Button
+        android:id="@+id/btn_startPlan"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tv_planTime"
+        android:background="@drawable/shape"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="100dp"
+        android:text="▶ 开始训练"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp" />
+    <Button
+        android:id="@+id/btn_addPlan"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/btn_startPlan"
+        android:background="@drawable/shape"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:text="➕添加计划"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp" />
+</RelativeLayout>
