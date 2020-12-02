@@ -11,6 +11,7 @@
     <style name="CustomRadioTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:button">@animator/radio_style</item>
     </style>
+    <!--MyTabLayoutTextAppearance-->
     <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/colorAAA</item>

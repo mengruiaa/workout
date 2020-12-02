@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MR.ShouYeActivity"></activity>
+        <activity android:name=".ZFT.PlanInfoActivity"></activity>
+        <activity android:name=".MR.ShouYeActivity" />
         <activity android:name=".ZFT.PlanActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +29,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MR.ShouYeActivity"></activity>
         <activity android:name=".ws.Info2Activity" />
         <activity android:name=".ws.Info1Activity" />
         <activity android:name=".ws.CustomerserviceActivity" />
@@ -38,11 +38,13 @@
         <activity android:name=".ws.LoginActivity" />
         <activity android:name=".ws.MainActivity" />
         <activity android:name=".ws.SplashActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 

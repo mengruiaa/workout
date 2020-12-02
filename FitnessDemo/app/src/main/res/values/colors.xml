@@ -3,13 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-<<<<<<< Updated upstream
     <color name="colorBackGround">#162672</color>
     <color name="colorTextColor1">#FFFCFC</color>
     <color name="colorTextColor2">#000000</color>
     <color name="colorBackGround2">#F6F6F8</color>
-=======
     <color name="colorAAA">#888888</color>
     <color name="colorWhite">#ffffff</color>
->>>>>>> Stashed changes
 </resources>
