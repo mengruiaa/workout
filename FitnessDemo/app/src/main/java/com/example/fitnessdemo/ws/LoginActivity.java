@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -44,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView btntoregister;
     private TextView btntofind;
     private TextView tvpro;
-
+    private String username = null;
     private Gson gson = new Gson();
     //定义OKHTTPClient对象属性
     private OkHttpClient okHttpClient = new OkHttpClient();
@@ -74,8 +75,6 @@ public class LoginActivity extends AppCompatActivity {
             usernumber.setText(num);
             userpwd.setText(pwd + "");
         }
-
-
     }
 
     private void initHandler() {
@@ -86,9 +85,14 @@ public class LoginActivity extends AppCompatActivity {
                     case 1://如果服务端返回的数据是字符串
                         String result = (String) msg.obj;
                         if ("账户登录成功".equals(result)) {
-//                            Usertomain();
+                            ConfigUtil.user_Name = username;
                             Intent intent = new Intent();
                             intent.setClass(LoginActivity.this, ShouYeActivity.class);
+                            startActivity(intent);
+                        } else if ("新账户登录成功".equals(result)){
+                            ConfigUtil.user_Name = username;
+                            Intent intent = new Intent();
+                            intent.setClass(LoginActivity.this, Info1Activity.class);
                             startActivity(intent);
                         } else if ("该账户有误".equals(result)) {
                             Toast.makeText(LoginActivity.this, "该账户登录信息有误", Toast.LENGTH_SHORT).show();
@@ -97,56 +101,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         };
-    }
-
-    private void Usertomain() {
-       new Thread(){
-           @Override
-           public void run() {
-            //1.将登录信息转gson
-               User user = new User();
-               user.setPhone(usernumber.getText().toString());
-               user.setPwd(userpwd.getText().toString().trim());
-               System.out.println("用户信息" + user.toString().trim());
-               String json = gson.toJson(user);
-               //2.创建request对象
-               //1) 使用RequestBody封装请求数据
-               //获取待传输数据对应的MIME类型
-               MediaType type = MediaType.parse("text/plain");
-               //创建RequestBody对象
-               RequestBody reqBody = RequestBody.create(json, type);
-               //2) 创建请求对象
-               Request request = new Request.Builder()
-                       .url(ConfigUtil.SERVER_HOME + "UserLoginServlet")
-                       .post(reqBody)
-                       .build();
-               //3. 创建CALL对象
-               Call call = okHttpClient.newCall(request);
-               //4. 提交请求并获取响应
-               call.enqueue(new Callback() {
-
-                   @Override
-                   public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                       String result = response.body().string();
-                       System.out.println(result);
-
-                       Message msg = handler.obtainMessage();
-                       msg.what = 1;
-                       msg.obj = result;
-                       handler.sendMessage(msg);
-                   }
-
-                   @Override
-                   public void onFailure(@NotNull Call call, @NotNull IOException e) {
-
-                   }
-               });
-
-           }
-       }.start();
-        Intent intent = new Intent();
-        intent.setClass(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
     }
 
     private void setListener() {
@@ -198,7 +152,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void Userlogin() {
         //1.将登录信息转gson
-        User user = new User();
+        final User user = new User();
         user.setPhone(usernumber.getText().toString());
         user.setPwd(userpwd.getText().toString().trim());
         System.out.println("用户信息" + user.toString().trim());
@@ -223,7 +177,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String result = response.body().string();
                 System.out.println(result);
-
+                username = user.getPhone();
                 Message msg = handler.obtainMessage();
                 msg.what = 1;
                 msg.obj = result;

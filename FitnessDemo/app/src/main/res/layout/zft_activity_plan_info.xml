@@ -11,7 +11,7 @@
         android:id="@+id/planInfo_img"
         android:layout_width="match_parent"
         android:layout_height="210dp"
-        android:src="@drawable/primaryInfo" />
+        android:src="@drawable/primaryinfo" />
 
     <TextView
         android:text="HIIT是'High-intensity Interval Training'的缩写，意为”高强度间歇训练“，变化的高强度训练可以持久减脂，刺激激素的分泌，间歇运动可以促进脂肪代谢，强效减脂。对于才开始健身要减脂的人来说，HIIT无疑是一种很好的减脂方法。初级减脂的人，根据自身情况而定，尽量在规定时间内动作次数越多越好。"
