@@ -1,5 +1,6 @@
 package com.example.fitnessdemo.ZFT;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,19 +41,23 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 int position = holder.getAdapterPosition();
+                Intent intent = new Intent();
+                intent.setClass(holder.planView.getContext(),PlanInfoActivity.class);
+                intent.putExtra("plan",mPlan.get(position));
+                holder.planView.getContext().startActivity(intent);
                 Plan plan = mPlan.get(position);
                 Toast.makeText(view.getContext(), "you clicked view" + plan.getPlanName(), Toast.LENGTH_SHORT).show();
             }
         });
 
-        holder.fruitImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int position = holder.getAdapterPosition();
-                Plan plan = mPlan.get(position);
-                Toast.makeText(view.getContext(), "you clicked image" + plan.getPlanName(), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        holder.fruitImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                int position = holder.getAdapterPosition();
+//                Plan plan = mPlan.get(position);
+//                Toast.makeText(view.getContext(), "you clicked image" + plan.getPlanName(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
         return holder;
     }
     @Override

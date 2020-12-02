@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTabHost;
 
 import com.example.fitnessdemo.MR.TheFour.CourseS;
-import com.example.fitnessdemo.MR.TheFour.MyInfo;
+import com.example.fitnessdemo.ws.MyInfo;
 import com.example.fitnessdemo.MR.TheFour.ShowYe;
 import com.example.fitnessdemo.LZYZYH.TuiJian;
 import com.example.fitnessdemo.R;

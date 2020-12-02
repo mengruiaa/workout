@@ -7,12 +7,13 @@ public class User {
     private int height;
     private int weight;
     private int age;
+    private String sex;
 
     public User() {
         super();
     }
 
-    public User(String name, String phone, String pwd, int height, int weight, int age) {
+    public User(String name, String phone, String pwd, int height, int weight, int age, String sex) {
         super();
         this.name = name;
         this.phone = phone;
@@ -20,6 +21,7 @@ public class User {
         this.height = height;
         this.weight = weight;
         this.age = age;
+        this.sex = sex;
     }
 
 
@@ -39,7 +41,7 @@ public class User {
         this.phone = phone;
     }
 
-    public String  getPwd() {
+    public String getPwd() {
         return pwd;
     }
 
@@ -71,6 +73,14 @@ public class User {
         this.age = age;
     }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -80,6 +90,7 @@ public class User {
                 ", height=" + height +
                 ", weight=" + weight +
                 ", age=" + age +
+                ", sex='" + sex + '\'' +
                 '}';
     }
 }
