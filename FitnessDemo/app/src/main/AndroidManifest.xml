@@ -20,15 +20,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ZFT.PlanInfoActivity"></activity>
-        <activity android:name=".MR.ShouYeActivity" />
-        <activity android:name=".ZFT.PlanActivity">
+        <activity android:name=".MR.SearchGetActivity"></activity>
+        <activity android:name=".MR.SouSuoActivity" />
+        <activity android:name=".ZFT.PlanInfoActivity" />
+        <activity android:name=".MR.CourseDetailActivity" />
+        <activity android:name=".MR.ShouYeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ZFT.PlanActivity" />
         <activity android:name=".ws.Info2Activity" />
         <activity android:name=".ws.Info1Activity" />
         <activity android:name=".ws.CustomerserviceActivity" />

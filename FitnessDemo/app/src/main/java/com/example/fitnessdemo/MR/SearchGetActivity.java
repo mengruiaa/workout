@@ -1,0 +1,77 @@
+package com.example.fitnessdemo.MR;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.widget.TextView;
+
+import com.example.fitnessdemo.ConfigUtil;
+import com.example.fitnessdemo.MR.entity.History;
+import com.example.fitnessdemo.R;
+import com.google.gson.Gson;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+public class SearchGetActivity extends AppCompatActivity {
+    //定义OKHTTPClient对象属性
+    private OkHttpClient okHttpClient=new OkHttpClient();;
+    //定义Handler对象属性
+    private Handler handler;
+    private Gson gson=new Gson();
+    private History history;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.mr_activity_search_get);
+        Intent intent=getIntent();
+        if(intent.getAction().equals("addc")){
+            String search= intent.getStringExtra("name");
+            history=new History(ConfigUtil.user_Name,search);
+            new Thread(){
+                @Override
+                public void run() {
+                    addSearchHistory();
+                }
+            }.start();
+        }else{
+            System.out.println(intent.getStringExtra("searchName"));
+        }
+    }
+
+    private void addSearchHistory() {
+        //2 创建Request对象
+        //1) 使用RequestBody封装请求数据
+        //获取待传输数据对应的MIME类型
+        MediaType type = MediaType.parse("text/plain");
+        //创建RequestBody对象
+        RequestBody reqBody = RequestBody.create(type,gson.toJson(history));
+        //2) 创建请求对象
+        Request request = new Request.Builder()
+                .url(ConfigUtil.SERVER_HOME + "AddHistory")
+                .post(reqBody)
+                .build();
+        //3. 创建CALL对象
+        Call call = okHttpClient.newCall(request);
+        //4. 提交请求并获取响应
+        try {
+            call.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

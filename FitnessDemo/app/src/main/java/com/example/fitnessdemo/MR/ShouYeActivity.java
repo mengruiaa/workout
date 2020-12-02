@@ -28,7 +28,7 @@ public class ShouYeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shou_ye);
+        setContentView(R.layout.mr_activity_shou_ye);
         tabHost = findViewById(android.R.id.tabhost);
         //将买家账号通过bundle传给其他的Fragment
 //        bundle=new Bundle();
@@ -112,7 +112,7 @@ public class ShouYeActivity extends AppCompatActivity {
     }
 
     public View getSpecView(String tag, String title, int picture){
-        View view=getLayoutInflater().inflate(R.layout.spec_layout,null);
+        View view=getLayoutInflater().inflate(R.layout.mr_spec_layout,null);
 
         ImageView pict=view.findViewById(R.id.picture);
         TextView textView=view.findViewById(R.id.title);

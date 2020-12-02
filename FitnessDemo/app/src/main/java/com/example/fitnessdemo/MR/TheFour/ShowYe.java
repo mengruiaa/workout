@@ -18,7 +18,7 @@ public class ShowYe extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.shouye, container, false);
+        root = inflater.inflate(R.layout.mr_shouye, container, false);
         return root;
     }
 }
