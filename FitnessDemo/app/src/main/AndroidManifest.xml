@@ -13,7 +13,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -23,30 +22,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-<<<<<<< HEAD
-        <activity android:name=".MR.SearchGetActivity"></activity>
+        <activity android:name=".ZFT.MotionActivity"></activity>
+        <activity android:name=".MR.SearchGetActivity" />
         <activity android:name=".MR.SouSuoActivity" />
         <activity android:name=".ZFT.PlanInfoActivity" />
         <activity android:name=".MR.CourseDetailActivity" />
-        <activity android:name=".MR.ShouYeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-=======
-        <activity android:name=".ZFT.PlanInfoActivity"></activity>
         <activity android:name=".MR.ShouYeActivity" />
         <activity android:name=".ZFT.PlanActivity">
             <intent-filter>
-                 <action android:name="android.intent.action.MAIN" />
->>>>>>> 492c0e58c914c3b438c31f64caa598e3fe1efc3d
+                <action android:name="android.intent.action.MAIN" />
 
-                 <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".ZFT.PlanActivity" />
-        <activity android:name=".ws.Info2Activity" />
-=======
->>>>>>> 492c0e58c914c3b438c31f64caa598e3fe1efc3d
         <activity android:name=".ws.Info1Activity" />
         <activity android:name=".ws.CustomerserviceActivity" />
         <activity android:name=".ws.ProtocolActivity" />
@@ -54,20 +42,16 @@
         <activity android:name=".ws.ViewPageActivity" />
         <activity android:name=".ws.LoginActivity" />
         <activity android:name=".ws.MainActivity" />
-        <activity android:name=".ws.SplashActivity">
-<<<<<<< HEAD
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-=======
-        </activity>
-        <activity android:name=".CLB.Stair2Activity"></activity>
+        <activity android:name=".ws.SplashActivity" />
+        <activity android:name=".CLB.Stair2Activity" />
         <activity android:name=".CLB.EncyclopaediaActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
->>>>>>> ce6fede74eb8b3d1e389817a6c97bd4a0bbe2584
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 
