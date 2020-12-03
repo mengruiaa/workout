@@ -10,9 +10,19 @@
     <ImageView
         android:id="@+id/iv_planInfo_img"
         android:layout_width="match_parent"
+<<<<<<< HEAD
 
         android:layout_height="210dp"
         android:src="@drawable/primaryinfo" />
+=======
+<<<<<<< HEAD
+        android:layout_height="210dp"
+        android:src="@drawable/primaryinfo" />
+=======
+
+        android:layout_height="210dp" />
+>>>>>>> d1d163a5278d6414660db31697e743f4dfcb6c83
+>>>>>>> 00107ea0adbf459fe8f5d6c7bc0acf978d529ab8
 
     <TextView
         android:layout_below="@+id/iv_planInfo_img"
