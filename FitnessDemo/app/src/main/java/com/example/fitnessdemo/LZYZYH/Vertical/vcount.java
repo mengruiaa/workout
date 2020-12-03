@@ -24,7 +24,7 @@ public class vcount extends Fragment {
         Bundle arguments = getArguments();
         String name = arguments.getString("name");
         Log.e("chen", "onCreateView: ------" + name);
-        cte.setText("动态fragment："+name);
+        cte.setText("这里是："+name);
         return inflate;
     }
 }

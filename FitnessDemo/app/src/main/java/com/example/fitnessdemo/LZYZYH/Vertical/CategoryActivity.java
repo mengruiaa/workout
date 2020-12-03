@@ -38,12 +38,10 @@ public class CategoryActivity extends AppCompatActivity {
 
     //    初始化数据
     private void initData() {
-        datas.add("推荐");
-        datas.add("要闻");
-        datas.add("娱乐");
-        datas.add("科技");
-        datas.add("汽车");
-        datas.add("体育");
+        datas.add("智能单车");
+        datas.add("跑步机");
+        datas.add("智能秤");
+        datas.add("智能手环");
 
         //适配器
         vpsp = new vpsp(getSupportFragmentManager());

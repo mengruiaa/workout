@@ -53,13 +53,12 @@
         </LinearLayout>
 
 
-        <q.rorbin.verticaltablayout.VerticalTabLayout
+        <com.example.fitnessdemo.LZYZYH.Vertical.VerticalPager
             android:id="@+id/viewpager"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4" >
-
-        </q.rorbin.verticaltablayout.VerticalTabLayout>
+        </com.example.fitnessdemo.LZYZYH.Vertical.VerticalPager>
 
     </LinearLayout>
 

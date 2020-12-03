@@ -59,6 +59,7 @@
 <!--            </intent-filter>-->
         </activity>
         <activity android:name=".LZYZYH.DetailActivity"></activity>
+        <activity android:name=".LZYZYH.Vertical.CategoryActivity"></activity>
     </application>
 
 </manifest>

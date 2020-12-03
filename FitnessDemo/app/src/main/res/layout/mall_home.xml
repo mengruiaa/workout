@@ -27,10 +27,7 @@
                 android:padding="10dp"
                 android:gravity="center"
                 android:hint="请输入搜索信息"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="搜索"/>
+
         </LinearLayout>
 
         <!--存放图片的ViewPager-->
