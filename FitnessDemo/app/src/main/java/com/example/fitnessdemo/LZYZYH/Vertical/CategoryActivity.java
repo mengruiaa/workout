@@ -14,6 +14,7 @@ import java.util.List;
 
 import q.rorbin.verticaltablayout.VerticalTabLayout;
 
+
 public class CategoryActivity extends AppCompatActivity {
     private VerticalTabLayout mTablayout;
     private VerticalPager mViewpager;
@@ -24,7 +25,7 @@ public class CategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.category_activity);
+        setContentView(R.layout.mall_category_activity);
         initView();
         initData();
     }

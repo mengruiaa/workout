@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainActivity"
-    tools:showIn="@layout/activity_scrolling"
+    tools:showIn="@layout/mall_activity_scrolling"
     android:fillViewport="true">
     <LinearLayout
         android:orientation="vertical"
@@ -16,9 +15,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:orientation="horizontal"
             android:gravity="center">
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
@@ -26,6 +27,10 @@
                 android:padding="10dp"
                 android:gravity="center"
                 android:hint="请输入搜索信息"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="搜索"/>
         </LinearLayout>
 
         <!--存放图片的ViewPager-->
@@ -52,72 +57,174 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/pinpai"
-                    android:padding="7dp"/>
-                <ImageView
+                    android:orientation="vertical"
+                    android:id="@+id/cate1"
+
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/pinpai"
+
+                        android:padding="7dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="品牌精选"/>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/zhineng"
-                    android:padding="7dp"/>
-                <ImageView
+                    android:orientation="vertical"
+                    android:id="@+id/cate2"
+
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/zhineng"
+                        android:padding="7dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="智能硬件"/>
+
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/woman"
-                    android:padding="7dp"/>
-                <ImageView
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/woman"
+                        android:padding="7dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cate3"
+                        android:text="女子服饰"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/man"
-                    android:padding="7dp"/>
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/man"
+                        android:padding="7dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cate4"
+                        android:text="男子服饰"/>
+                </LinearLayout>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <ImageView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/sport"
-                    android:padding="7dp"/>
-                <ImageView
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/sport"
+                        android:padding="7dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cate5"
+                        android:text="运动装备"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/qingshi"
-                    android:padding="7dp"/>
-                <ImageView
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/qingshi"
+                        android:padding="7dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cate6"
+                        android:text="轻食代餐"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/huwai"
-                    android:padding="7dp"/>
-                <ImageView
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/huwai"
+                        android:padding="7dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cate7"
+                        android:text="运动生活"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/shenghuo"
-                    android:padding="7dp"/>
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/shenghuo"
+                        android:padding="7dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/cate8"
+                        android:text="健身器材"/>
+                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:background="@drawable/et_shape2"
             android:orientation="vertical"
             android:padding="8dp">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/oneweek"
-                    android:text="一周严选"/>
+                    android:text="一周严选"
+                    android:padding="5dp"/>
                 <TextView
                     android:id="@+id/findAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toLeftOf="@+id/right_icon"
                     android:text="查看全部"
+                    android:padding="5dp"
                     />
                 <ImageView
                     android:id="@+id/right_icon"
@@ -130,24 +237,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center"
                 android:background="@drawable/et_shape">
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    android:id="@+id/oneweek1"
+                    android:padding="5dp">
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:src="@drawable/pic1"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="你好"/>
+                        android:text="智能筋膜枪R15"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="￥100"
+                        android:text="￥199"
                         android:textColor="@color/colorAccent"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -158,81 +268,64 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    android:id="@+id/oneweek2"
+                    android:padding="5dp">
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/pic1"/>
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/pic2"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="你好"/>
+                        android:text="蓝牙智能音箱T"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="￥100"
+                        android:text="￥398"
                         android:textColor="@color/colorAccent"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1321人加购"/>
+                        android:text="121人加购"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:id="@+id/products_item"
+                    android:id="@+id/oneweek3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    android:padding="5dp">
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/pic1"/>
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/a"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="你好"/>
+                        android:text="家用健身车T2"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="￥100"
+                        android:text="￥1998"
                         android:textColor="@color/colorAccent"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1321人加购"/>
+                        android:text="342人加购"/>
                 </LinearLayout>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/shuaxin"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="换一批"/>
-            </LinearLayout>
-
             <TextView
+                android:id="@+id/jianshenfang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/jianbian"
                 android:gravity="center_vertical|left"
                 android:text="我的家庭健身房" />
-            <LinearLayout android:layout_height="wrap_content"
-                android:layout_width="match_parent">
-                <include layout="@layout/activity_product1" />
-            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/l_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@color/colorAccent">
 
-        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>
