@@ -43,14 +43,13 @@
                 android:id="@+id/btn_startMotion"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:background="@drawable/start_shape"
-                android:text="▶"
+                android:background="@drawable/btnstart"
                 android:textSize="40dp"
                 android:gravity="center"
                 android:textColor="@color/colorAAA"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="50dp"/>
         </RelativeLayout>
         <TextView
             android:id="@+id/tv_planDesc"

@@ -79,7 +79,7 @@ public class Stair2Activity extends AppCompatActivity {
         slidingTabLayout =findViewById(R.id.sl);
         slViewPage=findViewById(R.id.vp00);
         slFragments = new ArrayList<>();
-        slFragments.add(new FirstFragment());
+//        slFragments.add(new FirstFragment());
         slFragments.add(new SecondFragment());
         //     无需编写适配器，一行代码关联TabLayout与ViewPager（看这里看这里）
         slidingTabLayout.setViewPager(slViewPage, new String[]{"官方必读", "免费课程"}, this, slFragments);
