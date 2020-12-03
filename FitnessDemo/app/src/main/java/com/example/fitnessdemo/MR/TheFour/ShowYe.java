@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.fitnessdemo.CLB.EncyclopaediaActivity;
 import com.example.fitnessdemo.R;
 import com.example.fitnessdemo.ZFT.PlanActivity;
 
@@ -26,6 +27,14 @@ public class ShowYe extends Fragment {
         root = inflater.inflate(R.layout.mr_shouye, container, false);
         btnLook = root.findViewById(R.id.btn_lookPlan);
         btnKonw = root.findViewById(R.id.btn_konw);
+        btnKonw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(root.getContext(), EncyclopaediaActivity.class);
+                startActivity(intent);
+            }
+        });
         btnLook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

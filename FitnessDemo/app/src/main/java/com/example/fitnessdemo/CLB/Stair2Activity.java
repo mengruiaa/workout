@@ -81,6 +81,7 @@ public class Stair2Activity extends AppCompatActivity {
         slFragments = new ArrayList<>();
 //        slFragments.add(new FirstFragment());
         slFragments.add(new SecondFragment());
+        slFragments.add(new SecondFragment());
         //     无需编写适配器，一行代码关联TabLayout与ViewPager（看这里看这里）
         slidingTabLayout.setViewPager(slViewPage, new String[]{"官方必读", "免费课程"}, this, slFragments);
         btn_guanzhu = findViewById(R.id.clb_btn_stair2_1);
