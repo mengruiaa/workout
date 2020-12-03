@@ -1,6 +1,8 @@
 package com.example.fitnessdemo.MR.TheFour;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,30 +14,42 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
 import com.example.fitnessdemo.ConfigUtil;
+import com.example.fitnessdemo.MR.SouSuoActivity;
+import com.example.fitnessdemo.MR.adapter.MyFragmentPagerAdapter;
 import com.example.fitnessdemo.MR.entity.Course;
+import com.example.fitnessdemo.MR.entity.CoursePictureShow;
+import com.example.fitnessdemo.MR.someFragments.ListFragment;
 import com.example.fitnessdemo.R;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class CourseS extends Fragment {
     private View root;
     private String userName;
-    //定义OKHTTPClient对象属性
-    private OkHttpClient okHttpClient= new OkHttpClient();
+    private List<CoursePictureShow> cpss;
+    private List<CoursePictureShow> cpss2;
+    private ArrayList<Fragment> mFragments=new ArrayList<>();
+    private ArrayList<Fragment> mFragments2=new ArrayList<>();
+    private ViewPager vp1;
+    private ViewPager vp2;
     private Gson gson=new Gson();
     //定义Handler对象属性
     private Handler handler= new Handler(){//handlerThread.getLooper()){
@@ -43,14 +57,70 @@ public class CourseS extends Fragment {
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what){
                 case 1://如果服务端返回的数据是字符串
-                    String result = (String) msg.obj;
-                    Type type= new TypeToken<List<Course>>(){}.getType();
-                    List<Course> cs=gson.fromJson(result,type);
-                    Log.i("zlrs", "handleMessage: "+cs.size());
-                    break;
-                case 2:
-                    //获取Message中封装的Bitmap对象
-                    Bitmap bitmap = (Bitmap) msg.obj;
+                    for(int i=0;i<cpss.size();i+=2){
+                        if(cpss.size()-i>=2){
+                            ListFragment lf=new ListFragment(cpss.subList(i,i+2));
+                            System.out.println("这里结束1");
+                            mFragments.add(lf);
+                        }else {
+                            ListFragment lf2=new ListFragment(cpss.subList(i,cpss.size()));
+                            mFragments.add(lf2);
+                        }
+                    }
+                    Log.i("rjjjj1", "onCreateView: "+mFragments.size());
+                    MyFragmentPagerAdapter myFragmentPagerAdapter=new MyFragmentPagerAdapter(getFragmentManager());
+                    vp2.setAdapter(myFragmentPagerAdapter);
+                    vp2.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                        @Override
+                        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                        }
+
+                        @Override
+                        public void onPageSelected(int position) {
+
+                        }
+
+                        @Override
+                        public void onPageScrollStateChanged(int state) {
+
+                        }
+                    });
+                    myFragmentPagerAdapter.setFs(mFragments);
+                    myFragmentPagerAdapter.notifyDataSetChanged();
+                    System.out.println("这里开始1");
+
+                    for(int i=0;i<cpss2.size();i+=2){
+                        if(cpss2.size()-i>=2){
+                            ListFragment lf=new ListFragment(cpss2.subList(i,i+2));
+                            System.out.println("这里结束2");
+                            mFragments2.add(lf);
+                        }else {
+                            ListFragment lf2=new ListFragment(cpss2.subList(i,cpss2.size()));
+                            mFragments2.add(lf2);
+                        }
+                    }
+                    Log.i("rjjjj2", "onCreateView: "+mFragments2.size());
+                    MyFragmentPagerAdapter myFragmentPagerAdapter2=new MyFragmentPagerAdapter(getFragmentManager());
+                    vp1.setAdapter(myFragmentPagerAdapter2);
+                    vp1.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                        @Override
+                        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                        }
+
+                        @Override
+                        public void onPageSelected(int position) {
+
+                        }
+
+                        @Override
+                        public void onPageScrollStateChanged(int state) {
+
+                        }
+                    });
+                    myFragmentPagerAdapter2.setFs(mFragments2);
+                    myFragmentPagerAdapter2.notifyDataSetChanged();
                     break;
             }
         }
@@ -58,58 +128,91 @@ public class CourseS extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.course, container, false);
-        userName= ConfigUtil.user_Name;
-//        getReMen();
-        new Thread(){
-            @Override
-            public void run() {
-                getZuiXin();
-            }
-        }.start();
-        return root;
+        if(root==null){
+            root = inflater.inflate(R.layout.mr_course, container, false);
+            userName= ConfigUtil.user_Name;
+            vp1=root.findViewById(R.id.vp1);
+            vp2=root.findViewById(R.id.vp2);
+
+            getZuiXin();
+            root.findViewById(R.id.sousuo).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent=new Intent(getContext(), SouSuoActivity.class);
+                    startActivity(intent);
+                }
+            });
+            return root;
+        }else {
+            return root;
+        }
     }
 
     private void getZuiXin() {
-        //2 创建Request对象
-        //1) 使用RequestBody封装请求数据
-        //获取待传输数据对应的MIME类型
-        MediaType type = MediaType.parse("text/plain");
-        //创建RequestBody对象
-        RequestBody reqBody = RequestBody.create(
-                type,
-                "最新课程"
-                );
-        //2) 创建请求对象
-        Request request = new Request.Builder()
-                .url(ConfigUtil.SERVER_HOME + "GetZuiXin")
-                .post(reqBody)
-                .build();
-        //3. 创建CALL对象
-        Call call = okHttpClient.newCall(request);
-        //4. 提交请求并获取响应
-        call.enqueue(new Callback() {
+        new Thread(){
             @Override
-            public void onFailure(Call call, IOException e) {
-                Log.i("mr", "请求失败");
+            public void run() {
+                try {
+                    URL url = new URL(ConfigUtil.SERVER_HOME + "GetZuiXin");
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    //设置网络请求的方式为POST
+                    conn.setRequestMethod("POST");
+                    //获取网络输出流
+                    OutputStream out = conn.getOutputStream();
+                    out.write("最新课程".getBytes());
+                    out.close();
+                    InputStream in = conn.getInputStream();
+                    //使用字符流读取
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(in, "utf-8"));
+                    //读取字符信息
+                    String result = reader.readLine();
+                    Type type= new TypeToken<List<Course>>(){}.getType();
+                    List<Course> cs=gson.fromJson(result,type);
+                    Log.i("zlrs1", "handleMessage: "+cs.size());
+
+                    cpss=new ArrayList<>();
+                    cpss2=new ArrayList<>();
+                    for(Course c:cs){
+                        CoursePictureShow cps=new CoursePictureShow(c.getCourse_id(),c.getName(),ConfigUtil.SERVER_HOME +c.getPicture());
+                        cpss.add(cps);
+                    }
+                    in.close();
+                    URL url2 = new URL(ConfigUtil.SERVER_HOME + "GetZuiXin");
+                    HttpURLConnection conn2 = (HttpURLConnection) url.openConnection();
+                    //设置网络请求的方式为POST
+                    conn2.setRequestMethod("POST");
+                    //获取网络输出流
+                    OutputStream out2 = conn2.getOutputStream();
+                    out2.write("热门课程".getBytes());
+                    out2.close();
+                    InputStream in2 = conn2.getInputStream();
+                    //使用字符流读取
+                    BufferedReader reader2 = new BufferedReader(
+                            new InputStreamReader(in2, "utf-8"));
+                    //读取字符信息
+                    String result2 = reader2.readLine();
+                    Type type2= new TypeToken<List<Course>>(){}.getType();
+                    List<Course> cs2=gson.fromJson(result2,type2);
+                    Log.i("zlrs2", "handleMessage: "+cs2.size());
+
+                    for(Course c2:cs2){
+                        CoursePictureShow cps2=new CoursePictureShow(c2.getCourse_id(),c2.getName(),ConfigUtil.SERVER_HOME +c2.getPicture());
+                        cpss2.add(cps2);
+                    }
+                    Message msg = handler.obtainMessage();
+                    //设置Message对象的参数
+                    msg.what = 1;
+
+                    //发送Message
+                    handler.sendMessage(msg);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String result = response.body().string();
-                Type type= new TypeToken<List<Course>>(){}.getType();
-                List<Course> cs=gson.fromJson(result,type);
-
-                Message msg = handler.obtainMessage();
-                msg.what = 1;
-                msg.obj = result;
-                handler.sendMessage(msg);
-            }
-        });
-    }
-
-    private void getReMen() {
-
+        }.start();
     }
 
 }

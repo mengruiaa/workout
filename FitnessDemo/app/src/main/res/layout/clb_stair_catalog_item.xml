@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--一级目录Adapter对应的布局 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:clickable="true"
+    android:id="@+id/ll_test"
+    android:layout_width="85dp"
+    android:layout_height="55dp">
+
+    <TextView
+        android:id="@+id/tv_stair"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="20sp" />
+
+</LinearLayout>
+
