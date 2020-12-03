@@ -96,6 +96,10 @@ public class PlanInfoActivity extends AppCompatActivity {
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.btn_startPlan:
+                    Intent intent = new Intent();
+                    intent.setClass(PlanInfoActivity.this,MotionActivity.class);
+                    intent.putExtra("plan",plan);
+                    startActivity(intent);
                     break;
                 case R.id.btn_addPlan:
                     addMyPlan(ConfigUtil.SERVER_HOME + "AddPlan" + "?user_phone=" + ConfigUtil.user_Name + "&plan_name=" + plan.getPlanName());
