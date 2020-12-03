@@ -53,13 +53,13 @@
         </LinearLayout>
 
 
-        <com.example.myapplication.VerticalPager
+        <q.rorbin.verticaltablayout.VerticalTabLayout
             android:id="@+id/viewpager"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4" >
 
-        </com.example.myapplication.VerticalPager>
+        </q.rorbin.verticaltablayout.VerticalTabLayout>
 
     </LinearLayout>
 

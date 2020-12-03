@@ -19,7 +19,7 @@ public class vcount extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View inflate = View.inflate(getActivity(), R.layout.vcountlayout, null);
+        View inflate = View.inflate(getActivity(), R.layout.mall_vcountlayout, null);
         TextView cte = (TextView) inflate.findViewById(R.id.oo);
         Bundle arguments = getArguments();
         String name = arguments.getString("name");

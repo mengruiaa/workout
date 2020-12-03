@@ -160,6 +160,7 @@ public class EncyclopaediaActivity extends AppCompatActivity {
                               String name = cyclopedia.getName();
                               String parentName = cyclopedia.getParentName();
                               String pitcure = cyclopedia.getPitcure();
+                              String brief = cyclopedia.getBrief();
                               cyclopedia1.setId(cyclopedia.getId());
                               cyclopedia1.setName(name);
                               cyclopedia1.setParentName(parentName);
@@ -167,6 +168,7 @@ public class EncyclopaediaActivity extends AppCompatActivity {
                               System.out.println("数量"+attentionNumber);
                               cyclopedia1.setAttentionNumber(attentionNumber);
                               cyclopedia1.setPitcure(pitcure);
+                              cyclopedia1.setBrief(brief);
                               specialCyclopedia.add(cyclopedia1);
 //                              System.out.println("为什莫没有："+specialCyclopedia);
                           }

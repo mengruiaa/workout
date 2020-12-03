@@ -1,5 +1,7 @@
 package com.example.fitnessdemo.LZYZYH;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.LayoutInflater;
@@ -14,12 +16,25 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.fitnessdemo.LZYZYH.Vertical.CategoryActivity;
 import com.example.fitnessdemo.R;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TuiJian extends Fragment {
@@ -34,9 +49,13 @@ public class TuiJian extends Fragment {
     private int previousSelectedPosition = 0;
     boolean isRunning = false;
 
+    private List<Fruit> fruitList = new ArrayList<Fruit>();
     private Map<String, ImageView> imageViewMap = new HashMap<>();
     private Map<String, TextView> textViewMap = new HashMap<>();
     private static String result;
+
+
+    private LinearLayout cate1;
 
     @Nullable
     @Override
@@ -46,25 +65,74 @@ public class TuiJian extends Fragment {
                 false);
         viewPager = view.findViewById(R.id.loopviewpager);
         ll_dots_container = view.findViewById(R.id.ll_dots_loop);
-        product_item = view.findViewById(R.id.products_item);
+        product_item = view.findViewById(R.id.oneweek1);
+        cate1 = view.findViewById(R.id.cate1);
+
         initLoopView();  //实现轮播图
         productItemClick();
 
-        return view;
+        FileOutputStream out = null;
+        BufferedWriter writer = null;
+        try {
+            out = getActivity().openFileOutput("data", Context.MODE_PRIVATE);
+            writer = new BufferedWriter(new OutputStreamWriter(out));
+            writer.write("<font color='black'><b>野小兽智能动感单车家用室内减肥器材</b></font><<br/><font color='red'>￥1999</font>\n");
+            writer.write("ac\n");
+            writer.write("<font color='black'><b>小米米家走步机多功能家用折叠小型室内健身跑步机</b></font><br/><br/><font color='red'>￥1799</font>\n");
+            writer.write("g\n");
+            writer.write("<font color='black'><b>麦瑞克家用多功能踏步机磁控健身器瘦腿瘦身健步踩踏板机室内静音</b></font><br/><br/><font color='red'>￥729</font>\n");
+            writer.write("f\n");
+            writer.write("<font color='black'><b>VFU高强度背心大胸防下垂运动内衣跑步防震聚拢文胸定型健身bra女</b></font><br/><br/><font color='red'>￥188</font>\n");
+            writer.write("o\n");
+            writer.write("<font color='black'><b>野小兽智能动感单车家用室内减肥器材</b></font><br/><br/><font color='red'>￥1999</font>\n");
+            writer.write("ad\n");
+            writer.write("<font color='black'><b>小米米家走步机多功能家用折叠小型室内健身跑步机</b></font><br/><br/><font color='red'>￥1799</font>\n");
+            writer.write("ae\n");
+            writer.write("<font color='black'><b>麦瑞克家用多功能踏步机磁控健身器瘦腿瘦身健步踩踏板机室内静音</b></font><br/><br/><font color='red'>￥729</font>\n");
+            writer.write("f\n");
+            writer.write("<font color='black'><b>VFU高强度背心大胸防下垂运动内衣跑步防震聚拢文胸定型健身bra女</b></font><br/><font color='red'>￥188</font>\n");
+            writer.write("o\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if(writer!=null)
+                try {
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
+        }
+        try {
+            initFruits();//初始化水果数据
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        RecyclerView recyclerView =view.findViewById(R.id.l_recycler_view);
+        StaggeredGridLayoutManager layoutManager = new
+                StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        FruitAdapter adapter = new FruitAdapter(fruitList);
+        recyclerView.setAdapter(adapter);
+
+
+        return view;
     }
     //配合子线程更新UI线程
     public static String updateUIThread(Message msg){
         Bundle bundle = new Bundle();
         bundle = msg.getData();
-        result = bundle.getString("cake");
+        result = bundle.getString("product");
         return result;
+
+
     }
 
     /*
     *实现轮播图
      */
     private void initLoopView() {
+
         // 图片资源id数组
         mImg = new int[]{
                 R.drawable.lunbotu1,
@@ -167,7 +235,55 @@ public class TuiJian extends Fragment {
 
     }
     private void productItemClick(){
+        cate1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i1 = new Intent();
+                i1.setClass(getContext(), CategoryActivity.class);
+                startActivity(i1);
+            }
+        });
+    }
+    /*
+    家庭健身房
+     */
+    private void initFruits() throws FileNotFoundException {
+        ArrayList<String> a=load();
+        for (int i = 0; i < a.size(); ) {
+            //Fruit apple =new Fruit("apple",R.drawable.apple_pic);
+            Fruit apple = new Fruit(a.get(i), getResources().getIdentifier(a.get(i+1),"drawable", "com.example.fitnessdemo"),i);
+            fruitList.add(apple);
+            i+=2;
 
+        }
+    }
+
+
+    public ArrayList<String> load() throws FileNotFoundException {
+        FileInputStream in ;
+        BufferedReader reader = null;
+        ArrayList<String> content =new ArrayList<String>();
+        try {
+            in = getActivity().openFileInput("data");
+            reader = new BufferedReader(new InputStreamReader(in));
+            String line = reader.readLine();
+            while (line != null) {
+                content.add(line);
+                line = reader.readLine();
+            }
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return content;
     }
 }
 
