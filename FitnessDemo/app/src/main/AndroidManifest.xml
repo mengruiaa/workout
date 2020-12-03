@@ -23,11 +23,11 @@
         <activity android:name=".ZFT.PlanInfoActivity"></activity>
         <activity android:name=".MR.ShouYeActivity" />
         <activity android:name=".ZFT.PlanActivity">
-            <!-- <intent-filter>
+            <intent-filter>
                  <action android:name="android.intent.action.MAIN" />
 
                  <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>-->
+             </intent-filter>
         </activity>
         <activity android:name=".ws.Info1Activity" />
         <activity android:name=".ws.CustomerserviceActivity" />
@@ -37,11 +37,11 @@
         <activity android:name=".ws.LoginActivity" />
         <activity android:name=".ws.MainActivity" />
         <activity android:name=".ws.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
     </application>
 

@@ -6,7 +6,7 @@
     android:layout_height="130dp"
     android:layout_margin="20dp"
     app:layout_constraintCircleRadius="10dp"
-    android:layout_gravity="center|top">
+    android:layout_gravity="center_horizontal">
     <ImageView
         android:layout_width="350dp"
         android:layout_height="130dp"
