@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+    <TextView
+        android:textColor="#292421"
+        android:textSize="20sp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="减肥真好爱仕达大大所撒所多撒大大多撒多撒多撒大奥术大师大所大多阿打算"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/clb_tv_stair3_1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:background="#BDFCC9"
+        android:text="新手入门"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/clb_tv_stair3_1"
+        android:id="@+id/clb_tv_stair3_2"
+        android:layout_width="60dp"
+        android:layout_height="20dp"/>
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/clb_tv_stair3_2"
+        android:text="45.9万人阅读"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/clb_tv_stair3_3"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:background="@drawable/lanrenshipu1"
+        android:layout_margin="15dp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/clb_iv_stair3_1"
+        android:layout_width="110dp"
+        android:layout_height="80dp"/>
 
-</LinearLayout>
+
+</RelativeLayout>
