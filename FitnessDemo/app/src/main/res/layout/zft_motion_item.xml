@@ -1,93 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="match_parent"
-    android:layout_height="140dp"
-    android:layout_margin="10dp"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <View
-        android:layout_width="5dp"
-        android:layout_height="140dp"
-        android:background="@color/colorAAA"/>
-    <View
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_margin="10dp">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorAAA"/>
-    <View
-        android:layout_alignParentRight="true"
-        android:layout_width="1dp"
-        android:layout_height="140dp"
-        android:background="@color/colorAAA"/>
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="140dp">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="110dp">
+        android:layout_height="120dp">
 
-            <ImageView
-                android:id="@+id/iv_motionImg"
-                android:layout_width="100dp"
-                android:layout_height="60dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"/>
+        <ImageView
+            android:id="@+id/iv_motionImg"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"/>
 
-            <TextView
-                android:id="@+id/tv_motionName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="手臂环绕"
-                android:textSize="24sp"
-                android:textColor="@color/colorBlack"
-                android:layout_toRightOf="@+id/iv_motionImg"
-                android:layout_marginLeft="10dp"
-                android:layout_centerVertical="true"/>
-            <TextView
-                android:id="@+id/tv_motionStar"
-                android:layout_below="@+id/tv_motionName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="难度 "
-                android:layout_toRightOf="@+id/iv_motionImg"
-                android:layout_marginLeft="10dp"
-                android:layout_centerVertical="true"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_alignParentRight="true">
-                <TextView
-                    android:id="@+id/tv_motionCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="✖"
-                    android:layout_gravity="center_vertical"/>
-                <TextView
-                    android:id="@+id/tv_motionTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="30sp"
-                    android:layout_gravity="center_vertical"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="秒"
-                    android:layout_gravity="center_vertical"/>
-            </LinearLayout>
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_motionName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手臂环绕"
+            android:textSize="24sp"
+            android:textColor="@color/colorBlack"
+            android:layout_toRightOf="@+id/iv_motionImg"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:layout_below="@+id/tv_motionName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手臂环绕"
+            android:layout_toRightOf="@+id/iv_motionImg"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"/>
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@color/colorGray"
-            android:orientation="horizontal">
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true">
             <TextView
-                android:id="@+id/tv_restTime"
-                android:layout_marginLeft="20dp"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="休息 "
-                android:textColor="@color/colorBlack"
-                android:gravity="center_vertical"/>
+                android:layout_height="wrap_content"
+                android:text="✖"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="秒"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
-
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/colorGray"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="休息 10″"
+            android:textColor="@color/colorBlack"
+            android:gravity="center_vertical"/>
     </LinearLayout>
-</RelativeLayout>
+
+</LinearLayout>

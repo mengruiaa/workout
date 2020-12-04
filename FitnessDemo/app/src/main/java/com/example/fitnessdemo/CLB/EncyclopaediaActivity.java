@@ -1,12 +1,9 @@
 package com.example.fitnessdemo.CLB;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +20,6 @@ import com.example.fitnessdemo.CLB.entity.Cyclopedia1;
 import com.example.fitnessdemo.CLB.entity.Entry1;
 import com.example.fitnessdemo.CLB.fragment.TestFragment;
 import com.example.fitnessdemo.ConfigUtil;
-import com.example.fitnessdemo.MR.ShouYeActivity;
 import com.example.fitnessdemo.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -51,7 +47,6 @@ public class EncyclopaediaActivity extends AppCompatActivity {
     private LinearLayoutManager mLayoutManager;
     private Banner banner;
     private List<Entry1> lists;
-    private ImageView ivback;
     private List<Cyclopedia1> cyclopediaLists;
     ArrayList<Fragment> datas = new ArrayList<Fragment>();
     private Handler handler = new Handler(){//handlerThread.getLooper()){
@@ -165,7 +160,6 @@ public class EncyclopaediaActivity extends AppCompatActivity {
                               String name = cyclopedia.getName();
                               String parentName = cyclopedia.getParentName();
                               String pitcure = cyclopedia.getPitcure();
-                              String brief = cyclopedia.getBrief();
                               cyclopedia1.setId(cyclopedia.getId());
                               cyclopedia1.setName(name);
                               cyclopedia1.setParentName(parentName);
@@ -173,7 +167,6 @@ public class EncyclopaediaActivity extends AppCompatActivity {
                               System.out.println("数量"+attentionNumber);
                               cyclopedia1.setAttentionNumber(attentionNumber);
                               cyclopedia1.setPitcure(pitcure);
-                              cyclopedia1.setBrief(brief);
                               specialCyclopedia.add(cyclopedia1);
 //                              System.out.println("为什莫没有："+specialCyclopedia);
                           }
@@ -208,15 +201,6 @@ public class EncyclopaediaActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
         setContentView(R.layout.clb_activity_encyclopaedia);
-        ivback = findViewById(R.id.iv_clb_cusp1);
-        ivback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(EncyclopaediaActivity.this, ShouYeActivity.class);
-                startActivity(intent);
-            }
-        });
         //初始化Gson
         gson = new Gson();
         //初始化OkHttpClient

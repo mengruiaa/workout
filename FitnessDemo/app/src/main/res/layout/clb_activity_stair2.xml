@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:id="@+id/clb_iv_stair2_back"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
             android:background="@mipmap/clb_cusp2"
@@ -73,7 +72,6 @@
             android:text="3 人关注·2310条内容"/>
     </RelativeLayout>
     <TextView
-        android:id="@+id/clb_tv_stair2_brief"
         android:layout_marginLeft="6dp"
         android:textColor="#292421"
         android:layout_marginTop="5dp"
@@ -81,38 +79,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <LinearLayout
-        android:gravity="center"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="90dp">
-        <TextView
-            android:textColor="#808080"
-            android:layout_marginLeft="5dp"
-            android:text="相关"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"/>
+        android:layout_height="70dp">
         <HorizontalScrollView
-            android:scrollbars="none"
-            android:id="@+id/horizontalScrollView"
-            android:layout_width="300dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF">
-
+            android:layout_margin="5dp" >
             <LinearLayout
-                android:id="@+id/horizontalScrollViewItemContainer"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal" />
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp" >
+                <GridView
+                    android:id="@+id/grid"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:numColumns="auto_fit"
+                    android:stretchMode="spacingWidthUniform" >
+                </GridView>
+            </LinearLayout>
         </HorizontalScrollView>
-        <ImageView
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:background="@mipmap/clb_iron"/>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="#F5F5F5"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

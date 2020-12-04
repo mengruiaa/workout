@@ -6,16 +6,6 @@ public class Cyclopedia1 {
     private String parentName;
     private int attentionNumber;
     private String pitcure;
-    private String brief;
-
-    public String getBrief() {
-        return brief;
-    }
-
-    public void setBrief(String brief) {
-        this.brief = brief;
-    }
-
     public int getId() {
         return id;
     }
@@ -46,27 +36,18 @@ public class Cyclopedia1 {
     public void setPitcure(String pitcure) {
         this.pitcure = pitcure;
     }
-
     @Override
     public String toString() {
-        return "Cyclopedia1{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", parentName='" + parentName + '\'' +
-                ", attentionNumber=" + attentionNumber +
-                ", pitcure='" + pitcure + '\'' +
-                ", brief='" + brief + '\'' +
-                '}';
+        return "Cyclopedia [id=" + id + ", name=" + name + ", parentName=" + parentName + ", attentionNumber="
+                + attentionNumber + ", pitcure=" + pitcure + "]";
     }
-
-    public Cyclopedia1(int id, String name, String parentName, int attentionNumber, String pitcure,String brief) {
+    public Cyclopedia1(int id, String name, String parentName, int attentionNumber, String pitcure) {
         super();
         this.id = id;
         this.name = name;
         this.parentName = parentName;
         this.attentionNumber = attentionNumber;
         this.pitcure = pitcure;
-        this.brief = brief;
     }
     public Cyclopedia1() {
 

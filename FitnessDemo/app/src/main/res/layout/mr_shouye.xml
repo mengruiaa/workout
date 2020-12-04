@@ -3,17 +3,4 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_lookPlan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="计划"
-        android:background="@drawable/shape"/>
-    <Button
-        android:layout_marginTop="20dp"
-        android:id="@+id/btn_konw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="百科"
-        android:background="@drawable/shape"/>
 </LinearLayout>
