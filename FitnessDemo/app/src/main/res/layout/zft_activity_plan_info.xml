@@ -10,7 +10,6 @@
     <ImageView
         android:id="@+id/iv_planInfo_img"
         android:layout_width="match_parent"
-
         android:layout_height="210dp" />
 
     <TextView

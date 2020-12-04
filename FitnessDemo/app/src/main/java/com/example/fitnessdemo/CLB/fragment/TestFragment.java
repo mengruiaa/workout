@@ -50,11 +50,13 @@ public class TestFragment extends Fragment {
 //                System.out.println(lists.get(i).getName());
                 String name = lists.get(i).getName();
                 String attentionNumber = lists.get(i).getAttentionNumber()+"";
+                String brief = lists.get(i).getBrief();
                 //获取item对应的数据名称，跳转activity
                 Intent intent = new Intent();
                 intent.setClass(getContext(), Stair2Activity.class);
                 intent.putExtra("itemName",name);
                 intent.putExtra("attentionNumber",attentionNumber);
+                intent.putExtra("brief",brief);
 
                 startActivity(intent);
             }

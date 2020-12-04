@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ZFT.MotionActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/colorBlue">
+
+            <ImageView
+                android:id="@+id/iv_zft_date"
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/zft_date" />
+
+            <TextView
+                android:layout_toRightOf="@+id/iv_zft_date"
+                android:id="@+id/tv_motionHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
+                android:textSize="24sp"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:layout_toRightOf="@+id/iv_zft_date"
+                android:layout_below="@+id/tv_motionHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="keep going"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"/>
+            <Button
+                android:id="@+id/btn_startMotion"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/btnstart"
+                android:textSize="40dp"
+                android:gravity="center"
+                android:textColor="@color/colorAAA"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="50dp"/>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_planDesc"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="主要阶段"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/colorBlack"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/zft_motion_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"/>
+        <Button
+            android:id="@+id/btn_zft_clock"
+            android:layout_marginTop="20dp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="✔健身打卡"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            android:background="@drawable/clock_in_shape"/>
+    </LinearLayout>
+</ScrollView>
