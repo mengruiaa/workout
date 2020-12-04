@@ -28,6 +28,10 @@ public class ShouYeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //取消应用标题栏
+        if (getSupportActionBar() != null){
+            getSupportActionBar().hide();
+        }
         setContentView(R.layout.mr_activity_shou_ye);
         tabHost = findViewById(android.R.id.tabhost);
         if (getSupportActionBar() != null){
