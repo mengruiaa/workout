@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.example.fitnessdemo.LZYZYH.model.Product;
 import com.example.fitnessdemo.R;
 
 import java.util.ArrayList;

@@ -13,15 +13,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.fitnessdemo.LZYZYH.Vertical.CategoryActivity;
+import com.example.fitnessdemo.LZYZYH.activity.CategoryActivity;
+import com.example.fitnessdemo.LZYZYH.adapter.FruitAdapter;
+import com.example.fitnessdemo.LZYZYH.model.Fruit;
 import com.example.fitnessdemo.R;
 
 import java.io.BufferedReader;

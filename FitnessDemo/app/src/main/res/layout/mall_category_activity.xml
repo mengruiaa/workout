@@ -1,65 +1,67 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
     <LinearLayout
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/et_shape"
-            android:padding="10dp"
-            android:gravity="center"
-            android:hint="请输入搜索信息"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <RelativeLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
-            <TextView
+            android:layout_height="fill_parent"
+            android:layout_weight="1.5" >
+
+            <ListView
+                android:id="@+id/list_category"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:divider="#98938F"
+                android:dividerHeight="1dp"
+                android:listSelector="#00000000" >
+            </ListView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="3" >
+
+            <RelativeLayout
+                android:id="@+id/relative_souseshangping"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="详细分类"
-                android:textColor="@color/colorAccent"
-                android:textSize="17sp"/>
+                android:layout_marginTop="10dp" >
 
-            <q.rorbin.verticaltablayout.VerticalTabLayout
-                android:id="@+id/tablayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                <EditText
+                    android:id="@+id/ed_soushuo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="搜索商品"
+                    android:singleLine="true"
+                    android:padding="8dp"
+                    android:background="@drawable/et_shape" />
 
-                android:background="#605a5a"
-                android:fitsSystemWindows="true"
-                android:scrollIndicators="bottom"
-                app:indicator_color="#a41d1d"
-                app:indicator_corners="5dp"
-                app:indicator_gravity="left"
-                app:indicator_width="2dp"
-                app:tab_height="50dp"
-                app:tab_mode="scrollable" />
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/img_shouse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
 
-
-        <com.example.fitnessdemo.LZYZYH.Vertical.VerticalPager
-            android:id="@+id/viewpager"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4" >
-        </com.example.fitnessdemo.LZYZYH.Vertical.VerticalPager>
-
+            <GridView
+                android:id="@+id/grid_category"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/relative_souseshangping"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:cacheColorHint="#00000000"
+                android:listSelector="#00000000"
+                android:numColumns="2" >
+            </GridView>
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

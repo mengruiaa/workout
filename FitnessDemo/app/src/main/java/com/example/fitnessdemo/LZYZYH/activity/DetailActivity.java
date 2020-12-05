@@ -1,4 +1,4 @@
-package com.example.fitnessdemo.LZYZYH;
+package com.example.fitnessdemo.LZYZYH.activity;
 
 import android.os.Bundle;
 import android.widget.Button;

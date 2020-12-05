@@ -1,4 +1,4 @@
-package com.example.fitnessdemo.LZYZYH;
+package com.example.fitnessdemo.LZYZYH.model;
 
 public class Product {
     private String name;
