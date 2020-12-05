@@ -47,8 +47,10 @@
         <activity android:name=".CLB.Stair2Activity" />
         <activity android:name=".CLB.EncyclopaediaActivity" />
         <activity android:name=".ws.SplashActivity"></activity>
-        <activity android:name=".LZYZYH.DetailActivity" />
-        <activity android:name=".LZYZYH.Vertical.CategoryActivity" />
+        <activity android:name=".LZYZYH.activity.DetailActivity"></activity>
+        <activity android:name=".LZYZYH.activity.CategoryActivity"></activity>
+        <activity android:name=".LZYZYH.activity.ListOfGoodsActivity"></activity>
+        <activity android:name=".LZYZYH.activity.SearchActivity"></activity>
     </application>
 
 </manifest>
