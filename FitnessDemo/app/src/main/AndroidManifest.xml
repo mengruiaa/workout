@@ -38,15 +38,13 @@
         <activity android:name=".ws.LoginActivity" />
         <activity android:name=".ws.MainActivity" />
         <activity android:name=".CLB.Stair2Activity" />
-        <activity android:name=".CLB.EncyclopaediaActivity">
+        <activity android:name=".CLB.EncyclopaediaActivity"/>
+        <activity android:name=".ws.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".ws.SplashActivity">
-
         </activity>
         <activity android:name=".LZYZYH.DetailActivity"></activity>
         <activity android:name=".LZYZYH.Vertical.CategoryActivity"></activity>

@@ -27,9 +27,9 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 import java.util.HashMap;
 
-//import cn.smssdk.EventHandler;
-//import cn.smssdk.SMSSDK;
-//import cn.smssdk.gui.RegisterPage;
+import cn.smssdk.EventHandler;
+import cn.smssdk.SMSSDK;
+import cn.smssdk.gui.RegisterPage;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -140,7 +140,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                     break;
                 case R.id.tv_registeruser:
-                   // sendCode(getApplicationContext());
+                    sendCode(getApplicationContext());
                     break;
                 case R.id.tv_loginpro:
                     intent.setClass(LoginActivity.this, ProtocolActivity.class);
@@ -192,30 +192,30 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-//    public void sendCode(Context context) {
-//        RegisterPage page = new RegisterPage();
-//        //如果使用我们的ui，没有申请模板编号的情况下需传null
-//        page.setTempCode(null);
-//        page.setRegisterCallback(new EventHandler() {
-//            public void afterEvent(int event, int result, Object data) {
-//                if (result == SMSSDK.RESULT_COMPLETE) {
-//                    // 处理成功的结果
-//                    HashMap<String, Object> phoneMap = (HashMap<String, Object>) data;
-//                    String country = (String) phoneMap.get("country"); // 国家代码，如“86”
-//                    String phone = (String) phoneMap.get("phone"); // 手机号码，如“13800138000”
-//                    System.out.println(phone);
-//                    Log.i("ws", "afterEvent: " + phone);
-//                    // TODO 利用国家代码和手机号码进行后续的操作
-//                    Intent intent = new Intent();
-//                    intent.putExtra("userphone", phone);
-//                    intent.setClass(LoginActivity.this, RegisterActivity.class);
-//                    startActivity(intent);
-//                } else {
-//                    // TODO 处理错误的结果
-//                }
-//            }
-//        });
-//        page.show(context);
-//    }
+    public void sendCode(Context context) {
+        RegisterPage page = new RegisterPage();
+        //如果使用我们的ui，没有申请模板编号的情况下需传null
+        page.setTempCode(null);
+        page.setRegisterCallback(new EventHandler() {
+            public void afterEvent(int event, int result, Object data) {
+                if (result == SMSSDK.RESULT_COMPLETE) {
+                    // 处理成功的结果
+                    HashMap<String, Object> phoneMap = (HashMap<String, Object>) data;
+                    String country = (String) phoneMap.get("country"); // 国家代码，如“86”
+                    String phone = (String) phoneMap.get("phone"); // 手机号码，如“13800138000”
+                    System.out.println(phone);
+                    Log.i("ws", "afterEvent: " + phone);
+                    // TODO 利用国家代码和手机号码进行后续的操作
+                    Intent intent = new Intent();
+                    intent.putExtra("userphone", phone);
+                    intent.setClass(LoginActivity.this, RegisterActivity.class);
+                    startActivity(intent);
+                } else {
+                    // TODO 处理错误的结果
+                }
+            }
+        });
+        page.show(context);
+    }
 
 }

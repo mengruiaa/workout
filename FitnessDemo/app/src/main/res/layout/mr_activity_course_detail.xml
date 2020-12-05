@@ -6,7 +6,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="word文件"
+        android:text="课程详情"
         android:id="@+id/poi"/>
     <WebView
         android:layout_width="match_parent"

@@ -128,14 +128,10 @@
             app:tl_indicator_color="#292421"
             app:tl_textUnselectColor="#A9A9A9"
             app:tl_textSelectColor="#292421"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#DCDCDC"/>
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp00"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="200dp" />
     </LinearLayout>
 
 </LinearLayout>

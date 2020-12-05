@@ -95,7 +95,7 @@
 
                 <EditText
                     android:id="@+id/info_heightedit"
-                    android:layout_width="40dp"
+                    android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:background="#ffffff"
