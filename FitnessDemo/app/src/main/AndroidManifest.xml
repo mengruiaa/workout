@@ -20,34 +20,35 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MR.SearchGetActivity"></activity>
-        <activity android:name=".ZFT.MotionActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".MR.AllCoursesActivity"></activity>
+        <activity android:name=".MR.SearchGetActivity" />
+        <activity android:name=".ZFT.MotionActivity" />
         <activity android:name=".MR.SouSuoActivity" />
         <activity android:name=".ZFT.PlanInfoActivity" />
         <activity android:name=".MR.CourseDetailActivity" />
-        <activity android:name=".MR.ShouYeActivity" />
-        <activity android:name=".ZFT.PlanActivity">
-        </activity>
-        <activity android:name=".ws.Info1Activity" />
-        <activity android:name=".ws.CustomerserviceActivity" />
-        <activity android:name=".ws.ProtocolActivity" />
-        <activity android:name=".ws.RegisterActivity" />
-        <activity android:name=".ws.ViewPageActivity" />
-        <activity android:name=".ws.LoginActivity" />
-        <activity android:name=".ws.MainActivity" />
-        <activity android:name=".CLB.Stair2Activity" />
-        <activity android:name=".CLB.EncyclopaediaActivity"/>
-        <activity android:name=".ws.SplashActivity">
+        <activity android:name=".MR.ShouYeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LZYZYH.DetailActivity"></activity>
-        <activity android:name=".LZYZYH.Vertical.CategoryActivity"></activity>
+        <activity android:name=".ZFT.PlanActivity"></activity>
+        <activity android:name=".ws.Info1Activity" />
+        <activity android:name=".ws.CustomerserviceActivity" />
+        <activity android:name=".ws.ProtocolActivity" />
+        <activity android:name=".ws.RegisterActivity" />
+        <activity android:name=".ws.ViewPageActivity" />
+        <activity android:name=".ws.LoginActivity">
+        </activity>
+        <activity android:name=".ws.MainActivity" />
+        <activity android:name=".CLB.Stair2Activity" />
+        <activity android:name=".CLB.EncyclopaediaActivity" />
+        <activity android:name=".ws.SplashActivity"></activity>
+        <activity android:name=".LZYZYH.DetailActivity" />
+        <activity android:name=".LZYZYH.Vertical.CategoryActivity" />
     </application>
 
 </manifest>

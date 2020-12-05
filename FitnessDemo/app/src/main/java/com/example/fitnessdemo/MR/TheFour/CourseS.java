@@ -19,6 +19,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.example.fitnessdemo.ConfigUtil;
+import com.example.fitnessdemo.MR.AllCoursesActivity;
 import com.example.fitnessdemo.MR.SouSuoActivity;
 import com.example.fitnessdemo.MR.adapter.MyFragmentPagerAdapter;
 import com.example.fitnessdemo.MR.entity.Course;
@@ -139,6 +140,13 @@ public class CourseS extends Fragment {
                 @Override
                 public void onClick(View view) {
                     Intent intent=new Intent(getContext(), SouSuoActivity.class);
+                    startActivity(intent);
+                }
+            });
+            root.findViewById(R.id.quanbu).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent=new Intent(getContext(), AllCoursesActivity.class);
                     startActivity(intent);
                 }
             });
