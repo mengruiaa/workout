@@ -43,6 +43,7 @@
         <activity android:name=".ws.ViewPageActivity" />
         <activity android:name=".ws.LoginActivity">
         </activity>
+        <activity android:name=".ws.FriendActivity"/>
         <activity android:name=".ws.MainActivity" />
         <activity android:name=".CLB.Stair2Activity" />
         <activity android:name=".CLB.EncyclopaediaActivity" />
