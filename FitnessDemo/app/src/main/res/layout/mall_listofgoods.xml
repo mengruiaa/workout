@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical" >
-
+<!--
     <RelativeLayout
         android:id="@+id/relative_biaoti"
         android:layout_width="match_parent"
@@ -27,16 +27,16 @@
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/activity_home_yitao" />
 
-    </RelativeLayout>
+    </RelativeLayout>-->
 
-    <ListView
-        android:id="@+id/list_listofgoods"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/relative_biaoti"
-        android:divider="#D6D6D6"
-        android:dividerHeight="1dp"
-        android:listSelector="#00000000" >
-    </ListView>
+<!--    <ListView-->
+<!--        android:id="@+id/list_listofgoods"-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:layout_height="fill_parent"-->
+<!--        android:layout_below="@+id/relative_biaoti"-->
+<!--        android:divider="#D6D6D6"-->
+<!--        android:dividerHeight="1dp"-->
+<!--        android:listSelector="#00000000" >-->
+<!--    </ListView>-->
 
 </RelativeLayout>

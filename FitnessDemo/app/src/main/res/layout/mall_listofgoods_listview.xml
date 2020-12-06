@@ -10,8 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:padding="12dp"
-        android:src="@drawable/ic_launcher" />
+        android:padding="12dp" />
 
     <TextView
         android:id="@+id/txt_biaoti"
@@ -30,7 +29,6 @@
         android:layout_below="@+id/txt_biaoti"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/img_list_tupian"
-        android:text="￥1099.0"
         android:layout_marginBottom="5dp"
         android:textColor="#ff0000" />
 
@@ -42,7 +40,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/txt_jiage"
-        android:text="市场￥1299.0"
         android:textColor="#B2AFAD" />
 
 </RelativeLayout>

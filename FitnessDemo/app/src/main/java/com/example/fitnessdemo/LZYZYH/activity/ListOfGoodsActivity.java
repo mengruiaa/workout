@@ -14,7 +14,12 @@ import com.example.fitnessdemo.LZYZYH.adapter.ListOfGoodsAdapter;
 import com.example.fitnessdemo.LZYZYH.model.ListOfGoods;
 import com.example.fitnessdemo.R;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+
+import static com.example.fitnessdemo.ConfigUtil.SERVER_HOME;
 
 /**
  * 商品列表
@@ -34,26 +39,41 @@ public class ListOfGoodsActivity extends Activity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mall_listofgoods);
-        initView();
-        initEvent();
-
-    }
-
-    // 初始化
-    private void initView() {
+        setContentView(R.layout.mall_search);
         list_listofgoods = (ListView) findViewById(R.id.list_listofgoods);
         img_fanhui = (ImageView) findViewById(R.id.img_fanhui);
         img_fanhui.setOnClickListener(this);
         list = new ArrayList<ListOfGoods>();
-        for (int i = 0; i < 10; i++) {
-            ListOfGoods goodsModel = new ListOfGoods();
-            goodsModel.setBiaoti("【天猫预售】乐视手机1S32G金 Letv/乐视X500芈月传版乐1S" + i);
-            goodsModel.setJiage("￥1099.0");
-            goodsModel.setYuanjia("￥1299.0");
-            list.add(goodsModel);
-        }
+
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    URL url = new URL(SERVER_HOME + "/" + "ProductServlet");
+                    url.openStream();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        };
+
     }
+
+    // 初始化
+//    private void initView() {
+//
+//        for (int i = 0; i < 10; i++) {
+//            ListOfGoods goodsModel = new ListOfGoods();
+//            goodsModel.setBiaoti("【天猫预售】乐视手机1S32G金 Letv/乐视X500芈月传版乐1S" + i);
+//            goodsModel.setJiage("￥1099.0");
+//            goodsModel.setYuanjia("￥1299.0");
+//            list.add(goodsModel);
+//        }
+//    }
 
     // 事件
     private void initEvent() {

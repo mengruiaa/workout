@@ -134,11 +134,11 @@ public class TuiJian extends Fragment {
 
         // 图片资源id数组
         mImg = new int[]{
-                R.drawable.lunbotu1,
-                R.drawable.lunbotu1,
-                R.drawable.lunbotu1,
-                R.drawable.lunbotu1,
-                R.drawable.lunbotu1
+                R.drawable.lun1,
+                R.drawable.lun2,
+                R.drawable.lun1,
+                R.drawable.lun2,
+                R.drawable.lun1
         };
 
         // 文本描述
