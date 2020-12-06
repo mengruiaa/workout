@@ -45,6 +45,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Stair2Activity extends AppCompatActivity {
+    private String itemName1;
     //滑动tab
     private SlidingTabLayout slidingTabLayout;
     //与滑动tab对应的viewPager
@@ -106,6 +107,7 @@ public class Stair2Activity extends AppCompatActivity {
         });
         Intent intent = getIntent();
         String itemName = intent.getStringExtra("itemName");
+        ConfigUtil.bobo = itemName;
         String attentionNumber = intent.getStringExtra("attentionNumber");
         String brief = intent.getStringExtra("brief");
         tv_brief.setText(brief);
@@ -116,27 +118,6 @@ public class Stair2Activity extends AppCompatActivity {
         slidingTabLayout =findViewById(R.id.sl);
         slViewPage=findViewById(R.id.vp00);
         slFragments = new ArrayList<>();
-//        essays = new ArrayList<>();
-//        Essay essay1 = new Essay();
-//        essay1.setTitle("减脂期间吃什么");
-//        essay1.setType("新手入门");
-//        essay1.setNumber(1);
-//        Essay essay2 = new Essay();
-//        essay2.setTitle("减脂期间怎么吃");
-//        essay2.setType("常见问题");
-//        essay2.setNumber(1);
-//        Essay essay3 = new Essay();
-//        essay3.setTitle("减脂期间怎么吃");
-//        essay3.setType("常见问题");
-//        essay3.setNumber(1);
-//        Essay essay4 = new Essay();
-//        essay4.setTitle("减脂期间怎么吃");
-//        essay4.setType("常见问题");
-//        essay4.setNumber(1);
-//        essays.add(essay1);
-//        essays.add(essay2);
-//        essays.add(essay3);
-//        essays.add(essay4);
         //获取数据
         initDate(ConfigUtil.SERVER_HOME+"EssayListServlet",itemName);
 //        setDate();
@@ -253,6 +234,7 @@ public class Stair2Activity extends AppCompatActivity {
                     intent.setClass(Stair2Activity.this,Stair2TransferActivity.class);
                     intent.putExtra("name",data.get(finalI));
                     startActivity(intent);
+
                 }
             });
             container.addView(textView);
