@@ -58,7 +58,7 @@ public class ListOfGoodsAdapter extends BaseAdapter {
             heol = (ViewHeol) arg1.getTag();
         }
         heol.txt_biaoti.setText(list.get(arg0).getBiaoti());
-        heol.txt_jiage.setText(list.get(arg0).getJiage());
+        heol.txt_jiage.setText("人民币"+list.get(arg0).getJiage());
         heol.txt_yuanjia.setText("原价"+list.get(arg0).getYuanjia());
 
         return arg1;
