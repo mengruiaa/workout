@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MR.AllCoursesActivity"></activity>
+        <activity android:name=".CLB.Stair2TransferActivity"></activity>
+        <activity android:name=".MR.AllCoursesActivity" />
         <activity android:name=".MR.SearchGetActivity" />
         <activity android:name=".ZFT.MotionActivity" />
         <activity android:name=".MR.SouSuoActivity" />
@@ -35,22 +36,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ZFT.PlanActivity"></activity>
+        <activity android:name=".ZFT.PlanActivity" />
         <activity android:name=".ws.Info1Activity" />
         <activity android:name=".ws.CustomerserviceActivity" />
         <activity android:name=".ws.ProtocolActivity" />
         <activity android:name=".ws.RegisterActivity" />
         <activity android:name=".ws.ViewPageActivity" />
-        <activity android:name=".ws.LoginActivity">
-        </activity>
+        <activity android:name=".ws.LoginActivity"></activity>
         <activity android:name=".ws.MainActivity" />
         <activity android:name=".CLB.Stair2Activity" />
         <activity android:name=".CLB.EncyclopaediaActivity" />
-        <activity android:name=".ws.SplashActivity"></activity>
-        <activity android:name=".LZYZYH.activity.DetailActivity"></activity>
-        <activity android:name=".LZYZYH.activity.CategoryActivity"></activity>
-        <activity android:name=".LZYZYH.activity.ListOfGoodsActivity"></activity>
-        <activity android:name=".LZYZYH.activity.SearchActivity"></activity>
+        <activity android:name=".ws.SplashActivity" />
+        <activity android:name=".LZYZYH.activity.DetailActivity" />
+        <activity android:name=".LZYZYH.activity.CategoryActivity" />
+        <activity android:name=".LZYZYH.activity.ListOfGoodsActivity" />
+        <activity android:name=".LZYZYH.activity.SearchActivity" />
     </application>
 
 </manifest>

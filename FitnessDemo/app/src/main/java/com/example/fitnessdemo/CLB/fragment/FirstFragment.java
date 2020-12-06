@@ -11,14 +11,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.fitnessdemo.CLB.adapter.EssayAdapter;
-import com.example.fitnessdemo.CLB.entity.Cyclopedia1;
 import com.example.fitnessdemo.CLB.entity.Essay;
 import com.example.fitnessdemo.R;
+
 import java.util.List;
 public class FirstFragment extends Fragment {
     private View view;
     //获取传来的数据
     private List<Essay> lists;
+    public FirstFragment(){
+
+    }
     public FirstFragment(List<Essay>lists){
         this.lists = lists;
     }
