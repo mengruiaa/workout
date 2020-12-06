@@ -17,4 +17,12 @@
         <item name="android:textColor">@color/colorAAA</item>
         <item name="android:textStyle">italic</item>
     </style>
+
+    <style name="popupwindow_anim_style">
+        <!-- 指定显示的动画xml -->
+        <item name="android:windowEnterAnimation">@animator/show_from_bottom</item>
+        <!-- 指定消失的动画xml -->
+        <item name="android:windowExitAnimation">@animator/hide_to_bottom</item>
+    </style>
+
 </resources>
