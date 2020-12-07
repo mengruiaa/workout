@@ -7,22 +7,20 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.fitnessdemo.LZYZYH.model.Category;
+import com.example.fitnessdemo.LZYZYH.model.Categoryl;
 import com.example.fitnessdemo.R;
 
 import java.util.ArrayList;
 
 /**
- * 类目listview
- *
- * @author
+ * 类目listview，对应categoryActivity
  *
  */
 public class CategoryAdapter extends BaseAdapter {
     private Context mContext;
-    private ArrayList<Category> list;
+    private ArrayList<Categoryl> list;
 
-    public CategoryAdapter(Context mContext, ArrayList<Category> list) {
+    public CategoryAdapter(Context mContext, ArrayList<Categoryl> list) {
         this.mContext = mContext;
         this.list = list;
     }
@@ -53,7 +51,7 @@ public class CategoryAdapter extends BaseAdapter {
         } else {
             heol = (ViewHeol) arg1.getTag();
         }
-        heol.txt_category_list.setText(list.get(arg0).getName());
+        heol.txt_category_list.setText(list.get(arg0).getCategoryl_name());
         return arg1;
     }
 
