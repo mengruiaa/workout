@@ -5,9 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.example.fitnessdemo.CLB.entity.Cyclopedia1;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.fitnessdemo.CLB.entity.Essay;
+import com.example.fitnessdemo.R;
 
 import java.util.List;
 
@@ -22,17 +27,23 @@ public class EssayAdapter extends BaseAdapter {
     }
     @Override
     public int getCount() {
+        if(null != essayList){
+            return essayList.size();
+        }
         return 0;
     }
 
     @Override
     public Object getItem(int i) {
+        if (null != essayList){
+            return essayList.get(i);
+        }
         return null;
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
@@ -44,6 +55,20 @@ public class EssayAdapter extends BaseAdapter {
             view=inflater.inflate(itemLayoutRes,null);
         }
         //获取控件对象，设置对应属性
+        TextView tvTitle = view.findViewById(R.id.clb_tv_stair3_1);;
+        TextView type = view.findViewById(R.id.clb_tv_stair3_2);;
+        TextView number = view.findViewById(R.id.clb_tv_stair3_3);
+        ImageView imageView = view.findViewById(R.id.clb_iv_stair3_1);
+        tvTitle.setText(essayList.get(i).getTitle());
+        type.setText(essayList.get(i).getType());
+        number.setText(essayList.get(i).getNumber()+" 万人阅读");
+        String url = essayList.get(i).getPitcure();
+        //显示图片
+        RequestOptions requestOptions = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL);
+        Glide.with(view)
+                .load(url)
+                .apply(requestOptions)
+                .into(imageView);
         return view;
     }
 }

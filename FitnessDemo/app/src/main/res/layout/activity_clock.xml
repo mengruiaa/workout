@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/runbackground1"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CLB.ClockActivity">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+    <TextView
+        android:gravity="center"
+        android:textColor="#EF6C35"
+        android:textStyle="bold"
+        android:textSize="42sp"
+        android:text="开始跑步"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+
+            android:id="@+id/btn_stop"
+            android:text="暂停"
+            android:layout_margin="20dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp"/>
+        <Button
+
+            android:id="@+id/btn_begin"
+            android:text="开始"
+            android:layout_margin="20dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp"/>
+
+    </LinearLayout>
+    <TextView
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:id="@+id/timeText"
+        android:text="00:00:00"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+    <RelativeLayout
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginRight="15dp"
+            android:id="@+id/btn_clock_1"
+            android:background="@drawable/sharp3"
+            android:layout_width="150dp"
+            android:layout_height="200dp"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@drawable/sharp4"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@id/btn_clock_1"
+            android:id="@+id/btn_clock_2"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@drawable/sharp5"
+            android:layout_below="@id/btn_clock_2"
+            android:layout_toRightOf="@id/btn_clock_1"
+            android:id="@+id/btn_clock_3"
+            android:layout_width="match_parent"
+            android:layout_height="125dp"/>
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

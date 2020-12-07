@@ -1,5 +1,7 @@
-package com.example.fitnessdemo.LZYZYH;
-
+package com.example.fitnessdemo.LZYZYH.adapter;
+/*
+瀑布流：未和数据库连接
+ */
 
 import android.content.Intent;
 import android.text.Html;
@@ -11,6 +13,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fitnessdemo.LZYZYH.activity.DetailActivity;
+import com.example.fitnessdemo.LZYZYH.model.Fruit;
 import com.example.fitnessdemo.R;
 
 import java.util.List;

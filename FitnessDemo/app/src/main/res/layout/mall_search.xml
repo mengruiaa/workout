@@ -1,29 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
-    <SearchView
-        android:id="@+id/searchView_mall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:iconifiedByDefault="false"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/search"
-        android:layout_marginBottom="10dp"
-        android:queryHint="请输入商品" />
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical" >
 
-    <ListView
-        android:id="@+id/listView_mall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
+    <RelativeLayout
+        android:id="@+id/relative_biaoti"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:text="搜索历史"/>
-    <ListView
-        android:id="@+id/listView_history_mall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:background="@color/colorAAA" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="搜  索"
+            android:textColor="@color/colorWhite"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_fanhui"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back"/>
+        <ListView
+            android:id="@+id/list_listofgoods"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:divider="#D6D6D6"
+            android:dividerHeight="1dp"
+            android:listSelector="#00000000" >
+        </ListView>
+    </LinearLayout>
+
 </LinearLayout>

@@ -10,6 +10,7 @@
     <color name="colorAAA">#888888</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorGray">#DCDCDC</color>
+    <color name="colorG">#ededed</color>
     <color name="colorBlack">#222222</color>
     <color name="colorBlue">#1e90ff</color>
 </resources>

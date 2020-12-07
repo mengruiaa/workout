@@ -1,5 +1,6 @@
 package com.example.fitnessdemo.LZYZYH;
 
+import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,21 +8,25 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.fitnessdemo.LZYZYH.Vertical.CategoryActivity;
+import com.example.fitnessdemo.LZYZYH.activity.CategoryActivity;
+import com.example.fitnessdemo.LZYZYH.activity.ListOfGoodsActivity;
+import com.example.fitnessdemo.LZYZYH.activity.SearchActivity;
+import com.example.fitnessdemo.LZYZYH.adapter.FruitAdapter;
+import com.example.fitnessdemo.LZYZYH.model.Fruit;
+import com.example.fitnessdemo.LZYZYH.model.ListOfGoods;
 import com.example.fitnessdemo.R;
 
 import java.io.BufferedReader;
@@ -48,6 +53,8 @@ public class TuiJian extends Fragment {
     private LinearLayout ll_dots_container;
     private int previousSelectedPosition = 0;
     boolean isRunning = false;
+    private EditText etProductSearch;
+    private Button btnProductSearch;
 
     private List<Fruit> fruitList = new ArrayList<Fruit>();
     private Map<String, ImageView> imageViewMap = new HashMap<>();
@@ -67,7 +74,8 @@ public class TuiJian extends Fragment {
         ll_dots_container = view.findViewById(R.id.ll_dots_loop);
         product_item = view.findViewById(R.id.oneweek1);
         cate1 = view.findViewById(R.id.cate1);
-
+        etProductSearch = view.findViewById(R.id.et_product_search);
+        btnProductSearch = view.findViewById(R.id.btn_product_search);
         initLoopView();  //实现轮播图
         productItemClick();
 
@@ -104,7 +112,7 @@ public class TuiJian extends Fragment {
 
         }
         try {
-            initFruits();//初始化水果数据
+            initFruits();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -135,11 +143,11 @@ public class TuiJian extends Fragment {
 
         // 图片资源id数组
         mImg = new int[]{
-                R.drawable.lunbotu1,
-                R.drawable.lunbotu1,
-                R.drawable.lunbotu1,
-                R.drawable.lunbotu1,
-                R.drawable.lunbotu1
+                R.drawable.lun1,
+                R.drawable.lun2,
+                R.drawable.lun1,
+                R.drawable.lun2,
+                R.drawable.lun1
         };
 
         // 文本描述
@@ -223,12 +231,12 @@ public class TuiJian extends Fragment {
                         e.printStackTrace();
                     }
                     //下一条
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
-                        }
-                    });
+//                    getActivity().runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+//                        }
+//                    });
                 }
             }
         }.start();
@@ -241,6 +249,16 @@ public class TuiJian extends Fragment {
                 Intent i1 = new Intent();
                 i1.setClass(getContext(), CategoryActivity.class);
                 startActivity(i1);
+            }
+        });
+        btnProductSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i2 = new Intent();
+                String s = etProductSearch.getText().toString();
+                i2.putExtra("etProductSearch",s);
+                i2.setClass(getContext(), ListOfGoodsActivity.class);
+                startActivity(i2);
             }
         });
     }

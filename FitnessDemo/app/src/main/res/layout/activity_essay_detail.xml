@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CLB.EssayDetailActivity">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/clb_iv_essay_back"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:background="@mipmap/clb_cusp2"
+            android:layout_width="32dp"
+            android:layout_height="32dp"/>
+        <TextView
+            android:textSize="20sp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@+id/clb_iv_essay_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="文章详情"/>
+        <ImageView
+            android:layout_marginTop="17dp"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/fenxiang"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+    </RelativeLayout>
+        <TextView
+            android:id="@+id/clb_tv_essay_title"
+            android:layout_marginBottom="20dp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:text="手把手教你定制你的私人减肥食谱，可能是史上最细减肥攻略！"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/clb_tv_essay_number"
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="46万人阅读 · 2019/11/12"/>
+        <LinearLayout
+            android:layout_margin="15dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:background="#DCDCDC"
+                android:layout_width="8dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/clb_tv_essay_childtitle"
+                android:textSize="18dp"
+                android:layout_marginLeft="15dp"
+                android:text="自己不是范冰冰放得开拉设计费卡家乐福卡就是颠覆了看见爱上了客服经理开始大家分类考试了房价来看"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/clb_iv_essay_pitcure"
+            android:background="@drawable/lanrenshipu1"
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/clb_tv_essay_url"
+            android:text="可能对很多人来说，减肥就是我告诉你吃多少完事了，但其实没这么简单....对此我想到了一个生动形象的例子！：\n在和读者们互相伤害多次后，我灵光一闪（终于开窍），不如写一篇零基础实操减肥手册吧！\n
+好了，废话不多说，我这就开始手把手教你定制你的私人减肥食谱！\n
+第一步：计算自己的基础代谢率\n
+基础代谢率（BMR）：指人体在清醒而又极端安静的状态下，不受肌肉活动、环境温度、食物及精神紧张等影响时的能量代谢率。\n
+说人话，基础代谢率大意就是指人每天静止不活动时，维持你的生命活动所需要消耗的热量，比如呼吸，内脏运转，大脑思考等等，这些最基础的热量消耗。\n
+为什么需要计算这个？废话，毕竟每个人高矮胖瘦性别年龄不一样，基础代谢也不一样，想为自己量身定制合适的食谱，就要先从了解自己的基础代谢开始！所有不看个人情况就给减肥食谱的都是耍流氓！\n
+给以下美国运动医学协会提供的BMR公式，先计算好，然后下一步我们要用：\n
+BMR（男）=（13.7×体重（公斤））+（5.0×身高（公分））-（6.8×年龄）+66\n
+BMR（女）=（9.6×体重（公斤））+（1.8×身高（公分））-（4.7×年龄）+655\n
+举个栗子，小红是个美少女，今年20岁，体重50公斤，身高162cm，所以她的基础代谢就为：\n
+BMR（小红）=（9.6×52）+（1.8×162）-（4.7×20）+655=1351.8大卡\n
+也就是说，这是小红一天内维持正常的生命活动所需要的热量，减肥也不能比这部分热量低了，否则就会伤害到身体。\n
+（所以有些直接给1200大卡的减肥食谱，其实个人觉得是有一点不靠谱的。）\n
+第二步：根据基础代谢计算自己减肥期的热量缺口
+基础代谢率算完了，但，这只是我们活着所需要消耗的最基本热量，我们还需要工作吃饭打游戏啊，这些都是需要消耗更多热量的。\n
+于是，在基础代谢率的基础上，我们需要再计算一步：日常消耗量（TDEE）\n
+日常消耗量（TDEE）：在基础代谢的基础上，包含了我们吃饭、运动、说话等所有生理活动一天里消耗的总热量。\n
+说白了，基础代谢就是我们一天躺着啥也不干的热量。日常消耗量就是我们每天得被逼着起床工作学习消耗的真实热量。\n
+我们都知道，减肥的原理是：摄入热量＜消耗热量\n
+而此处的“消耗热量”，就是指日常消耗量TDEE。所以我们接下来就需要把TDEE计算出来~\n
+TDEE公式是有针对性的，根据你自己的生活状况，对号入座吧~你刚刚算的BMR数据可以在这里代入了：\n
+几乎不动 （办公室久坐族） = BMR x 1.2\n
+轻度活动（每天散散步） = BMR x 1.4\n
+中度运动（每周锻炼3-5次） = BMR x 1.6\n
+积极运动（每周锻炼6-7次） = BMR x 1.8\n
+比如小红就是个每天都要走路上下班吃饭的人，那她的TDEE就是：\n
+TDEE（小红）=1351.8 x 1.4=1892.52大卡\n
+ok，计算好自己的日常消耗热量，我们就开始正式设置减肥热量摄入。\n
+一般来说，减脂期安全的热量缺口最好在300~500大卡之间，但是最好不要低于基础代谢。\n
+对小红来说，她想减肥平稳一点多吃一点，可以设置为300大卡的热量缺口，也就是每天摄入：\n
+减脂期热量摄入=TDEE-300=1892.52-300≈1593大卡\n
+如果她想减肥减得快一点狠一点，就设置500大卡的热量缺口，即：\n
+减脂期热量摄入=TDEE-300=1892.52-500≈1393大卡\n
+看看，刚好和她的基础代谢差不多持平。\n
+如果你计算的热量缺口低于你的基础代谢了，那就按照基础代谢的热量来吃，不能再低了....\n
+第三步：根据热量缺口确定自己的减肥食谱\n
+都知道自己每天该吃多少热量了那还不好办么？控制热量的同时，优先以健康蔬菜与优质蛋白质作为食材，辅助与清淡的烹饪方式，尽量让自己吃饱的同时营养也摄入充足。\n
+
+饮食建议：\n
+早餐：蛋白质+水果+碳水\n
+以下任选搭配：\n
+牛奶/豆浆/酸奶/水煮蛋 + 杂粮粥/玉米/红薯/麦片 + 番茄/苹果/香蕉\n
+午餐：蛋白质+蔬菜+碳水\n
+杂粮饭/红薯/玉米/水饺 + 牛肉/鸡肉/羊肉/鱼肉 + 蔬菜\n
+晚餐：蛋白质+蔬菜+少量碳水\n
+牛肉/鸡肉/羊肉/鱼肉 + 蔬菜 + 杂粮粥\n
+可加餐：苹果一个/25g左右的坚果\n
+*具体食材重量按自己的减脂期摄入热量而定\n
+附上一份1300大卡的减肥食谱和一份1500大卡的减肥食谱参考：\n
+某些辅助小工具\n
+你可以下载薄荷健康、食物库等APP辅助你的热量控制。并且这些软件里都能帮你自动计算摄入多少热量，并且帮你合理的配餐。"
+            android:layout_margin="15dp"
+            android:textColor="#292421"
+            android:textSize="16sp"
+            android:lineSpacingExtra="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</ScrollView>

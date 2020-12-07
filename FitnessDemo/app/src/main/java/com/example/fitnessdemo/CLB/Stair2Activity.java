@@ -1,18 +1,16 @@
 package com.example.fitnessdemo.CLB;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,14 +20,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.fitnessdemo.CLB.entity.Cyclopedia1;
+import com.example.fitnessdemo.CLB.entity.Essay;
 import com.example.fitnessdemo.CLB.fragment.FirstFragment;
 import com.example.fitnessdemo.CLB.fragment.SecondFragment;
+import com.example.fitnessdemo.ConfigUtil;
 import com.example.fitnessdemo.R;
 import com.flyco.tablayout.SlidingTabLayout;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class Stair2Activity extends AppCompatActivity {
     //滑动tab
@@ -42,13 +56,34 @@ public class Stair2Activity extends AppCompatActivity {
     private ImageView ivBack;
     //关注按钮
     private Button btn_guanzhu;
-    //二级词条简介
+    //二级词条名称,简介，人数
+    private TextView tvName;
     private TextView tv_brief;
+    private TextView tv_Number;
     //水平滑动布局
     private HorizontalScrollView horizontalScrollView;
     private LinearLayout container;
-    private String cities[] = new String[]{"乐趣啊啊", "游玩", "运动", "跑步", "午餐", "早餐"};
+    private String cities[] = new String[]{"健康餐", "增肌饮食", "饮食计划", "懒人食谱", "孕期饮食", "早餐"};
     private ArrayList<String> data = new ArrayList<>();
+    private Gson gson;
+    private OkHttpClient okHttpClient;
+    //文章显示
+    private List<Essay> essays;
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case 1:
+                    //赋值
+                    essays = (List<Essay>)msg.obj;
+                    System.out.println("essays:"+essays);
+                    setDate();
+                    break;
+                case 2:
+                    break;
+            }
+        }
+    };
 
 
     @Override
@@ -58,6 +93,10 @@ public class Stair2Activity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
         setContentView(R.layout.clb_activity_stair2);
+        //初始化Gson
+        gson = new Gson();
+        //初始化OkHttpClient
+        okHttpClient = new OkHttpClient();
         //获取布局id
         findview();
         ivBack.setOnClickListener(new View.OnClickListener() {
@@ -70,20 +109,27 @@ public class Stair2Activity extends AppCompatActivity {
         });
         Intent intent = getIntent();
         String itemName = intent.getStringExtra("itemName");
-        String attentionNumber = intent.getStringExtra("attentionNumber");
-        String brief = intent.getStringExtra("brief");
+        String attentionNumber="";
+        String brief="";
+//        tv_brief.setText(brief);
+        for(Cyclopedia1 cyo : ConfigUtilCui.list){
+            if(cyo.getName().equals(itemName)){
+                attentionNumber  = cyo.getAttentionNumber()+" 人关注·2310条内容";
+                brief = cyo.getBrief();
+            }
+        }
+        tvName.setText(itemName);
         tv_brief.setText(brief);
+        tv_Number.setText(attentionNumber);
         System.out.println(itemName);
         System.out.println(attentionNumber);
         System.out.println(brief);
         slidingTabLayout =findViewById(R.id.sl);
         slViewPage=findViewById(R.id.vp00);
         slFragments = new ArrayList<>();
-//        slFragments.add(new FirstFragment());
-        slFragments.add(new SecondFragment());
-        slFragments.add(new SecondFragment());
-        //     无需编写适配器，一行代码关联TabLayout与ViewPager（看这里看这里）
-        slidingTabLayout.setViewPager(slViewPage, new String[]{"官方必读", "免费课程"}, this, slFragments);
+        //获取数据
+        initDate(ConfigUtil.SERVER_HOME+"EssayListServlet",itemName);
+//        setDate();
         btn_guanzhu = findViewById(R.id.clb_btn_stair2_1);
         btn_guanzhu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,11 +153,67 @@ public class Stair2Activity extends AppCompatActivity {
 
     }
 
+    private void setDate() {
+        slFragments.add(new FirstFragment(essays));
+//        slFragments.add(new SecondFragment());
+        slFragments.add(new SecondFragment());
+        //     无需编写适配器，一行代码关联TabLayout与ViewPager（看这里看这里）
+        slidingTabLayout.setViewPager(slViewPage, new String[]{"官方必读", "免费课程"}, this, slFragments);
+
+    }
+
+    private void initDate(final String s, final String itemname) {
+        new Thread(){
+            @Override
+            public void run() {
+                MediaType type = MediaType.parse("text/plain");
+                RequestBody requestBody = RequestBody.create(type,itemname);
+                Request request = new Request.Builder()
+                        .url(s)
+                        .post(requestBody)
+                        .build();
+                //3. 创建CALL对象
+                Call call = okHttpClient.newCall(request);
+                //4. 提交请求并获取响应
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.i("clb", "请求失败");
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String result = response.body().string();
+//                        System.out.println("??"+result);
+                        Type type = new TypeToken<Collection<Essay>>(){}.getType();
+                        List<Essay> lists = gson.fromJson(result,type);
+                        for( Essay essay : lists){
+                            //获取图片名称
+                            String picture = essay.getPitcure();
+                            //拼接服务器地址（放置imgs文件夹）
+                            String netHeader = ConfigUtil.SERVER_HOME+picture;
+                            essay.setPitcure(netHeader);
+                        }
+                        Message msg = handler.obtainMessage();
+                        msg.what = 1;
+                        msg.obj = lists;
+                        handler.sendMessage(msg);
+
+                    }
+                });
+            }
+        }.start();
+
+
+    }
+
     private void findview() {
         horizontalScrollView = (HorizontalScrollView) findViewById(R.id.horizontalScrollView);
         container = (LinearLayout) findViewById(R.id.horizontalScrollViewItemContainer);
         tv_brief = findViewById(R.id.clb_tv_stair2_brief);
+        tvName = findViewById(R.id.clb_tv_stair2_1);
         ivBack = findViewById(R.id.clb_iv_stair2_back);
+        tv_Number = findViewById(R.id.tv_stair2_number);
     }
 
     //将集合中的数据绑定到HorizontalScrollView上
@@ -134,6 +236,17 @@ public class Stair2Activity extends AppCompatActivity {
 //            textView.setWidth(200);
             textView.setTextColor(Color.rgb(128,128,128));
             textView.setLayoutParams(layoutParams);
+            final int finalI = i;
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent();
+                    intent.setClass(Stair2Activity.this,Stair2Activity.class);
+                    intent.putExtra("itemName",data.get(finalI));
+                    startActivity(intent);
+
+                }
+            });
             container.addView(textView);
             container.invalidate();
         }
