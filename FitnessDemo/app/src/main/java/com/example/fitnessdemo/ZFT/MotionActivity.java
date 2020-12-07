@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -32,6 +33,7 @@ public class MotionActivity extends AppCompatActivity {
     private TextView tvHead;
     private TextView tvDesc;
     private Button btnStarMotion;
+    private List<Motion> motions;
     private MotionAdapter motionAdapter;
     private Handler handler = new Handler(){
         @Override
@@ -42,7 +44,7 @@ public class MotionActivity extends AppCompatActivity {
                     String res = (String)msg.obj;
                     Log.i("gson", "handleMessage: " + res);
                     Type type = new TypeToken<List<Motion>>(){}.getType();
-                    List<Motion> motions = gson.fromJson(res,type);
+                    motions = gson.fromJson(res,type);
                     tvHead.setText(motions.get(1).getPlanHead());
                     tvDesc.setText(motions.get(1).getMotionDesc());
                     RecyclerView recyclerView = findViewById(R.id.zft_motion_recycler_view);
@@ -65,6 +67,15 @@ public class MotionActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Plan plan = (Plan)intent.getSerializableExtra("plan");
         GetMotions(ConfigUtil.SERVER_HOME + "GetMotions" + "?planName=" + plan.getPlanName());
+        btnStarMotion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(MotionActivity.this,ExerciseActivity.class);
+                intent.putExtra("motion",motions.get(0));
+                startActivity(intent);
+            }
+        });
     }
 
     private void GetMotions(final String s) {
