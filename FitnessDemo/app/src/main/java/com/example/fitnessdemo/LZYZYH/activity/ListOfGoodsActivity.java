@@ -3,6 +3,7 @@ package com.example.fitnessdemo.LZYZYH.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -11,10 +12,18 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import com.example.fitnessdemo.LZYZYH.adapter.ListOfGoodsAdapter;
+import com.example.fitnessdemo.LZYZYH.adapter.SearchAdapter;
 import com.example.fitnessdemo.LZYZYH.model.ListOfGoods;
+import com.example.fitnessdemo.LZYZYH.model.Product;
 import com.example.fitnessdemo.R;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,7 +31,7 @@ import java.util.ArrayList;
 import static com.example.fitnessdemo.ConfigUtil.SERVER_HOME;
 
 /**
- * 商品列表
+ * 商品列表界面
  *
  * @author
  *
@@ -30,10 +39,10 @@ import static com.example.fitnessdemo.ConfigUtil.SERVER_HOME;
 public class ListOfGoodsActivity extends Activity implements View.OnClickListener {
     private ListView list_listofgoods;
     private ImageView img_fanhui;
-    private RelativeLayout relative_shaixuan;
-    ArrayList<ListOfGoods> list;
-    private PopupWindow popupWindow;
+    ArrayList<Product> list;
+    Gson gson;
     private boolean state = true;
+    SearchAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +52,23 @@ public class ListOfGoodsActivity extends Activity implements View.OnClickListene
         list_listofgoods = (ListView) findViewById(R.id.list_listofgoods);
         img_fanhui = (ImageView) findViewById(R.id.img_fanhui);
         img_fanhui.setOnClickListener(this);
-        list = new ArrayList<ListOfGoods>();
-
+        list = new ArrayList<Product>();
+        initItem();
         new Thread() {
             @Override
             public void run() {
                 super.run();
                 try {
-                    URL url = new URL(SERVER_HOME + "/" + "ProductServlet");
-                    url.openStream();
+                    URL url = new URL(SERVER_HOME + "search");
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    String pro = reader.readLine();
+                    gson=new Gson();
+                    Type userListType = new TypeToken<ArrayList<Product>>(){}.getType();
+                    list = gson.fromJson(pro, userListType);
+                    Log.e("al",list.toString());
+
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -61,6 +78,18 @@ public class ListOfGoodsActivity extends Activity implements View.OnClickListene
 
         };
 
+    }
+    private void initItem() {
+        adapter = new SearchAdapter(list,R.layout.mall_list_item,this);
+        list_listofgoods.setAdapter(adapter);
+        list_listofgoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(ListOfGoodsActivity.this,DetailActivity.class);
+                intent.putExtra("id",list.get(position).getProduct_id());
+                startActivity(intent);
+            }
+        });
     }
 
     // 初始化
