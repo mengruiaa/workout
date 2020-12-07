@@ -43,10 +43,13 @@ public class Stair2TransferActivity extends AppCompatActivity {
                     intent.putExtra("attentionNumber",attentionNumber);
                     intent.putExtra("brief",brief);
                     startActivity(intent);
+
                     break;
             }
         }
     };
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -13,7 +13,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:name=".MyApplication"
@@ -25,7 +25,16 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".CLB.Stair2TransferActivity"></activity>
+<<<<<<< HEAD
+=======
+
+>>>>>>> ce446195b93943a8ffbd1a75e247914d32286185
         <activity android:name=".ZFT.ExerciseActivity"></activity>
+=======
+        <activity android:name=".CLB.EssayDetailActivity"></activity>
+        <activity android:name=".CLB.Stair2TransferActivity" />
+        <activity android:name=".ZFT.ExerciseActivity" />
+>>>>>>> 8a8347b2cbaaef87e0c805c9dc2fcee548794b5d
         <activity android:name=".ZFT.RecoActivity" />
         <activity android:name=".MR.AllCoursesActivity" />
         <activity android:name=".MR.SearchGetActivity" />
@@ -50,6 +59,13 @@
         <activity android:name=".ws.ViewPageActivity" />
         <activity android:name=".ws.LoginActivity"></activity>
         <activity android:name=".ws.FriendActivity"/>
+<<<<<<< HEAD
+=======
+=======
+        <activity android:name=".ws.LoginActivity" />
+        <activity android:name=".ws.FriendActivity" />
+>>>>>>> 8a8347b2cbaaef87e0c805c9dc2fcee548794b5d
+>>>>>>> ce446195b93943a8ffbd1a75e247914d32286185
         <activity android:name=".ws.MainActivity" />
         <activity android:name=".CLB.Stair2Activity" />
         <activity android:name=".CLB.EncyclopaediaActivity" />

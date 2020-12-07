@@ -202,10 +202,16 @@ public class MyInfo extends Fragment {
 
     // 从本地相册选取图片作为头像
     private void choseHeadImageFromGallery() {
-        Intent intentFromGallery = new Intent();
-        // 设置文件类型
-        intentFromGallery.setType("image/*");//选择图片
-        intentFromGallery.setAction(Intent.ACTION_GET_CONTENT);
+//  方法一
+//        Intent intentFromGallery = new Intent();
+//        // 设置文件类型
+//        intentFromGallery.setType("image/*");//选择图片
+//        intentFromGallery.setAction(Intent.ACTION_GET_CONTENT);
+
+//   方法二
+          Intent intentFromGallery  = new Intent(Intent.ACTION_PICK, null);
+        //如果限制上传到服务器的图片类型时可以直接写如："image/jpeg 、 image/png等的类型"
+        intentFromGallery.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
         //如果你想在Activity中得到新打开Activity关闭后返回的数据，
         //你需要使用系统提供的startActivityForResult(Intent intent,int requestCode)方法打开新的Activity
         startActivityForResult(intentFromGallery, CODE_GALLERY_REQUEST);
@@ -214,12 +220,11 @@ public class MyInfo extends Fragment {
     // 启动手机相机拍摄照片作为头像
     private void choseHeadImageFromCameraCapture() {
         Intent intentFromCapture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
         // 判断存储卡是否可用，存储照片文件
         if (hasSdcard()) {
             intentFromCapture.putExtra(MediaStore.EXTRA_OUTPUT, Uri
-                    .fromFile(new File(Environment
-                            .getExternalStorageDirectory(), IMAGE_FILE_NAME)));
+                    .fromFile(new File(Environment//这里的指定位置为sd卡本目录下
+                            .getExternalStorageDirectory()+ File.separator + "photo.jpeg", IMAGE_FILE_NAME)));
         }
 
         startActivityForResult(intentFromCapture, CODE_CAMERA_REQUEST);
@@ -285,6 +290,13 @@ public class MyInfo extends Fragment {
         intent.putExtra("return-data", true);
 
         startActivityForResult(intent, CODE_RESULT_REQUEST);
+
+
+//        UCrop.of(uri, mDestinationUri)
+//                .withAspectRatio(1, 1)
+//                .withMaxResultSize(512, 512)
+//                .withTargetActivity(CropActivity.class)
+//                .start(mActivity, this);
     }
 
     /**
@@ -294,11 +306,11 @@ public class MyInfo extends Fragment {
         Bundle extras = intent.getExtras();
         if (extras != null) {
             Bitmap photo = extras.getParcelable("data");
-            headImage.setImageBitmap(photo);
-//新建文件夹 先选好路径 再调用mkdir函数 现在是根目录下面的Ask文件夹
+            ivtoouxiang.setImageBitmap(photo);
+        //新建文件夹 先选好路径 再调用mkdir函数 现在是根目录下面的Ask文件夹
             File nf = new File(Environment.getExternalStorageDirectory() + "/Ask");
             nf.mkdir();
-//在根目录下面的ASk文件夹下 创建okkk.jpg文件
+        //在根目录下面的ASk文件夹下 创建okkk.jpg文件
             File f = new File(Environment.getExternalStorageDirectory() + "/Ask", "okkk.jpg");
 
             FileOutputStream out = null;
