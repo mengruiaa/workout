@@ -36,6 +36,7 @@
             android:layout_height="20dp"/>
     </RelativeLayout>
         <TextView
+            android:id="@+id/clb_tv_essay_title"
             android:layout_marginBottom="20dp"
             android:textStyle="bold"
             android:textColor="#000000"
@@ -47,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/clb_tv_essay_number"
             android:layout_marginLeft="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,6 +63,7 @@
                 android:layout_width="8dp"
                 android:layout_height="match_parent"/>
             <TextView
+                android:id="@+id/clb_tv_essay_childtitle"
                 android:textSize="18dp"
                 android:layout_marginLeft="15dp"
                 android:text="自己不是范冰冰放得开拉设计费卡家乐福卡就是颠覆了看见爱上了客服经理开始大家分类考试了房价来看"
@@ -69,11 +72,13 @@
 
         </LinearLayout>
         <ImageView
+            android:id="@+id/clb_iv_essay_pitcure"
             android:background="@drawable/lanrenshipu1"
             android:layout_margin="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/clb_tv_essay_url"
             android:text="可能对很多人来说，减肥就是我告诉你吃多少完事了，但其实没这么简单....对此我想到了一个生动形象的例子！：\n在和读者们互相伤害多次后，我灵光一闪（终于开窍），不如写一篇零基础实操减肥手册吧！\n
 好了，废话不多说，我这就开始手把手教你定制你的私人减肥食谱！\n
 第一步：计算自己的基础代谢率\n

@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.fitnessdemo.CLB.ConfigUtilCui;
 import com.example.fitnessdemo.CLB.EssayDetailActivity;
 import com.example.fitnessdemo.CLB.adapter.EssayAdapter;
 import com.example.fitnessdemo.CLB.entity.Essay;
@@ -56,6 +57,9 @@ public class FirstFragment extends Fragment {
                 //获取文章内容
                 Intent intent = new Intent();
                 intent.setClass(getContext(), EssayDetailActivity.class);
+                intent.putExtra("title",lists.get(i).getTitle());
+                ConfigUtilCui.bobo = lists.get(i).getParentName();
+                System.out.println("ConfigUtilCui.bobo:"+ConfigUtilCui.bobo);
                 startActivity(intent);
             }
         });

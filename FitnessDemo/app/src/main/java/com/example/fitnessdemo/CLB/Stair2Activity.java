@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.fitnessdemo.CLB.entity.Cyclopedia1;
 import com.example.fitnessdemo.CLB.entity.Essay;
 import com.example.fitnessdemo.CLB.fragment.FirstFragment;
 import com.example.fitnessdemo.CLB.fragment.SecondFragment;
@@ -45,7 +46,6 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Stair2Activity extends AppCompatActivity {
-    private String itemName1;
     //滑动tab
     private SlidingTabLayout slidingTabLayout;
     //与滑动tab对应的viewPager
@@ -59,6 +59,7 @@ public class Stair2Activity extends AppCompatActivity {
     //二级词条名称,简介，人数
     private TextView tvName;
     private TextView tv_brief;
+    private TextView tv_Number;
     //水平滑动布局
     private HorizontalScrollView horizontalScrollView;
     private LinearLayout container;
@@ -75,6 +76,7 @@ public class Stair2Activity extends AppCompatActivity {
                 case 1:
                     //赋值
                     essays = (List<Essay>)msg.obj;
+                    System.out.println("essays:"+essays);
                     setDate();
                     break;
                 case 2:
@@ -107,11 +109,18 @@ public class Stair2Activity extends AppCompatActivity {
         });
         Intent intent = getIntent();
         String itemName = intent.getStringExtra("itemName");
-        ConfigUtil.bobo = itemName;
-        String attentionNumber = intent.getStringExtra("attentionNumber");
-        String brief = intent.getStringExtra("brief");
-        tv_brief.setText(brief);
+        String attentionNumber="";
+        String brief="";
+//        tv_brief.setText(brief);
+        for(Cyclopedia1 cyo : ConfigUtilCui.list){
+            if(cyo.getName().equals(itemName)){
+                attentionNumber  = cyo.getAttentionNumber()+" 人关注·2310条内容";
+                brief = cyo.getBrief();
+            }
+        }
         tvName.setText(itemName);
+        tv_brief.setText(brief);
+        tv_Number.setText(attentionNumber);
         System.out.println(itemName);
         System.out.println(attentionNumber);
         System.out.println(brief);
@@ -175,7 +184,7 @@ public class Stair2Activity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         String result = response.body().string();
-                        System.out.println("??"+result);
+//                        System.out.println("??"+result);
                         Type type = new TypeToken<Collection<Essay>>(){}.getType();
                         List<Essay> lists = gson.fromJson(result,type);
                         for( Essay essay : lists){
@@ -204,6 +213,7 @@ public class Stair2Activity extends AppCompatActivity {
         tv_brief = findViewById(R.id.clb_tv_stair2_brief);
         tvName = findViewById(R.id.clb_tv_stair2_1);
         ivBack = findViewById(R.id.clb_iv_stair2_back);
+        tv_Number = findViewById(R.id.tv_stair2_number);
     }
 
     //将集合中的数据绑定到HorizontalScrollView上
@@ -231,8 +241,8 @@ public class Stair2Activity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent();
-                    intent.setClass(Stair2Activity.this,Stair2TransferActivity.class);
-                    intent.putExtra("name",data.get(finalI));
+                    intent.setClass(Stair2Activity.this,Stair2Activity.class);
+                    intent.putExtra("itemName",data.get(finalI));
                     startActivity(intent);
 
                 }

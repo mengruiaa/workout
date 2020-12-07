@@ -24,15 +24,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-<<<<<<< HEAD
         <activity android:name=".CLB.Stair2TransferActivity"></activity>
 
         <activity android:name=".ZFT.ExerciseActivity"></activity>
-=======
         <activity android:name=".CLB.EssayDetailActivity"></activity>
-        <activity android:name=".CLB.Stair2TransferActivity" />
-        <activity android:name=".ZFT.ExerciseActivity" />
->>>>>>> 8a8347b2cbaaef87e0c805c9dc2fcee548794b5d
         <activity android:name=".ZFT.RecoActivity" />
         <activity android:name=".MR.AllCoursesActivity" />
         <activity android:name=".MR.SearchGetActivity" />
@@ -53,13 +48,8 @@
         <activity android:name=".ws.ProtocolActivity" />
         <activity android:name=".ws.RegisterActivity" />
         <activity android:name=".ws.ViewPageActivity" />
-<<<<<<< HEAD
         <activity android:name=".ws.LoginActivity"></activity>
         <activity android:name=".ws.FriendActivity"/>
-=======
-        <activity android:name=".ws.LoginActivity" />
-        <activity android:name=".ws.FriendActivity" />
->>>>>>> 8a8347b2cbaaef87e0c805c9dc2fcee548794b5d
         <activity android:name=".ws.MainActivity" />
         <activity android:name=".CLB.Stair2Activity" />
         <activity android:name=".CLB.EncyclopaediaActivity" />
