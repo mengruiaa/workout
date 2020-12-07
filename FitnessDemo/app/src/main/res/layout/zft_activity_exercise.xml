@@ -31,6 +31,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/tv_hard"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,12 +39,14 @@
             android:text="难度: "
             android:textSize="16sp"/>
         <TextView
+            android:id="@+id/tv_part"
             android:layout_weight="2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="部位: "
             android:textSize="16sp"/>
         <TextView
+            android:id="@+id/tv_inst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="器械: "
@@ -92,6 +95,7 @@
                 android:layout_centerInParent="true"
                 android:layout_toLeftOf="@+id/zft_start_stop"/>
             <ImageView
+                android:id="@+id/iv_next"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/next"

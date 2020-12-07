@@ -25,7 +25,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".CLB.Stair2TransferActivity"></activity>
+<<<<<<< HEAD
+=======
 
+>>>>>>> ce446195b93943a8ffbd1a75e247914d32286185
         <activity android:name=".ZFT.ExerciseActivity"></activity>
         <activity android:name=".CLB.EssayDetailActivity"></activity>
         <activity android:name=".ZFT.RecoActivity" />
@@ -36,13 +39,15 @@
         <activity android:name=".ZFT.PlanInfoActivity" />
         <activity android:name=".MR.CourseDetailActivity" />
         <activity android:name=".MR.ShouYeActivity">
+
+        </activity>
+        <activity android:name=".ZFT.PlanActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ZFT.PlanActivity" />
         <activity android:name=".ws.Info1Activity" />
         <activity android:name=".ws.CustomerserviceActivity" />
         <activity android:name=".ws.ProtocolActivity" />
@@ -50,6 +55,16 @@
         <activity android:name=".ws.ViewPageActivity" />
         <activity android:name=".ws.LoginActivity"></activity>
         <activity android:name=".ws.FriendActivity"/>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+        <activity android:name=".ws.LoginActivity" />
+        <activity android:name=".ws.FriendActivity" />
+>>>>>>> 8a8347b2cbaaef87e0c805c9dc2fcee548794b5d
+>>>>>>> ce446195b93943a8ffbd1a75e247914d32286185
+>>>>>>> 590e6296813384fdeaa9b81120da21550cccd6af
         <activity android:name=".ws.MainActivity" />
         <activity android:name=".CLB.Stair2Activity" />
         <activity android:name=".CLB.EncyclopaediaActivity" />
