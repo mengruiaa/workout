@@ -36,7 +36,7 @@ public class TestFragment extends Fragment {
                 container,//根视图对象
                 false);//手动调用
         ListView lvCake = view.findViewById(R.id.lv_cyclopedia);
-        System.out.println("zhe:"+lists);
+//        System.out.println("zhe:"+lists);
         CyclopediaAdapter cyclopediaAdapter = new CyclopediaAdapter(
                 getContext(),
                 lists,

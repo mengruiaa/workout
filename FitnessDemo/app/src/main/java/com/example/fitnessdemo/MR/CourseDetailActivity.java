@@ -1,76 +1,120 @@
 package com.example.fitnessdemo.MR;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.LinearLayout;
 
 import com.example.fitnessdemo.ConfigUtil;
+import com.example.fitnessdemo.MR.adapter.MyFragmentPagerAdapter;
+import com.example.fitnessdemo.MR.entity.Course;
+import com.example.fitnessdemo.MR.entity.CoursePictureShow;
+import com.example.fitnessdemo.MR.entity.Video;
+import com.example.fitnessdemo.MR.someFragments.IntroduceFragment;
+import com.example.fitnessdemo.MR.someFragments.VideoFragment;
 import com.example.fitnessdemo.R;
+import com.flyco.tablayout.SlidingTabLayout;
+import com.google.android.material.tabs.TabLayout;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import java.io.File;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CourseDetailActivity extends AppCompatActivity {
-    private WebView mWebView;
-    private LinearLayout ll_root;
-
+    private Gson gson=new Gson();
+    private String courseName;
+    private SlidingTabLayout tb;
+    private ViewPager mViewPager;
+    private ArrayList<Fragment> mFragments=new ArrayList<>();
+    private Handler handler= new Handler(){//handlerThread.getLooper()){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            switch (msg.what){
+                case 1:
+                    tb.setViewPager(mViewPager, new String[]{"课程简介", "视频列表","相关计划","相关商品"}, CourseDetailActivity.this, mFragments);
+                    break;
+            }
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();//隐藏掉整个ActionBar
         setContentView(R.layout.mr_activity_course_detail);
-        intiUI();
-        findViewById(R.id.poi).setOnClickListener(new View.OnClickListener() {
+        Intent intent=getIntent();
+        courseName= intent.getStringExtra("courseName");
+        mViewPager= (ViewPager) findViewById(R.id.viewPager);
+        tb=findViewById(R.id.tabLayout_cs);
+        getIntroduce();
+
+    }
+    private void getIntroduce() {
+        new Thread(){
             @Override
-            public void onClick(View view) {
-                mWebView.getSettings().setDomStorageEnabled(true);
-                mWebView.loadUrl("https://preview.yozodcs.com/fcscloud/view/preview/zD9nPfRweQhOlLQ9PO7rDQ_uZRL9zCb2j6swQ6B0NFJmm2HD36AN4xoTbQVV7c1g_rlKC6Dc36KxleUZgbr5nPiIjBfd5rL5IPc9W2zux1EKJG4ncmvrFMHHKc9cyXy55QKhhoopwt142tvnEyDVuAwiGrNxmRfDkSKLsB5ruKShPui2rT2Un3M7hQs0FpvtOBtWwZmMBK3kCF9u38WWceE3L4QdDIH6s8TDxem_ChIz0RKKPJir6O-Ls9JnruL5nt_InCOf14NnFRsG74-09Siq56jAK1fEuuD9tj_wYVBCeMwG70ijSkTH0ltaHenosziCamCv01AG7Z0ZNF1qUJICVQQZnTJsidaxuQeNbtm8Srn6KHJ8zKlWaQbyGUzLg1-s-J1x0FEWfryZpR0SnKUpoxmiV63d2_mhn89ebRA78kxbvv7-nzZ9NoAwCj5A-fKR3dLRZbPmat8Ov-AblH-jV00f3qYY/");
+            public void run() {
+                try {
+                    URL url = new URL(ConfigUtil.SERVER_HOME + "GetIntroduce");
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    //设置网络请求的方式为POST
+                    conn.setRequestMethod("POST");
+                    //获取网络输出流
+                    OutputStream out = conn.getOutputStream();
+                    out.write(courseName.getBytes());
+                    out.close();
+                    InputStream in = conn.getInputStream();
+                    //使用字符流读取
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(in, "utf-8"));
+                    //读取字符信息
+                    String result = reader.readLine();
+                    Course cs=gson.fromJson(result,Course.class);
+                    in.close();
+                    mFragments.add(new IntroduceFragment(cs));
+                    //拿视频
+                    URL url2 = new URL(ConfigUtil.SERVER_HOME + "GetVideos");
+                    //获取网络输入流
+                    InputStream in2 = url2.openStream();
+                    BufferedReader reader2 = new BufferedReader(
+                            new InputStreamReader(in2, "utf-8"));
+                    //读取数据
+                    String result2 = reader2.readLine();
+                    in2.close();
+                    Type type2= new TypeToken<List<Video>>(){}.getType();
+                    List<Video> cs2=gson.fromJson(result2,type2);
+                    mFragments.add(new VideoFragment(cs2));
+                    mFragments.add(new VideoFragment(cs2));
+                    mFragments.add(new VideoFragment(cs2));
+                    Message msg = handler.obtainMessage();
+                    //设置Message对象的参数
+                    msg.what = 1;
+
+                    //发送Message
+                    handler.sendMessage(msg);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-        });
+        }.start();
     }
 
-    private void intiUI() {
-        ll_root = (LinearLayout) findViewById(R.id.ll_root);
-        mWebView=findViewById(R.id.introduce);
-
-        mWebView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
-            }
-        });
-        mWebView.requestFocusFromTouch();
-        WebSettings settings = mWebView.getSettings();
-        settings.setJavaScriptEnabled(true);
-        settings.setJavaScriptCanOpenWindowsAutomatically(true);
-    }
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && mWebView.canGoBack()) {
-            mWebView.goBack();
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
-    @Override
-    protected void onDestroy() {
-        // 在 Activity 销毁的时候，可以先让 WebView 加载null内容，
-        // 然后移除 WebView，再销毁 WebView，最后置空。
-        if (mWebView != null) {
-            mWebView.loadDataWithBaseURL(null, "", "text/html", "utf-8", null);
-            mWebView.clearHistory();
-
-            ll_root.removeView(mWebView);
-            mWebView.destroy();
-            mWebView = null;
-        }
-        super.onDestroy();
-    }
 
 }

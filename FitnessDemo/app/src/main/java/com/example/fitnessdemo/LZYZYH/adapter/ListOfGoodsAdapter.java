@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.fitnessdemo.LZYZYH.model.ListOfGoods;
+import com.example.fitnessdemo.LZYZYH.model.Product;
 import com.example.fitnessdemo.R;
 
 import java.util.ArrayList;
@@ -20,9 +22,9 @@ import java.util.ArrayList;
  */
 public class ListOfGoodsAdapter extends BaseAdapter {
     private Context mContext;
-    private ArrayList<ListOfGoods> list;
+    private ArrayList<Product> list;
 
-    public ListOfGoodsAdapter(Context mContext, ArrayList<ListOfGoods> list) {
+    public ListOfGoodsAdapter(Context mContext, ArrayList<Product> list) {
         this.mContext = mContext;
         this.list = list;
     }
@@ -49,22 +51,22 @@ public class ListOfGoodsAdapter extends BaseAdapter {
         ViewHeol heol;
         if (arg1==null) {
             heol = new ViewHeol();
-            arg1 = LayoutInflater.from(mContext).inflate(R.layout.mall_listofgoods_listview, null);
-            heol.txt_biaoti= (TextView) arg1.findViewById(R.id.txt_biaoti);
-            heol.txt_jiage = (TextView) arg1.findViewById(R.id.txt_jiage);
-            heol.txt_yuanjia = (TextView) arg1.findViewById(R.id.txt_yuanjia);
+            arg1 = LayoutInflater.from(mContext).inflate(R.layout.mall_list_item, null);
+            heol.iv_show = arg1.findViewById(R.id.iv_show);
+            heol.txt_biaoti= (TextView) arg1.findViewById(R.id.tv_name);
+            heol.txt_jiage = (TextView) arg1.findViewById(R.id.tv_money);
             arg1.setTag(heol);
         }else {
             heol = (ViewHeol) arg1.getTag();
         }
-        heol.txt_biaoti.setText(list.get(arg0).getBiaoti());
-        heol.txt_jiage.setText("人民币"+list.get(arg0).getJiage());
-        heol.txt_yuanjia.setText("原价"+list.get(arg0).getYuanjia());
+        heol.txt_biaoti.setText(list.get(arg0).getProduct_name());
+        heol.txt_jiage.setText(list.get(arg0).getProduct_price()+"");
 
         return arg1;
     }
 
     private class ViewHeol {
+        ImageView iv_show;
         TextView txt_biaoti, txt_jiage, txt_yuanjia;
     }
 

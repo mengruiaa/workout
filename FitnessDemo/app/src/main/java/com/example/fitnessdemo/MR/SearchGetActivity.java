@@ -37,6 +37,7 @@ public class SearchGetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();//隐藏掉整个ActionBar
         setContentView(R.layout.mr_activity_search_get);
         Intent intent=getIntent();
         if(intent.getAction().equals("addc")){

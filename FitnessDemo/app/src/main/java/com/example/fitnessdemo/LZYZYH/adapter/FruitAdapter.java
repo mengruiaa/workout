@@ -1,5 +1,7 @@
 package com.example.fitnessdemo.LZYZYH.adapter;
-
+/*
+瀑布流：未和数据库连接
+ */
 
 import android.content.Intent;
 import android.text.Html;

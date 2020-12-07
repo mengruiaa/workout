@@ -57,9 +57,9 @@ public class CyclopediaAdapter extends BaseAdapter {
         ImageView ivCyclopedia = view.findViewById(R.id.clb_iv_1);
         TextView tvCyclopedia1 = view.findViewById(R.id.clb_tv_1);
         TextView tvCyclopeida2 = view.findViewById(R.id.clb_tv_2);
-        System.out.println("关键1："+cyclopediaList);
+//        System.out.println("关键1："+cyclopediaList);
         String url = cyclopediaList.get(i).getPitcure();
-        System.out.println(url);
+//        System.out.println(url);
         RequestOptions requestOptions = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL);
         Glide.with(view)
                 .load(url)

@@ -54,7 +54,7 @@ public class CourseListAdapter extends BaseAdapter {
         view=inflater.inflate(itemLayout,null);
 
         ImageView picture=view.findViewById(R.id.picture);
-        System.out.println(courseShows.get(i).getPicture());
+        //System.out.println(courseShows.get(i).getPicture());
         Glide.with(view).load(courseShows.get(i).getPicture()).into(picture);
         return view;
     }
