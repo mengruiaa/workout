@@ -134,6 +134,7 @@ public class SouSuoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();//隐藏掉整个ActionBar
         setContentView(R.layout.mr_activity_sou_suo);
         mSearchView = (SearchView) findViewById(R.id.searchView);
         mSearchView.setSubmitButtonEnabled(true);
