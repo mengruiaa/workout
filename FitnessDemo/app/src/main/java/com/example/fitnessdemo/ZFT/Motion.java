@@ -1,6 +1,10 @@
 package com.example.fitnessdemo.ZFT;
 
-public class Motion {
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class Motion implements Serializable {
     private int id;
     private String  planName;
     private String motionName;
