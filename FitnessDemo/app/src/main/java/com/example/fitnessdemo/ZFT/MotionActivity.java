@@ -75,7 +75,7 @@ public class MotionActivity extends AppCompatActivity {
         tvDesc = findViewById(R.id.tv_planDesc);
         btnStarMotion = findViewById(R.id.btn_startMotion);
         Intent intent = getIntent();
-        Plan plan = (Plan)intent.getSerializableExtra("plan");
+        final Plan plan = (Plan)intent.getSerializableExtra("plan");
         GetMotions(ConfigUtil.SERVER_HOME + "GetMotions" + "?planName=" + plan.getPlanName());
         btnStarMotion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,18 +95,55 @@ public class MotionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 button.startAnim();
-
+                ClockIn(ConfigUtil.SERVER_HOME + "ClockIn" + "?planName=" + plan.getPlanName() + "&phone=" + ConfigUtil.user_Name);
                 h.postDelayed(new Runnable() {
                     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                     @Override
                     public void run() {
                         //跳转
-                        gotoNew();
+                        gotoNew(plan.getPlanName());
                     }
                 },3000);
 
             }
         });
+    }
+
+    private void ClockIn(final String s) {
+        new Thread(){
+            @Override
+            public void run() {
+                //使用网络连接，接收服务端发送的字符串
+                try {
+                    //创建URL对象
+                    URL url = new URL(s);
+                    //获取URLConnection连接对象
+                    URLConnection conn = url.openConnection();
+                    //获取网络输入流
+                    InputStream in = conn.getInputStream();
+                    //使用字符流读取
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(in, "utf-8"));
+                    //读取字符信息
+                    String str = reader.readLine();
+                    //关闭流
+                    reader.close();
+                    in.close();
+//                    //借助于Message，把收到的字符串显示在页面上
+//                    //创建Message对象
+//                    Message msg = new Message();
+//                    //设置Message对象的参数
+//                    msg.what = 1;
+//                    msg.obj = str;
+//                    //发送Message
+//                    handler.sendMessage(msg);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
     }
 
     private void GetMotions(final String s) {
@@ -146,11 +183,11 @@ public class MotionActivity extends AppCompatActivity {
         }.start();
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void gotoNew() {
+    private void gotoNew(String planName) {
         button.gotoNew();
 
         final Intent intent=new Intent(this, DataActivity.class);
-
+        intent.putExtra("planName", planName);
         int xc=(button.getLeft()+button.getRight())/2;
         int yc=(button.getTop()+button.getBottom())/2;
         animator= ViewAnimationUtils.createCircularReveal(srcontent,xc,yc,0,1111);

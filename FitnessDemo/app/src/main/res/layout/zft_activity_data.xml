@@ -8,6 +8,17 @@
     tools:context=".ZFT.DataActivity">
 
     <TextView
+        android:id="@+id/planName"
+        android:layout_above="@+id/succeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textStyle="bold"
+        android:alpha="0.7"
+        android:textSize="32dp"
+        android:textColor="@color/colorWhite"
+        android:layout_centerInParent="true"/>
+    <TextView
         android:id="@+id/succeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

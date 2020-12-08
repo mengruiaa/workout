@@ -30,7 +30,9 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
 
-public class BuildFragment extends Fragment {
+public class
+
+BuildFragment extends Fragment {
     private View root;
     private PlanAdapter adapter;
     private Handler handler = new Handler(){

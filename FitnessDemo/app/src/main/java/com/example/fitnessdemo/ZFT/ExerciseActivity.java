@@ -80,6 +80,7 @@ public class ExerciseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.zft_activity_exercise);
         Intent intent = getIntent();
         motion = (Motion) intent.getSerializableExtra("motion");
@@ -235,7 +236,6 @@ public class ExerciseActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"去打卡吧",Toast.LENGTH_SHORT).show();
                     showPopupWindow();
 //                    finish();
-
                 }
                 final int finalPosition = position;
                 if (total < motion.getMotionCount()){
