@@ -6,7 +6,7 @@ import android.os.Message;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,14 +18,15 @@ import com.example.fitnessdemo.R;
 public class ClockActivity extends AppCompatActivity {
 //    private int timeUsedInSec =350000;
     //自定义PopupWindow
-    private PopupWindow canclePop;
+    private PopupWindow popupWindow;
     private int timeUsedInSec = 0;
     private boolean paused  =false;
     private String timeUsed ;
     private TextView timeText;
-    private Button btnStop;
-    private Button btnBegin;
+    private ImageView ivStop;
+    private ImageView ivBegin;
     private Message message;
+    private int condition = 0;
     private Handler uiHandler = new Handler() {
 
         @Override
@@ -85,16 +86,30 @@ public class ClockActivity extends AppCompatActivity {
     public void showPop() {
         View contentView = null;
         //设置contentView
-        if (canclePop == null) {
+        if (popupWindow == null) {
             contentView = LayoutInflater.from(ClockActivity.this).inflate(R.layout.clb_pop_clock, null);
-            canclePop = new PopupWindow(contentView, RelativeLayout.LayoutParams.MATCH_PARENT,
+            popupWindow = new PopupWindow(contentView, RelativeLayout.LayoutParams.MATCH_PARENT,
                     RelativeLayout.LayoutParams.MATCH_PARENT, true);
-            canclePop.setFocusable(true);
-            canclePop.setOutsideTouchable(false);
-            canclePop.setClippingEnabled(false);
+            popupWindow.setFocusable(true);
+            popupWindow.setOutsideTouchable(false);
+            popupWindow.setClippingEnabled(false);
         } else {
-            contentView = canclePop.getContentView();
+            contentView = popupWindow.getContentView();
         }
+//        ImageView ivStop = contentView.findViewById(R.id.clb_pop_stop);
+//        ImageView ivBegin = contentView.findViewById(R.id.clb_pop_begin);
+//        ivBegin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+//        ivStop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
 //        TextView tvBackHome = contentView.findViewById(R.id.tv_back_home);
 //        TextView tvCancle = contentView.findViewById(R.id.tv_cancle);
 //
@@ -113,31 +128,48 @@ public class ClockActivity extends AppCompatActivity {
 //        });
         //显示PopupWindow
         View rootview = LayoutInflater.from(ClockActivity.this).inflate(R.layout.activity_clock, null);
-        canclePop.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
+        popupWindow.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
+//        popupWindow.setElevation(1000f);//我将动画位置设置为1000f
+//        popupWindow.setOutsideTouchable(true);//设置点击外部区域可以取消popupWindow
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clock);
         timeText = findViewById(R.id.timeText);
-        btnStop = findViewById(R.id.btn_stop);
-        btnBegin = findViewById(R.id.btn_begin);
+        ivStop = findViewById(R.id.iv_pp_stop);
+        ivBegin = findViewById(R.id.iv_pp_begin);
 
 //        uiHandler.sendMessage(message);
-        btnBegin.setOnClickListener(new View.OnClickListener() {
+        ivBegin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 message = uiHandler.obtainMessage();
                 message.what = 1;
-                uiHandler.sendMessage(message);
-                showPop();
+                if(condition ==0){
+                    //开始计时
+                    uiHandler.sendMessage(message);
+                    ivBegin.setBackground(getResources().getDrawable(R.drawable.clb_zanting2));
+                    condition = 1;
+
+                }else{
+                    //结束计时
+                    uiHandler.removeMessages(1);
+                    ivBegin.setBackground(getResources().getDrawable(R.drawable.clb_begin4));
+                    condition = 0;
+                }
+
+//                showPop();
 
             }
         });
-        btnStop.setOnClickListener(new View.OnClickListener() {
+        ivStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                timeUsedInSec = 0;
                 uiHandler.removeMessages(1);
+                ivBegin.setBackground(getResources().getDrawable(R.drawable.clb_begin4));
+                //更新数据
             }
         });
 
