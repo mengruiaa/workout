@@ -1,16 +1,22 @@
 package com.example.fitnessdemo.ZFT;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.animation.Animator;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.fitnessdemo.ConfigUtil;
@@ -33,6 +39,10 @@ public class MotionActivity extends AppCompatActivity {
     private TextView tvHead;
     private TextView tvDesc;
     private Button btnStarMotion;
+    private NbButton button;
+    private ScrollView srcontent;
+    private Handler h;
+    private Animator animator;
     private List<Motion> motions;
     private MotionAdapter motionAdapter;
     private Handler handler = new Handler(){
@@ -76,6 +86,27 @@ public class MotionActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        button = findViewById(R.id.button_test);
+        srcontent = findViewById(R.id.sr_content);
+        srcontent.getBackground().setAlpha(0);
+
+        h = new Handler();
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                button.startAnim();
+
+                h.postDelayed(new Runnable() {
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                    @Override
+                    public void run() {
+                        //跳转
+                        gotoNew();
+                    }
+                },3000);
+
+            }
+        });
     }
 
     private void GetMotions(final String s) {
@@ -113,5 +144,54 @@ public class MotionActivity extends AppCompatActivity {
                 }
             }
         }.start();
+    }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private void gotoNew() {
+        button.gotoNew();
+
+        final Intent intent=new Intent(this, DataActivity.class);
+
+        int xc=(button.getLeft()+button.getRight())/2;
+        int yc=(button.getTop()+button.getBottom())/2;
+        animator= ViewAnimationUtils.createCircularReveal(srcontent,xc,yc,0,1111);
+        animator.setDuration(300);
+        animator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                h.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
+
+                    }
+                },200);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+        animator.start();
+        srcontent.getBackground().setAlpha(0);
+        animator.cancel();
+        srcontent.getBackground().setAlpha(0);
+        button.regainBackground();
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+
     }
 }
