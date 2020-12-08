@@ -13,6 +13,7 @@ import com.example.fitnessdemo.LZYZYH.model.Product;
 import com.example.fitnessdemo.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 商品列表LIstView
@@ -22,11 +23,18 @@ import java.util.ArrayList;
  */
 public class ListOfGoodsAdapter extends BaseAdapter {
     private Context mContext;
-    private ArrayList<Product> list;
+    private List<Product> list;
+    private int mall_product_item;
 
-    public ListOfGoodsAdapter(Context mContext, ArrayList<Product> list) {
+    public ListOfGoodsAdapter(Context mContext, List<Product> list) {
         this.mContext = mContext;
         this.list = list;
+    }
+
+    public ListOfGoodsAdapter(Context context, List<Product> pro, int mall_product_item) {
+        this.mContext=context;
+        this.list=pro;
+        this.mall_product_item=mall_product_item;
     }
 
     @Override

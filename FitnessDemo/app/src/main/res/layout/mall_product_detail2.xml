@@ -27,7 +27,7 @@
             android:layout_height="300dp"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
-            android:src="@drawable/a"/>
+            android:src="@drawable/g"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1998"
+                android:text="1799"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
@@ -71,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="1211"
+                    android:text="187"
                     android:textColor="@color/colorTextColor2"
                     android:textSize="16sp" />
             </RelativeLayout>
@@ -79,7 +79,7 @@
 
         <TextView
             android:id="@+id/name"
-            android:text="野小兽智能动感单车家用室内减肥器材超静音健身车小米有品M1-Pro"
+            android:text="小米米家走步机多功能家用折叠小型室内健身跑步机"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -165,7 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorTextColor2"
-                    android:text="灰色，白色，黑色"
+                    android:text="灰色，黑色"
                     android:textSize="16dp" />
             </LinearLayout>
 
@@ -196,42 +196,42 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/a1"/>
+                android:src="@drawable/g1"/>
 
             <ImageView
                 android:id="@+id/img2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:src="@drawable/a2"/>
+                android:src="@drawable/g2"/>
 
             <ImageView
                 android:id="@+id/img3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:src="@drawable/a3"/>
+                android:src="@drawable/g3"/>
 
             <ImageView
                 android:id="@+id/img4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:src="@drawable/a4"/>
+                android:src="@drawable/g4"/>
 
             <ImageView
                 android:id="@+id/img5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:src="@drawable/a5"/>
+                android:src="@drawable/g5"/>
 
             <ImageView
                 android:id="@+id/img6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:src="@drawable/a6"
+                android:src="@drawable/g6"
                 />
         </LinearLayout>
         <LinearLayout

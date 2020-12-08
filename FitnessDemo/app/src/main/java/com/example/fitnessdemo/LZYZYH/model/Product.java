@@ -6,13 +6,13 @@ public class Product {
     private int product_id;
     private int categoryl_id;
     private String product_name;
-    private Bitmap product_mainimage;
-    private Bitmap product_subimage1;
-    private Bitmap product_subimage2;
-    private Bitmap product_subimage3;
-    private Bitmap product_subimage4;
-    private Bitmap product_subimage5;
-    private Bitmap product_subimage6;
+    private String product_mainimage;
+    private String product_subimage1;
+    private String product_subimage2;
+    private String product_subimage3;
+    private String product_subimage4;
+    private String product_subimage5;
+    private String product_subimage6;
     private String product_color;
     private Float product_price;
     private int product_quantity;
@@ -47,59 +47,105 @@ public class Product {
         this.product_name = product_name;
     }
 
-    public Bitmap getProduct_mainimage() {
+    public Product(int product_id, int categoryl_id, String product_name, String product_mainimage, Float product_price, String product_link) {
+        this.product_id = product_id;
+        this.categoryl_id = categoryl_id;
+        this.product_name = product_name;
+        this.product_mainimage = product_mainimage;
+        this.product_price = product_price;
+        this.product_link = product_link;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "product_id=" + product_id +
+                ", categoryl_id=" + categoryl_id +
+                ", product_name='" + product_name + '\'' +
+                ", product_mainimage='" + product_mainimage + '\'' +
+                ", product_subimage1='" + product_subimage1 + '\'' +
+                ", product_subimage2='" + product_subimage2 + '\'' +
+                ", product_subimage3='" + product_subimage3 + '\'' +
+                ", product_subimage4='" + product_subimage4 + '\'' +
+                ", product_subimage5='" + product_subimage5 + '\'' +
+                ", product_subimage6='" + product_subimage6 + '\'' +
+                ", product_color='" + product_color + '\'' +
+                ", product_price=" + product_price +
+                ", product_quantity=" + product_quantity +
+                ", product_link='" + product_link + '\'' +
+                '}';
+    }
+
+    public Product(int product_id, int categoryl_id, String product_name, String product_mainimage, String product_subimage1, String product_subimage2, String product_subimage3, String product_subimage4, String product_subimage5, String product_subimage6, String product_color, Float product_price, int product_quantity, String product_link) {
+        this.product_id = product_id;
+        this.categoryl_id = categoryl_id;
+        this.product_name = product_name;
+        this.product_mainimage = product_mainimage;
+        this.product_subimage1 = product_subimage1;
+        this.product_subimage2 = product_subimage2;
+        this.product_subimage3 = product_subimage3;
+        this.product_subimage4 = product_subimage4;
+        this.product_subimage5 = product_subimage5;
+        this.product_subimage6 = product_subimage6;
+        this.product_color = product_color;
+        this.product_price = product_price;
+        this.product_quantity = product_quantity;
+        this.product_link = product_link;
+    }
+
+    public String getProduct_mainimage() {
         return product_mainimage;
     }
 
-    public void setProduct_mainimage(Bitmap product_mainimage) {
+    public void setProduct_mainimage(String product_mainimage) {
         this.product_mainimage = product_mainimage;
     }
 
-    public Bitmap getProduct_subimage1() {
+    public String getProduct_subimage1() {
         return product_subimage1;
     }
 
-    public void setProduct_subimage1(Bitmap product_subimage1) {
+    public void setProduct_subimage1(String product_subimage1) {
         this.product_subimage1 = product_subimage1;
     }
 
-    public Bitmap getProduct_subimage2() {
+    public String getProduct_subimage2() {
         return product_subimage2;
     }
 
-    public void setProduct_subimage2(Bitmap product_subimage2) {
+    public void setProduct_subimage2(String product_subimage2) {
         this.product_subimage2 = product_subimage2;
     }
 
-    public Bitmap getProduct_subimage3() {
+    public String getProduct_subimage3() {
         return product_subimage3;
     }
 
-    public void setProduct_subimage3(Bitmap product_subimage3) {
+    public void setProduct_subimage3(String product_subimage3) {
         this.product_subimage3 = product_subimage3;
     }
 
-    public Bitmap getProduct_subimage4() {
+    public String getProduct_subimage4() {
         return product_subimage4;
     }
 
-    public void setProduct_subimage4(Bitmap product_subimage4) {
+    public void setProduct_subimage4(String product_subimage4) {
         this.product_subimage4 = product_subimage4;
     }
 
-    public Bitmap getProduct_subimage5() {
+    public String getProduct_subimage5() {
         return product_subimage5;
     }
 
-    public void setProduct_subimage5(Bitmap product_subimage5) {
+    public void setProduct_subimage5(String product_subimage5) {
         this.product_subimage5 = product_subimage5;
     }
 
-    public Bitmap getProduct_subimage6() {
+    public String getProduct_subimage6() {
         return product_subimage6;
     }
 
-    public void setProduct_subimage6(Bitmap product_subimage6) {
+    public void setProduct_subimage6(String product_subimage6) {
         this.product_subimage6 = product_subimage6;
     }
 
@@ -132,47 +178,6 @@ public class Product {
     }
 
     public void setProduct_link(String product_link) {
-        this.product_link = product_link;
-    }
-
-    public Product() {
-
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "product_id=" + product_id +
-                ", categoryl_id=" + categoryl_id +
-                ", product_name='" + product_name + '\'' +
-                ", product_mainimage=" + product_mainimage +
-                ", product_subimage1=" + product_subimage1 +
-                ", product_subimage2=" + product_subimage2 +
-                ", product_subimage3=" + product_subimage3 +
-                ", product_subimage4=" + product_subimage4 +
-                ", product_subimage5=" + product_subimage5 +
-                ", product_subimage6=" + product_subimage6 +
-                ", product_color='" + product_color + '\'' +
-                ", product_price=" + product_price +
-                ", product_quantity=" + product_quantity +
-                ", product_link='" + product_link + '\'' +
-                '}';
-    }
-
-    public Product(int product_id, int categoryl_id, String product_name, Bitmap product_mainimage, Bitmap product_subimage1, Bitmap product_subimage2, Bitmap product_subimage3, Bitmap product_subimage4, Bitmap product_subimage5, Bitmap product_subimage6, String product_color, Float product_price, int product_quantity, String product_link) {
-        this.product_id = product_id;
-        this.categoryl_id = categoryl_id;
-        this.product_name = product_name;
-        this.product_mainimage = product_mainimage;
-        this.product_subimage1 = product_subimage1;
-        this.product_subimage2 = product_subimage2;
-        this.product_subimage3 = product_subimage3;
-        this.product_subimage4 = product_subimage4;
-        this.product_subimage5 = product_subimage5;
-        this.product_subimage6 = product_subimage6;
-        this.product_color = product_color;
-        this.product_price = product_price;
-        this.product_quantity = product_quantity;
         this.product_link = product_link;
     }
 }

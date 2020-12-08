@@ -8,6 +8,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ import java.util.List;
 public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{
 
     private List<Fruit> mFruitList;
+    private EditText etProductName;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         View fruitView;
@@ -44,13 +46,15 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{
     public ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.mall_product_item, parent, false);
         final ViewHolder holder = new ViewHolder(view);
+
         holder.fruitView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Fruit fruit = mFruitList.get(position);
                 Intent intent = new Intent(parent.getContext(), DetailActivity.class);
-                intent.putExtra("extra_data", String.valueOf(fruit.geti()));
+                intent.putExtra("etProductName", String.valueOf(fruit.geti()));
+                System.out.println("adapter:"+String.valueOf(fruit.geti()));
                 parent.getContext().startActivity(intent);
             }
         });
@@ -60,7 +64,7 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{
                 int position = holder.getAdapterPosition();
                 Fruit fruit = mFruitList.get(position);
                 Intent intent = new Intent(parent.getContext(), DetailActivity.class);
-                intent.putExtra("extra_data", String.valueOf(fruit.geti()));
+                intent.putExtra("etProductName", String.valueOf(fruit.geti()));
                 parent.getContext().startActivity(intent);
             }
         });

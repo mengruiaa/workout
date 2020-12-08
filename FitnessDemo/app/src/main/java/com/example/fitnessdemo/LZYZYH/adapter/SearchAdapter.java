@@ -55,7 +55,7 @@ public class SearchAdapter extends BaseAdapter {
 
         TextView tvName = view.findViewById(R.id.tv_name);
         ImageView ivPicture = view.findViewById(R.id.iv_show);
-        ivPicture.setImageBitmap(goodsList.get(i).getProduct_mainimage());
+      //  ivPicture.setImageBitmap(goodsList.get(i).getProduct_mainimage());
         TextView tvPrice = view.findViewById(R.id.tv_money);
         tvPrice.setText(goodsList.get(i).getProduct_price() + "");
         tvName.setText(goodsList.get(i).getProduct_name());
