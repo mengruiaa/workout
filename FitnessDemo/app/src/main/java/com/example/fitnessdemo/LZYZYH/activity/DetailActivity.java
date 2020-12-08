@@ -27,7 +27,9 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -55,41 +57,51 @@ public class DetailActivity extends AppCompatActivity {
     private List<Product> goodsList;
     private ListView lvShowAllGoods;
     private SearchAdapter adapter;
+    private String etProductName;
 
     //    @Override
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            switch (msg.what) {
-                case 1:
-                    Log.e("lzzzz",goodsList.toString());
-                    initItem();
-                    break;
-            }
-        }
-    };
+//    private Handler handler = new Handler() {
+//        @Override
+//        public void handleMessage(@NonNull Message msg) {
+//            switch (msg.what) {
+//                case 1:
+//                    Log.e("lzzzz",goodsList.toString());
+//                    initItem();
+//                    break;
+//            }
+//        }
+//    };
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mall_product_detail);
-
-
+        Intent intent = getIntent();
+        etProductName = intent.getStringExtra("etProductName");
+        System.out.println(etProductName+"!!!!!!!!!!!!");
         new Thread() {
             @Override
             public void run() {
                 super.run();
                 try {
-                    URL url = new URL("http://192.168.137.1:8080/JSZS/search");
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("POST");
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    URL url = new URL(SERVER_HOME+"search");
+                    InputStream in=url.openStream();
+//                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//                    conn.setRequestMethod("POST");
+                    //获取网络输出流
+//                    OutputStream out = conn.getOutputStream();
+//                    out.write(etProductName.getBytes());
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
                     String pro = reader.readLine();
+                    Log.e("aaa",pro);
+
                     gson=new Gson();
-                    Type userListType = new TypeToken<ArrayList<Product>>(){}.getType();
-                    goodsList = gson.fromJson(pro, userListType);
-                    Log.e("aaa",goodsList.toString());
-                    Message message = handler.obtainMessage();
-                    message.what = 1;
-                    handler.sendMessage(message);
+
+
+//                    Type userListType = new TypeToken<ArrayList<Product>>(){}.getType();
+//                    goodsList = gson.fromJson(pro, userListType);
+              //      Log.e("aaa",goodsList.toString());
+//                    Message message = handler.obtainMessage();
+//                    message.what = 1;
+//                    handler.sendMessage(message);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -98,17 +110,17 @@ public class DetailActivity extends AppCompatActivity {
             }
         }.start();
     }
-    private void initItem() {
-        adapter = new SearchAdapter(goodsList, R.layout.mall_list_item, this);
-        lvShowAllGoods.setAdapter(adapter);
-        lvShowAllGoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(DetailActivity.this, DetailActivity.class);
-                intent.putExtra("id", goodsList.get(position).getProduct_id());
-                startActivity(intent);
-            }
-        });
-    }
+//    private void initItem() {
+//        adapter = new SearchAdapter(goodsList, R.layout.mall_list_item, this);
+//        lvShowAllGoods.setAdapter(adapter);
+//        lvShowAllGoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent intent = new Intent(DetailActivity.this, DetailActivity.class);
+//                intent.putExtra("etProductName", goodsList.get(position).getProduct_name());
+//                startActivity(intent);
+//            }
+//        });
+//    }
 
 }
