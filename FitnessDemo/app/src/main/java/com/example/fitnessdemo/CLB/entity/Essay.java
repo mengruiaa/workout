@@ -9,6 +9,16 @@ public class Essay {
     private String parentName;
     private int number;
     private String url;
+    private String childTitle;
+
+    public String getChildTitle() {
+        return childTitle;
+    }
+
+    public void setChildTitle(String childTitle) {
+        this.childTitle = childTitle;
+    }
+
     public Essay(){
 
     }
@@ -99,6 +109,7 @@ public class Essay {
                 ", parentName='" + parentName + '\'' +
                 ", number=" + number +
                 ", url='" + url + '\'' +
+                ", childTitle='" + childTitle + '\'' +
                 '}';
     }
 }

@@ -1,5 +1,7 @@
 package com.example.fitnessdemo.MR.adapter;
 
+import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -36,6 +38,9 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+//        Bundle bundle = new Bundle();
+//        bundle.putString("tab",mTitles.get(position));
+//        fs.get(position).setArguments(bundle);
         return fs.get(position);
 
     }

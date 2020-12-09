@@ -24,6 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+<<<<<<< HEAD
         <activity android:name=".ws.ShentiinfoActivity"></activity>
         <activity android:name=".CLB.Stair2TransferActivity" />
         <activity android:name=".ZFT.ExerciseActivity" />
@@ -36,9 +37,34 @@
         <activity android:name=".ZFT.PlanInfoActivity" />
         <activity android:name=".MR.CourseDetailActivity" />
         <activity android:name=".MR.ShouYeActivity">
+=======
+        <activity android:name=".ZFT.RecoPlanActivity"></activity>
+        <activity android:name=".ZFT.DataActivity" />
+        <activity android:name=".CLB.Stair2Activity" />
+        <activity android:name=".ZFT.ExerciseActivity" />
+        <activity android:name=".CLB.EssayDetailActivity" />
+        <activity android:name=".MR.VideoActivity" />
+<<<<<<< HEAD
+        <activity android:name=".CLB.ClockActivity"></activity>
+        <activity android:name=".ZFT.RecoActivity" >
+=======
+        <activity android:name=".CLB.ClockActivity">
+>>>>>>> eda2f1f8060f37ea00b9b5468d55430b8257239b
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+>>>>>>> 19b2ea749d57c2189fd9410934091406eb5b145a
 
         </activity>
-        <activity android:name=".ZFT.PlanActivity" />
+        <activity android:name=".MR.AllCoursesActivity" />
+        <activity android:name=".MR.SearchGetActivity" />
+        <activity android:name=".ZFT.MotionActivity">
+
+        </activity>
+        <activity android:name=".MR.SouSuoActivity" />
+        <activity android:name=".ZFT.PlanInfoActivity" />
+        <activity android:name=".MR.CourseDetailActivity" />
+        <activity android:name=".MR.ShouYeActivity" />
+        <activity android:name=".ZFT.PlanActivity"></activity>
         <activity android:name=".ws.Info1Activity" />
         <activity android:name=".ws.CustomerserviceActivity" />
         <activity android:name=".ws.ProtocolActivity" />
@@ -47,7 +73,6 @@
         <activity android:name=".ws.LoginActivity" />
         <activity android:name=".ws.FriendActivity" />
         <activity android:name=".ws.MainActivity" />
-        <activity android:name=".CLB.Stair2Activity" />
         <activity android:name=".CLB.EncyclopaediaActivity" />
         <activity android:name=".ws.SplashActivity" >
             <intent-filter>

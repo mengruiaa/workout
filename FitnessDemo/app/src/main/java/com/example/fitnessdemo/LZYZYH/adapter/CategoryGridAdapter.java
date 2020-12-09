@@ -1,5 +1,7 @@
 package com.example.fitnessdemo.LZYZYH.adapter;
-
+/*
+第二个界面的两列
+ */
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

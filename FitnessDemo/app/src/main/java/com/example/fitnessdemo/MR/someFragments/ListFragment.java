@@ -29,7 +29,6 @@ public class ListFragment extends Fragment {
     private List<CoursePictureShow> coursePic;
     public ListFragment (List<CoursePictureShow> cpic){
         this.coursePic=cpic;
-        Log.i("lingboxxxxx", "onCreateView: "+coursePic);
     }
     @Nullable
     @Override

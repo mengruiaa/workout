@@ -67,10 +67,7 @@ public class EncyclopaediaActivity extends AppCompatActivity {
                     break;
                 case 2:
                     cyclopediaLists =(List<Cyclopedia1>) msg.obj;
-                    //设置内容
-                    System.out.println("走到这里了");
-                    System.out.println("成功与否："+lists);
-                    System.out.println("成功与否："+cyclopediaLists);
+                    ConfigUtilCui.list = cyclopediaLists;
                     //设置Fragment
                     setFragment();
                     //设置一级目录和viewPager
@@ -110,7 +107,7 @@ public class EncyclopaediaActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         String result = response.body().string();
-                        System.out.println("result"+result);
+//                        System.out.println("result"+result);
                         Type type = new TypeToken<Collection<Cyclopedia1>>(){}.getType();
                         List<Cyclopedia1> cyclopedias = gson.fromJson(result,type);
                         for( Cyclopedia1 cyclopedia : cyclopedias){
@@ -118,10 +115,9 @@ public class EncyclopaediaActivity extends AppCompatActivity {
                             String picture = cyclopedia.getPitcure();
                             //拼接服务器地址（放置imgs文件夹）
                             String netHeader = ConfigUtil.SERVER_HOME+picture;
-
                             cyclopedia.setPitcure(netHeader);
                         }
-                        System.out.println("修改后的cyclopedias"+cyclopedias);
+//                        System.out.println("修改后的cyclopedias"+cyclopedias);
 //                        cyclopediaLists = cyclopedias;
                         Message msg = handler.obtainMessage();
                         msg.what = 2;
@@ -159,9 +155,9 @@ public class EncyclopaediaActivity extends AppCompatActivity {
                       for(Cyclopedia1 cyclopedia : cyclopediaLists){
                           if(entry.getName().equals(cyclopedia.getParentName())){
                               Cyclopedia1 cyclopedia1 = new Cyclopedia1();
-                              System.out.println(cyclopedia.getId());
-                              System.out.println("caocaoocoa:"+cyclopedia.getName());
-                              System.out.println("数量"+cyclopedia.getAttentionNumber());
+//                              System.out.println(cyclopedia.getId());
+//                              System.out.println("caocaoocoa:"+cyclopedia.getName());
+//                              System.out.println("数量"+cyclopedia.getAttentionNumber());
                               String name = cyclopedia.getName();
                               String parentName = cyclopedia.getParentName();
                               String pitcure = cyclopedia.getPitcure();
@@ -170,7 +166,7 @@ public class EncyclopaediaActivity extends AppCompatActivity {
                               cyclopedia1.setName(name);
                               cyclopedia1.setParentName(parentName);
                               int attentionNumber = cyclopedia.getAttentionNumber();
-                              System.out.println("数量"+attentionNumber);
+//                              System.out.println("数量"+attentionNumber);
                               cyclopedia1.setAttentionNumber(attentionNumber);
                               cyclopedia1.setPitcure(pitcure);
                               cyclopedia1.setBrief(brief);
@@ -262,7 +258,7 @@ public class EncyclopaediaActivity extends AppCompatActivity {
         });
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
         //
-        System.out.println("最后走这里");
+//        System.out.println("最后走这里");
         myPagerAdapter.setData(datas);
         viewPager.setAdapter(myPagerAdapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -302,7 +298,7 @@ public class EncyclopaediaActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         String result = response.body().string();
-                        System.out.println(result);
+//                        System.out.println(result);
                         Type type = new TypeToken<Collection<Entry1>>(){}.getType();
                         List<Entry1> entrys = gson.fromJson(result,type);
                         Message msg = handler.obtainMessage();

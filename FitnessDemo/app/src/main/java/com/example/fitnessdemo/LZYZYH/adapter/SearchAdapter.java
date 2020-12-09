@@ -11,19 +11,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.fitnessdemo.LZYZYH.model.ListOfGoods;
+import com.example.fitnessdemo.LZYZYH.model.Product;
 import com.example.fitnessdemo.R;
 
 import java.util.List;
 
 public class SearchAdapter extends BaseAdapter {
-    private List<ListOfGoods> goodsList;
+    private List<Product> goodsList;
     private int resourceId;
     private Context context;
     private EditText cakeNameSearch;
     private EditText cakeSizeSearch;
     private EditText cakePriceSearch;
     private Button btnSearch;
-    public SearchAdapter(List<ListOfGoods> goodsList, int resourceId, Context context) {
+    public SearchAdapter(List<Product> goodsList, int resourceId, Context context) {
         this.goodsList = goodsList;
         this.resourceId = resourceId;
         this.context = context;
@@ -52,12 +53,12 @@ public class SearchAdapter extends BaseAdapter {
             view = inflater.inflate(resourceId, viewGroup,false);
         }
 
-        TextView tvName = view.findViewById(R.id.txt_biaoti);
-        ImageView ivPicture = view.findViewById(R.id.img_list_tupian);
-        ivPicture.setImageBitmap(goodsList.get(i).getImg());
-        TextView tvPrice = view.findViewById(R.id.txt_jiage);
-        tvPrice.setText(goodsList.get(i).getJiage() + "");
-        tvName.setText(goodsList.get(i).getBiaoti());
+        TextView tvName = view.findViewById(R.id.tv_name);
+        ImageView ivPicture = view.findViewById(R.id.iv_show);
+      //  ivPicture.setImageBitmap(goodsList.get(i).getProduct_mainimage());
+        TextView tvPrice = view.findViewById(R.id.tv_money);
+        tvPrice.setText(goodsList.get(i).getProduct_price() + "");
+        tvName.setText(goodsList.get(i).getProduct_name());
 //        //获取用户头像
 //        Bitmap picture = BitmapFactory.decodeFile(cakeList.get(i).getImgId());
 //        //显示用户头像

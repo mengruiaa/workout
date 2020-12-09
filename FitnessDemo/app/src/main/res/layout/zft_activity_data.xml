@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context=".ZFT.DataActivity">
+
+    <TextView
+        android:id="@+id/planName"
+        android:layout_above="@+id/succeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textStyle="bold"
+        android:alpha="0.7"
+        android:textSize="32dp"
+        android:textColor="@color/colorWhite"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/succeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打卡成功"
+        android:textStyle="bold"
+        android:alpha="0.7"
+        android:textSize="34dp"
+        android:textColor="@color/colorWhite"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/keep"
+        android:layout_below="@+id/succeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="再接再厉！"
+        android:textStyle="italic"
+        android:textSize="34dp"
+        android:alpha="0.7"
+        android:textColor="@color/colorWhite"
+        android:layout_centerInParent="true"/>
+    <Button
+        android:id="@+id/btn_keep_going"
+        android:layout_below="@+id/keep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="keep going"
+        android:textStyle="italic"
+        android:textSize="12sp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:alpha="0.8"
+        android:background="@drawable/shape"/>
+</RelativeLayout>

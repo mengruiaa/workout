@@ -1,19 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/ll_root">
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="课程详情"
-        android:id="@+id/poi"/>
-    <WebView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:id="@+id/introduce"/>
+        android:src="@drawable/mrjsbeijing"/>
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="分割线"/>
+        android:text="加入我的收藏"
+        android:id="@+id/btn_collect"
+        android:background="@drawable/search"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:id="@+id/tabLayout_cs"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        app:tabIndicatorColor="@android:color/black"-->
+<!--        app:tabIndicatorHeight="5dp"-->
+<!--        app:tabTextColor="@color/colorPrimary"-->
+<!--        app:tabSelectedTextColor="@android:color/holo_red_light"-->
+<!--        app:tabMode="scrollable"-->
+<!--        app:tabBackground="@drawable/selected"/>-->
+        <com.flyco.tablayout.SlidingTabLayout android:layout_height="30dp"
+            android:layout_width="match_parent"
+            app:tl_textSelectColor="@android:color/holo_blue_bright"
+            app:tl_textUnselectColor="@android:color/black"
+            app:tl_indicator_color="@android:color/holo_red_light"
+            app:tl_divider_width="5dp"
+            app:tl_divider_color="@android:color/holo_orange_dark"
+            app:tl_indicator_width_equal_title="true"
+            app:tl_tab_space_equal="true"
+            app:tl_textsize="15dp"
+            android:id="@+id/tabLayout_cs" />
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 </LinearLayout>

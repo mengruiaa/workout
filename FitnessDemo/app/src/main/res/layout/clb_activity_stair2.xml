@@ -64,6 +64,7 @@
             android:layout_width="55dp"
             android:layout_height="40dp"/>
         <TextView
+            android:id="@+id/tv_stair2_number"
             android:textSize="12sp"
             android:layout_marginLeft="7dp"
             android:layout_marginTop="10dp"

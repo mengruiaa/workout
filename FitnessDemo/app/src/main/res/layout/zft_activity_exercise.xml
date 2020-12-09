@@ -31,33 +31,41 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/tv_hard"
             android:layout_weight="2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="难度: "
+            android:textColor="@color/colorBlack"
             android:textSize="16sp"/>
         <TextView
+            android:id="@+id/tv_part"
             android:layout_weight="2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="部位: "
+            android:textColor="@color/colorBlack"
             android:textSize="16sp"/>
         <TextView
+            android:id="@+id/tv_inst"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="器械: "
+            android:textColor="@color/colorBlack"
             android:textSize="16sp"/>
 
     </LinearLayout>
     <TextView
+        android:id="@+id/tv_zft_desc"
         android:layout_below="@+id/ll_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:text="动作详解"/>
+        android:text="动作详解"
+        android:textColor="@color/colorBlack" />
 
     <LinearLayout
         android:background="@color/colorG"
@@ -84,14 +92,16 @@
                 android:layout_height="100dp"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/play"/>
+                android:src="@drawable/stop"/>
             <ImageView
+                android:id="@+id/iv_pre"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/pre"
                 android:layout_centerInParent="true"
                 android:layout_toLeftOf="@+id/zft_start_stop"/>
             <ImageView
+                android:id="@+id/iv_next"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/next"

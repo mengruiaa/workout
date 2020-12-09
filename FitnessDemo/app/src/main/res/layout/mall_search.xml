@@ -30,16 +30,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/jiantou"/>
-
-        <SearchView
-            android:id="@+id/sv_search"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_toRightOf="@+id/img_fanhui"
-            android:hint="搜索商品" />
+            android:src="@drawable/back"/>
         <ListView
             android:id="@+id/list_listofgoods"
             android:layout_width="fill_parent"

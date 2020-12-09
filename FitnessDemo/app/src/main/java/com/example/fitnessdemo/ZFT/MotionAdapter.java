@@ -47,12 +47,16 @@ public class MotionAdapter  extends RecyclerView.Adapter<MotionAdapter.ViewHolde
         public MotionAdapter.ViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.zft_motion_item, parent, false);
             final ViewHolder holder = new ViewHolder(view);
-//            holder.planView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//
-//                }
-//            });
+            holder.motionView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = holder.getAdapterPosition();
+                    Intent intent = new Intent();
+                    intent.setClass(holder.motionView.getContext(),ExerciseActivity.class);
+                    intent.putExtra("motion",mMotion.get(position));
+                    holder.motionView.getContext().startActivity(intent);
+                }
+            });
             return holder;
         }
         @Override
