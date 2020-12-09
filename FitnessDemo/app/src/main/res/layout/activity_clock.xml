@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+ <Button
+
+     android:id="@+id/btn_stop"
+     android:text="暂停"
+     android:layout_margin="20dp"
+     android:layout_width="100dp"
+     android:layout_height="50dp"/>
+ <Button
+
+     android:id="@+id/btn_begin"
+     android:text="开始"
+     android:layout_margin="20dp"
+     android:layout_width="100dp"
+     android:layout_height="50dp"/>
+     -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/runbackground1"
+    android:background="@drawable/sharp6"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".CLB.ClockActivity">
@@ -24,20 +40,18 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <Button
-
-            android:id="@+id/btn_stop"
-            android:text="暂停"
-            android:layout_margin="20dp"
+        <ImageView
+            android:id="@+id/iv_pp_stop"
+            android:background="@drawable/clb_stop3"
             android:layout_width="100dp"
-            android:layout_height="50dp"/>
-        <Button
+            android:layout_height="100dp"/>
+        <ImageView
+            android:id="@+id/iv_pp_begin"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/clb_begin4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-            android:id="@+id/btn_begin"
-            android:text="开始"
-            android:layout_margin="20dp"
-            android:layout_width="100dp"
-            android:layout_height="50dp"/>
 
     </LinearLayout>
     <TextView
@@ -62,23 +76,73 @@
             android:id="@+id/btn_clock_1"
             android:background="@drawable/sharp3"
             android:layout_width="150dp"
-            android:layout_height="200dp"/>
+            android:layout_height="200dp">
+            <ImageView
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/clb_jianshenbaike"
+                android:layout_width="80dp"
+                android:layout_height="80dp"/>
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:text="健身百科"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:background="@drawable/sharp4"
             android:layout_marginBottom="10dp"
             android:layout_toRightOf="@id/btn_clock_1"
             android:id="@+id/btn_clock_2"
             android:layout_width="match_parent"
-            android:layout_height="65dp"/>
+            android:layout_height="65dp">
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#ffffff"
+                android:text="推荐计划"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_marginTop="13dp"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/clb_tuijianjihua"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+
+        </LinearLayout>
         <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:background="@drawable/sharp5"
             android:layout_below="@id/btn_clock_2"
             android:layout_toRightOf="@id/btn_clock_1"
             android:id="@+id/btn_clock_3"
             android:layout_width="match_parent"
-            android:layout_height="125dp"/>
+            android:layout_height="125dp">
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:textColor="#ffffff"
+                android:text="计划"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/clb_jihua"
+                android:layout_width="80dp"
+                android:layout_height="80dp"/>
+
+        </LinearLayout>
 
     </RelativeLayout>
 

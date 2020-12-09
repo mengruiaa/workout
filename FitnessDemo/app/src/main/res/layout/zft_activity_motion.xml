@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/sr_content"
+    android:background="@color/cutePink"
     tools:context=".ZFT.MotionActivity">
     <LinearLayout
         android:layout_width="match_parent"
@@ -72,15 +74,24 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"/>
-        <Button
-            android:id="@+id/btn_zft_clock"
+<!--        <Button-->
+<!--            android:id="@+id/btn_zft_clock"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_width="350dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:text="✔健身打卡"-->
+<!--            android:textColor="@color/colorWhite"-->
+<!--            android:textSize="16sp"-->
+<!--            android:background="@drawable/clock_in_shape"/>-->
+        <com.example.fitnessdemo.ZFT.NbButton
+            android:id="@+id/button_test"
             android:layout_marginTop="20dp"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:textColor="#fff"
             android:text="✔健身打卡"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp"
-            android:background="@drawable/clock_in_shape"/>
+            android:layout_width="220dp"
+            android:layout_height="50dp" />
     </LinearLayout>
 </ScrollView>

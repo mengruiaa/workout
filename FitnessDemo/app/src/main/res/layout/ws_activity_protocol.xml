@@ -12,7 +12,7 @@
         android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:background="#666666"
+            android:background="#584f60"
             android:layout_height="60dp">
 
             <ImageView

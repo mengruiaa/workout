@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,7 @@ public class TuiJian extends Fragment {
     private List<Fruit> fruitList = new ArrayList<Fruit>();
     private Map<String, ImageView> imageViewMap = new HashMap<>();
     private Map<String, TextView> textViewMap = new HashMap<>();
+    private TextView findAll;
     private static String result;
 
 
@@ -76,6 +78,7 @@ public class TuiJian extends Fragment {
         cate1 = view.findViewById(R.id.cate1);
         etProductSearch = view.findViewById(R.id.et_product_search);
         btnProductSearch = view.findViewById(R.id.btn_product_search);
+        findAll = view.findViewById(R.id.findAll);
         initLoopView();  //实现轮播图
         productItemClick();
 
@@ -84,8 +87,8 @@ public class TuiJian extends Fragment {
         try {
             out = getActivity().openFileOutput("data", Context.MODE_PRIVATE);
             writer = new BufferedWriter(new OutputStreamWriter(out));
-            writer.write("<font color='black'><b>野小兽智能动感单车家用室内减肥器材</b></font><<br/><font color='red'>￥1999</font>\n");
-            writer.write("ac\n");
+            writer.write("<font color='black'><b>野小兽智能动感单车家用室内减肥器材超静音健身车小米有品M1-Pro器材</b></font><<br/><font color='red'>￥1998</font>\n");
+            writer.write("a\n");
             writer.write("<font color='black'><b>小米米家走步机多功能家用折叠小型室内健身跑步机</b></font><br/><br/><font color='red'>￥1799</font>\n");
             writer.write("g\n");
             writer.write("<font color='black'><b>麦瑞克家用多功能踏步机磁控健身器瘦腿瘦身健步踩踏板机室内静音</b></font><br/><br/><font color='red'>￥729</font>\n");
@@ -121,6 +124,7 @@ public class TuiJian extends Fragment {
                 StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         FruitAdapter adapter = new FruitAdapter(fruitList);
+        System.out.println(fruitList.size()+"lzy");
         recyclerView.setAdapter(adapter);
 
 
@@ -257,10 +261,19 @@ public class TuiJian extends Fragment {
                 Intent i2 = new Intent();
                 String s = etProductSearch.getText().toString();
                 i2.putExtra("etProductSearch",s);
-                i2.setClass(getContext(), ListOfGoodsActivity.class);
+                i2.setClass(getContext(), SearchActivity.class);
                 startActivity(i2);
             }
         });
+        findAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i3 = new Intent();
+                i3.setClass(getContext(), ListOfGoodsActivity.class);
+                startActivity(i3);
+            }
+        });
+
     }
     /*
     家庭健身房
