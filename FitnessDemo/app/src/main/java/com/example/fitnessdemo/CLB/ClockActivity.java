@@ -170,6 +170,7 @@ public class ClockActivity extends AppCompatActivity {
                 uiHandler.removeMessages(1);
                 ivBegin.setBackground(getResources().getDrawable(R.drawable.clb_begin4));
                 //更新数据
+                timeText.setText("00:00:00:00");
             }
         });
 

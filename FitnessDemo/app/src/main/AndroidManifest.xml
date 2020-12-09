@@ -30,8 +30,12 @@
         <activity android:name=".ZFT.ExerciseActivity" />
         <activity android:name=".CLB.EssayDetailActivity" />
         <activity android:name=".MR.VideoActivity" />
+<<<<<<< HEAD
         <activity android:name=".CLB.ClockActivity"></activity>
         <activity android:name=".ZFT.RecoActivity" >
+=======
+        <activity android:name=".CLB.ClockActivity">
+>>>>>>> eda2f1f8060f37ea00b9b5468d55430b8257239b
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
