@@ -59,7 +59,7 @@ public class ShouYeActivity extends AppCompatActivity {
         TabHost.TabSpec tab3=tabHost.newTabSpec("third")
                 .setIndicator(getSpecView("third","推荐",R.drawable.third));
         TabHost.TabSpec tab4=tabHost.newTabSpec("four")
-                .setIndicator(getSpecView("four","我的",R.drawable.third));
+                .setIndicator(getSpecView("four","我的",R.drawable.four));
 
         tabHost.addTab(tab1, ShowYe.class, bundle);
         tabHost.addTab(tab2, CourseS.class,bundle);

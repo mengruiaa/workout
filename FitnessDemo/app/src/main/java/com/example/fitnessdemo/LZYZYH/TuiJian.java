@@ -261,6 +261,7 @@ public class TuiJian extends Fragment {
                 Intent i2 = new Intent();
                 String s = etProductSearch.getText().toString();
                 i2.putExtra("etProductSearch",s);
+                System.out.println(s);
                 i2.setClass(getContext(), SearchActivity.class);
                 startActivity(i2);
             }

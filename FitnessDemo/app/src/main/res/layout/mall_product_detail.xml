@@ -61,13 +61,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
-                    android:layout_toLeftOf="@id/num"
+                    android:layout_toLeftOf="@id/lzy_num"
                     android:text="月销"
                     android:textColor="@color/colorTextColor2"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/num"
+                    android:id="@+id/lzy_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
