@@ -58,6 +58,12 @@ public class CourseDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();//隐藏掉整个ActionBar
         setContentView(R.layout.mr_activity_course_detail);
+        findViewById(R.id.fanhui).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CourseDetailActivity.this.finish();
+            }
+        });
         Intent intent=getIntent();
         courseName= intent.getStringExtra("courseName");
         mViewPager= (ViewPager) findViewById(R.id.viewPager);

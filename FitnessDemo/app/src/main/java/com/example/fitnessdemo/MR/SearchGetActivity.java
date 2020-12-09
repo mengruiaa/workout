@@ -1,5 +1,6 @@
 package com.example.fitnessdemo.MR;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -29,10 +30,21 @@ import okhttp3.Response;
 public class SearchGetActivity extends AppCompatActivity {
     //定义OKHTTPClient对象属性
     private OkHttpClient okHttpClient=new OkHttpClient();;
-    //定义Handler对象属性
-    private Handler handler;
     private Gson gson=new Gson();
     private History history;
+    private String search;
+    private Handler handler= new Handler(){//handlerThread.getLooper()){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            switch (msg.what){
+                case 1:
+                    Intent intent=new Intent(SearchGetActivity.this, CourseDetailActivity.class);
+                    intent.putExtra("courseName",search);
+                    startActivity(intent);
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +53,7 @@ public class SearchGetActivity extends AppCompatActivity {
         setContentView(R.layout.mr_activity_search_get);
         Intent intent=getIntent();
         if(intent.getAction().equals("addc")){
-            String search= intent.getStringExtra("name");
+            search= intent.getStringExtra("name");
             history=new History(ConfigUtil.user_Name,search);
             new Thread(){
                 @Override
@@ -50,7 +62,10 @@ public class SearchGetActivity extends AppCompatActivity {
                 }
             }.start();
         }else{
-            System.out.println(intent.getStringExtra("searchName"));
+            search= intent.getStringExtra("searchName");
+            Intent intent2=new Intent(SearchGetActivity.this, CourseDetailActivity.class);
+            intent2.putExtra("courseName",search);
+            startActivity(intent2);
         }
     }
 
@@ -74,5 +89,11 @@ public class SearchGetActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Message msg = handler.obtainMessage();
+        //设置Message对象的参数
+        msg.what = 1;
+
+        //发送Message
+        handler.sendMessage(msg);
     }
 }

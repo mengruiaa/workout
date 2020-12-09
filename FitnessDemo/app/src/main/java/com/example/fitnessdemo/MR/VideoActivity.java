@@ -13,6 +13,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.MediaController;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -41,6 +42,9 @@ public class VideoActivity extends AppCompatActivity {
         });
         Intent intent = getIntent();
         String path=intent.getStringExtra("videoPath");
+        String intro=intent.getStringExtra("videointro");
+        TextView introtext= findViewById(R.id.video_introduce);
+        introtext.setText(intro);
         //设置视频控制器
         vv.setMediaController(new MediaController(this));
         //播放完成回调

@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     android:id="@+id/ll_root">
     <ImageView
+        android:id="@+id/fanhui"
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:src="@drawable/mrfanhui"/>
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:src="@drawable/mrjsbeijing"/>

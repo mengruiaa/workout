@@ -37,6 +37,13 @@
             android:layout_height="50dp"
             android:src="@drawable/mrslid"
             android:layout_marginTop="20dp"/>
+        <ImageView
+            android:id="@+id/remenquanbu"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/mrdakai"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="20dp"/>
     </LinearLayout>
     <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
@@ -59,6 +66,13 @@
         android:layout_height="50dp"
         android:src="@drawable/mrslid"
         android:layout_marginTop="20dp"/>
+        <ImageView
+            android:id="@+id/zuixinquanbu"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/mrdakai"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="20dp"/>
     </LinearLayout>
     <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
