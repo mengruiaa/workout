@@ -10,7 +10,7 @@
         android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:background="#666666"
+            android:background="#584f60"
             android:layout_height="50dp">
 
             <ImageView
@@ -27,7 +27,7 @@
                 android:gravity="center"
                 android:text="我的好友"
                 android:textColor="@android:color/white"
-                android:textSize="24sp"/>
+                android:textSize="20sp"/>
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"

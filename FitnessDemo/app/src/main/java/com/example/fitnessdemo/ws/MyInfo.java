@@ -1,11 +1,15 @@
 package com.example.fitnessdemo.ws;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -23,12 +27,25 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.fitnessdemo.ConfigUtil;
+import com.example.fitnessdemo.MR.ShouYeActivity;
 import com.example.fitnessdemo.R;
+import com.google.gson.Gson;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 import static android.app.Activity.RESULT_CANCELED;
 
@@ -47,7 +64,16 @@ public class MyInfo extends Fragment {
     private TextView friends;
     private TextView plans;
     private TextView helps;
+    private TextView tvwh;
     private PopupWindow pw;
+
+    private Gson gson = new Gson();
+    //定义OKHTTPClient对象属性
+    private OkHttpClient okHttpClient = new OkHttpClient();
+    //定义Handler对象属性
+    private Handler handler;
+
+    private String result ;
 
     /* 头像文件 */
     private static final String IMAGE_FILE_NAME = "temp_head_image.jpg";
@@ -61,15 +87,71 @@ public class MyInfo extends Fragment {
     private static int output_X = 600;
     private static int output_Y = 600;
 
-    private ImageView headImage = null;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.ws_fragment_myinfo, container, false);
         findview();
         setListener();
+        initinfo();
+        initHandler();
         return root;
+    }
+
+    private void initHandler() {
+        handler = new Handler() {//handlerThread.getLooper()){
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                switch (msg.what) {
+                    case 1://如果服务端返回的数据是字符串
+                        result = (String) msg.obj;
+                        User user = new Gson().fromJson(result, User.class);
+                        String str = user.getHeight()+"/"+user.getWeight();
+                        tvwh.setText(str);
+                        break;
+                }
+            }
+        };
+    }
+
+    private void initinfo() {
+            User user = new User();
+            String str = ConfigUtil.user_Name;
+            user.setPhone(str.toString() );
+        System.out.println("用户信息" + user.toString().trim());
+            String json = gson.toJson(user);
+            //2.创建request对象
+            //1) 使用RequestBody封装请求数据
+            //获取待传输数据对应的MIME类型
+            MediaType type = MediaType.parse("text/plain");
+            //创建RequestBody对象
+            RequestBody reqBody = RequestBody.create(json, type);
+            //2) 创建请求对象
+            Request request = new Request.Builder()
+                    .url(ConfigUtil.SERVER_HOME + "BodyinfoServlet")
+                    .post(reqBody)
+                    .build();
+            //3. 创建CALL对象
+            Call call = okHttpClient.newCall(request);
+            //4. 提交请求并获取响应
+        call.enqueue(new Callback() {
+
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    String result = response.body().string();
+                    System.out.println(result);
+                    Message msg = handler.obtainMessage();
+                    msg.what = 1;
+                    msg.obj = result;
+                    handler.sendMessage(msg);
+                }
+
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+
+                }
+            });
+
     }
 
     private void setListener() {
@@ -102,12 +184,14 @@ public class MyInfo extends Fragment {
         friends = root.findViewById(R.id.user_friend);
         plans = root.findViewById(R.id.user_plan);
         helps = root.findViewById(R.id.user_help);
+        tvwh = root.findViewById(R.id.tv_weightheight);
     }
 
     class MyListener implements View.OnClickListener {
 
         @Override
         public void onClick(View view) {
+            Intent intent = new Intent();
             switch (view.getId()) {
                 case R.id.myinfo_setting:
                     break;
@@ -119,17 +203,21 @@ public class MyInfo extends Fragment {
                     showEditPhotoWindow(view);
                     break;
                 case R.id.myinfo_userinfo:
+                    intent.setClass(getContext(),ShentiinfoActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.myinfo_pay:
                     break;
                 case R.id.layout_yundong:
                     break;
                 case R.id.layout_userinfo:
+                    intent.putExtra("info",result);
+                    intent.setClass(getContext(), ShentiinfoActivity.class);
+                    startActivityForResult(intent,1);
                     break;
                 case R.id.user_shoucang:
                     break;
                 case R.id.user_friend:
-                    Intent intent = new Intent();
                     intent.setClass(getContext(), FriendActivity.class);
                     startActivity(intent);
                     break;
@@ -140,6 +228,8 @@ public class MyInfo extends Fragment {
             }
         }
     }
+
+
 
     private void showEditPhotoWindow(View view) {
         View contentView = getLayoutInflater().inflate(R.layout.ws_layout_popwindow, null);
@@ -263,7 +353,13 @@ public class MyInfo extends Fragment {
                 }
 
                 break;
+                case 1:
+                if(resultCode==22){
+                    System.out.println("成功跳转");
+                }
         }
+
+
 
         super.onActivityResult(requestCode, resultCode, intent);
     }
@@ -303,9 +399,24 @@ public class MyInfo extends Fragment {
      * 提取保存裁剪之后的图片数据，并设置头像部分的View
      */
     private void setImageToHeadView(Intent intent) {
-        Bundle extras = intent.getExtras();
-        if (extras != null) {
-            Bitmap photo = extras.getParcelable("data");
+        Uri uri = intent.getData();
+        ContentResolver cr = getActivity().getContentResolver();
+        Bitmap photo = null;
+        try {
+            if (uri != null){
+                 photo = BitmapFactory.decodeStream(cr.openInputStream(uri));
+            }else {
+                Bundle extras = intent.getExtras();
+                if (extras != null) {
+                    photo = extras.getParcelable("data");}
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+//        Bundle extras = intent.getExtras();
+//        if (extras != null) {
+//            Bitmap photo = extras.getParcelable("data");
             ivtoouxiang.setImageBitmap(photo);
         //新建文件夹 先选好路径 再调用mkdir函数 现在是根目录下面的Ask文件夹
             File nf = new File(Environment.getExternalStorageDirectory() + "/Ask");
@@ -329,7 +440,7 @@ public class MyInfo extends Fragment {
                 e.printStackTrace();
             }
 
-        }
+//        }
     }
 
     /**

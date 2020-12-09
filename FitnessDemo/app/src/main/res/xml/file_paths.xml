@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <paths>
+<!--       < files-path> 分享app内部的存储；< external-path> 分享外部的存储;-->
+        <external-path path="" name="camera_photos" />
+        <files-path path="" name="photos" />
+    </paths>
+</resources>
