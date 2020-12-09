@@ -136,6 +136,12 @@ public class SouSuoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();//隐藏掉整个ActionBar
         setContentView(R.layout.mr_activity_sou_suo);
+        findViewById(R.id.fanhui).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SouSuoActivity.this.finish();
+            }
+        });
         mSearchView = (SearchView) findViewById(R.id.searchView);
         mSearchView.setSubmitButtonEnabled(true);
         history=findViewById(R.id.listView_history);

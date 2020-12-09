@@ -20,10 +20,13 @@ import androidx.viewpager.widget.ViewPager;
 import com.bumptech.glide.Glide;
 import com.example.fitnessdemo.ConfigUtil;
 import com.example.fitnessdemo.MR.AllCoursesActivity;
+import com.example.fitnessdemo.MR.RemenActivity;
 import com.example.fitnessdemo.MR.SouSuoActivity;
+import com.example.fitnessdemo.MR.ZuixinActivity;
 import com.example.fitnessdemo.MR.adapter.MyFragmentPagerAdapter;
 import com.example.fitnessdemo.MR.entity.Course;
 import com.example.fitnessdemo.MR.entity.CoursePictureShow;
+import com.example.fitnessdemo.MR.entity.Video;
 import com.example.fitnessdemo.MR.someFragments.ListFragment;
 import com.example.fitnessdemo.R;
 import com.google.gson.Gson;
@@ -122,6 +125,22 @@ public class CourseS extends Fragment {
                     });
                     myFragmentPagerAdapter2.setFs(mFragments2);
                     myFragmentPagerAdapter2.notifyDataSetChanged();
+                    root.findViewById(R.id.remenquanbu).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent=new Intent(getContext(), RemenActivity.class);
+                            intent.putExtra("remen",gson.toJson(cpss2));
+                            startActivity(intent);
+                        }
+                    });
+                    root.findViewById(R.id.zuixinquanbu).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent=new Intent(getContext(), ZuixinActivity.class);
+                            intent.putExtra("zuixin",gson.toJson(cpss));
+                            startActivity(intent);
+                        }
+                    });
                     break;
             }
         }

@@ -73,7 +73,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_marginRight="15dp"
-            android:id="@+id/btn_clock_1"
+            android:id="@+id/ll_clock_1"
             android:background="@drawable/sharp3"
             android:layout_width="150dp"
             android:layout_height="200dp">
@@ -97,8 +97,8 @@
             android:orientation="horizontal"
             android:background="@drawable/sharp4"
             android:layout_marginBottom="10dp"
-            android:layout_toRightOf="@id/btn_clock_1"
-            android:id="@+id/btn_clock_2"
+            android:layout_toRightOf="@id/ll_clock_1"
+            android:id="@+id/ll_clock_2"
             android:layout_width="match_parent"
             android:layout_height="65dp">
             <TextView
@@ -121,9 +121,9 @@
         <LinearLayout
             android:orientation="horizontal"
             android:background="@drawable/sharp5"
-            android:layout_below="@id/btn_clock_2"
-            android:layout_toRightOf="@id/btn_clock_1"
-            android:id="@+id/btn_clock_3"
+            android:layout_below="@id/ll_clock_2"
+            android:layout_toRightOf="@id/ll_clock_1"
+            android:id="@+id/ll_clock_3"
             android:layout_width="match_parent"
             android:layout_height="125dp">
             <TextView

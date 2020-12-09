@@ -5,12 +5,28 @@ public class Video {
     private String course_name;
     private String video_name;
     private String video_path;
-    public Video(int video_id, String course_name, String video_name, String video_path) {
+    private String video_introduce;
+    public Video(int video_id, String course_name, String video_name, String video_path,String video_introduce) {
         super();
         this.video_id = video_id;
         this.course_name = course_name;
         this.video_name = video_name;
         this.video_path = video_path;
+        this.video_introduce=video_introduce;
+    }
+
+    /**
+     * @return the video_introduce
+     */
+    public String getVideo_introduce() {
+        return video_introduce;
+    }
+
+    /**
+     * @param video_introduce the video_introduce to set
+     */
+    public void setVideo_introduce(String video_introduce) {
+        this.video_introduce = video_introduce;
     }
     public int getVideo_id() {
         return video_id;
