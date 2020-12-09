@@ -30,17 +30,17 @@
         <activity android:name=".CLB.EssayDetailActivity" />
         <activity android:name=".MR.VideoActivity" />
         <activity android:name=".CLB.ClockActivity">
-
-        </activity>
-        <activity android:name=".ZFT.RecoActivity" />
-        <activity android:name=".MR.AllCoursesActivity" />
-        <activity android:name=".MR.SearchGetActivity" />
-        <activity android:name=".ZFT.MotionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ZFT.RecoActivity" />
+        <activity android:name=".MR.AllCoursesActivity" />
+        <activity android:name=".MR.SearchGetActivity" />
+        <activity android:name=".ZFT.MotionActivity">
+
         </activity>
         <activity android:name=".MR.SouSuoActivity" />
         <activity android:name=".ZFT.PlanInfoActivity" />
