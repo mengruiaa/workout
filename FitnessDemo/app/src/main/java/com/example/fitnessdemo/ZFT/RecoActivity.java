@@ -2,10 +2,15 @@ package com.example.fitnessdemo.ZFT;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +25,7 @@ public class RecoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.zft_activity_reco);
         ruler_height=findViewById(R.id.ruler_height);
         ruler_weight=findViewById(R.id.ruler_weight);
@@ -52,7 +58,7 @@ public class RecoActivity extends AppCompatActivity {
         btnCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String sexinfo;
+                final String sexinfo;
                 if (sex.isChecked()){
                     sexinfo = "girl";
                 }else{
@@ -61,6 +67,31 @@ public class RecoActivity extends AppCompatActivity {
                 Toast.makeText(RecoActivity.this,
                         "身高:" + tv_register_info_height_value.getText().toString() + ";体重:" + tv_register_info_weight_value.getText().toString() + sexinfo
                         ,Toast.LENGTH_SHORT).show();
+                String typeName = "";
+                Float bmi = Float.parseFloat(tv_register_info_weight_value.getText().toString())/(Float.parseFloat(tv_register_info_height_value.getText().toString())*Float.parseFloat(tv_register_info_height_value.getText().toString()));
+                Float BMI = bmi*10000;
+                Log.i("bmi", "onClick: " + BMI + bmi);
+                if (BMI > 23.9){
+                    typeName = "减脂";
+                }else if (BMI < 23.9 && BMI > 18.5) {
+                    typeName = "塑身";
+                }else if (BMI <= 18.4){
+                    typeName = "增肌";
+                }
+                Intent intent = new Intent();
+                intent.setClass(RecoActivity.this,RecoPlanActivity.class);
+                intent.putExtra("typeName",typeName);
+                startActivity(intent);
+//                final EditText et = new EditText(RecoActivity.this);
+//                new AlertDialog.Builder(RecoActivity.this).setTitle("请输入您的相关信息")
+//                        .setView(et).setPositiveButton("yes", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        Toast.makeText(RecoActivity.this,
+//                                "身高:" + tv_register_info_height_value.getText().toString() + ";体重:" + tv_register_info_weight_value.getText().toString() + sexinfo
+//                                + et.getText().toString(),Toast.LENGTH_SHORT).show();
+//                    }
+//                }).setNegativeButton("no",null).show();
             }
         });
     }
