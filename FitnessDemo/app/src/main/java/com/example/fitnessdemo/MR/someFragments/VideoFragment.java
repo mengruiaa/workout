@@ -42,6 +42,7 @@ public class VideoFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent=new Intent(getContext(), VideoActivity.class);
                 intent.putExtra("videoPath",vs.get(position).getVideo_path());
+                intent.putExtra("videointro",vs.get(position).getVideo_introduce());
                 startActivity(intent);
             }
         });

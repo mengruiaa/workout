@@ -10,11 +10,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.fitnessdemo.LZYZYH.model.ListOfGoods;
 import com.example.fitnessdemo.LZYZYH.model.Product;
 import com.example.fitnessdemo.R;
 
 import java.util.List;
+
+import static com.example.fitnessdemo.ConfigUtil.SERVER_HOME;
 
 public class SearchAdapter extends BaseAdapter {
     private List<Product> goodsList;
@@ -59,6 +62,8 @@ public class SearchAdapter extends BaseAdapter {
         TextView tvPrice = view.findViewById(R.id.tv_money);
         tvPrice.setText(goodsList.get(i).getProduct_price() + "");
         tvName.setText(goodsList.get(i).getProduct_name());
+        Glide.with(view).load(SERVER_HOME + "image/"+goodsList.get(i).getProduct_mainimage()).into(ivPicture);
+
 //        //获取用户头像
 //        Bitmap picture = BitmapFactory.decodeFile(cakeList.get(i).getImgId());
 //        //显示用户头像

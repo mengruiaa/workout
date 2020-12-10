@@ -72,7 +72,12 @@ public class AllCoursesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();//隐藏掉整个ActionBar
         setContentView(R.layout.mr_activity_all_courses);
-
+        findViewById(R.id.fanhui).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AllCoursesActivity.this.finish();
+            }
+        });
 
         mViewPager= (ViewPager) findViewById(R.id.viewPager);
         tb=findViewById(R.id.tabLayout_cs);

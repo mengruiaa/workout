@@ -13,8 +13,8 @@ public class Product {
     private String product_subimage4;
     private String product_subimage5;
     private String product_subimage6;
-    private String product_color;
     private Float product_price;
+    private String product_color;
     private int product_quantity;
     private String product_link;
 

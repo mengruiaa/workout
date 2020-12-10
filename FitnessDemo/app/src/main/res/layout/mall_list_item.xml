@@ -11,12 +11,12 @@
     <TextView
         android:id="@+id/tv_name"
         android:layout_marginLeft="10dp"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
+        android:textSize="15sp"
+        android:maxLines="4"
         android:layout_toRightOf="@+id/iv_show"
         android:layout_alignParentRight="true"
-        android:maxLines="1"
         android:ellipsize="end"
         android:maxEms="5"/>
     <TextView
@@ -30,7 +30,7 @@
         android:ellipsize="end"
         android:maxEms="5"
         android:maxLines="2"
-        android:textSize="25dp" />
+        android:textSize="15dp" />
     <LinearLayout
         android:id="@+id/q"
         android:layout_toRightOf="@+id/iv_show"
@@ -45,7 +45,7 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/iv_show"
             android:textColor="@color/colorAccent"
-            android:textSize="30dp" />
+            android:textSize="20dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

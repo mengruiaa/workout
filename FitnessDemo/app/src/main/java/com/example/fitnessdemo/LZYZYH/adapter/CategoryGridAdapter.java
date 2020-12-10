@@ -49,19 +49,21 @@ public class CategoryGridAdapter extends BaseAdapter {
             heol.img_category_gridview = (ImageView) arg1.findViewById(R.id.img_category_gridview);
             heol.txt_categroy_gridview = (TextView) arg1.findViewById(R.id.txt_categroy_gridview);
             heol.txt_categroy_gridview_jainjie = (TextView) arg1.findViewById(R.id.txt_categroy_gridview_jainjie);
+            heol.txt_categroy_price = (TextView) arg1.findViewById(R.id.txt_category_price);
             arg1.setTag(heol);
         } else {
             heol = (ViewHeol) arg1.getTag();
         }
         heol.img_category_gridview.setImageBitmap(list.get(arg0).getImg_grid());
         heol.txt_categroy_gridview.setText(list.get(arg0).getTxt_name());
-        heol.txt_categroy_gridview_jainjie.setText(list.get(arg0).getTxt_name_jianjie());
+        heol.txt_categroy_price.setText(list.get(arg0).getTxt_price()+"");
+
         return arg1;
     }
 
     private class ViewHeol {
         ImageView img_category_gridview;
-        TextView txt_categroy_gridview, txt_categroy_gridview_jainjie;
+        TextView txt_categroy_gridview, txt_categroy_gridview_jainjie,txt_categroy_price;
     }
 
 }

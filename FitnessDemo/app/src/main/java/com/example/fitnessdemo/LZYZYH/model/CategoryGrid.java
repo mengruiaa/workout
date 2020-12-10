@@ -6,7 +6,7 @@ public class CategoryGrid {
 
     private Bitmap img_grid;
     private String txt_name;
-    private String txt_name_jianjie;
+    private float txt_price;
 
     public String getTxt_name() {
         return txt_name;
@@ -16,12 +16,12 @@ public class CategoryGrid {
         this.txt_name = txt_name;
     }
 
-    public String getTxt_name_jianjie() {
-        return txt_name_jianjie;
+    public float getTxt_price() {
+        return txt_price;
     }
 
-    public void setTxt_name_jianjie(String txt_name_jianjie) {
-        this.txt_name_jianjie = txt_name_jianjie;
+    public void setTxt_price(float txt_price) {
+        this.txt_price = txt_price;
     }
 
     public Bitmap getImg_grid() {

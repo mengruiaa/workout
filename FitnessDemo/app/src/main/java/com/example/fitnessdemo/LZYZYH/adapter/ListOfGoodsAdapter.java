@@ -8,12 +8,15 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.fitnessdemo.LZYZYH.model.ListOfGoods;
 import com.example.fitnessdemo.LZYZYH.model.Product;
 import com.example.fitnessdemo.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.fitnessdemo.ConfigUtil.SERVER_HOME;
 
 /**
  * 商品列表LIstView
@@ -69,7 +72,7 @@ public class ListOfGoodsAdapter extends BaseAdapter {
         }
         heol.txt_biaoti.setText(list.get(arg0).getProduct_name());
         heol.txt_jiage.setText(list.get(arg0).getProduct_price()+"");
-
+        Glide.with(arg1).load(SERVER_HOME + "image/"+list.get(arg0).getProduct_mainimage()).into(heol.iv_show);
         return arg1;
     }
 

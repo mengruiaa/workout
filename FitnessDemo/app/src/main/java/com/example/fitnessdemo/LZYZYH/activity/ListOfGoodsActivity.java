@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.fitnessdemo.LZYZYH.TuiJian;
 import com.example.fitnessdemo.LZYZYH.adapter.ListOfGoodsAdapter;
 import com.example.fitnessdemo.LZYZYH.adapter.SearchAdapter;
 import com.example.fitnessdemo.LZYZYH.fragment.ProductFragment;
@@ -47,7 +48,6 @@ public class ListOfGoodsActivity extends Activity implements View.OnClickListene
     private ListView list_listofgoods;
     private ImageView img_fanhui;
     ArrayList<Product> list;
-    ArrayList<Fragment> mFragment=new ArrayList<>();
     Gson gson;
     private boolean state = true;
     ListOfGoodsAdapter adapter;
@@ -67,6 +67,8 @@ public class ListOfGoodsActivity extends Activity implements View.OnClickListene
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mall_search);
+        //取消应用标题栏
+
         list_listofgoods = (ListView) findViewById(R.id.list_listofgoods);
         img_fanhui = (ImageView) findViewById(R.id.img_fanhui);
         img_fanhui.setOnClickListener(this);
@@ -87,11 +89,10 @@ public class ListOfGoodsActivity extends Activity implements View.OnClickListene
 //                    out.write(productName.getBytes());
                     BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                     String pro = reader.readLine();
-                    System.out.println(pro+"lllllllllllllll");
                     gson=new Gson();
                     Type userListType = new TypeToken<ArrayList<Product>>(){}.getType();
                     list = gson.fromJson(pro, userListType);
-                    Log.e("al",list.toString());
+                //    Log.e("al",list.toString());
                     Message msg = handler.obtainMessage();
                     //设置Message对象的参数
                     msg.what = 1;
@@ -120,38 +121,13 @@ public class ListOfGoodsActivity extends Activity implements View.OnClickListene
             }
         });
     }
-
-    // 初始化
-//    private void initView() {
-//
-//        for (int i = 0; i < 10; i++) {
-//            ListOfGoods goodsModel = new ListOfGoods();
-//            goodsModel.setBiaoti("【天猫预售】乐视手机1S32G金 Letv/乐视X500芈月传版乐1S" + i);
-//            goodsModel.setJiage("￥1099.0");
-//            goodsModel.setYuanjia("￥1299.0");
-//            list.add(goodsModel);
-//        }
-//    }
-
-    // 事件
-//    private void initEvent() {
-//        ListOfGoodsAdapter listOfGoodsAdapter = new ListOfGoodsAdapter(this, list);
-//        list_listofgoods.setAdapter(listOfGoodsAdapter);
-//        list_listofgoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-//                Intent intent = new Intent(ListOfGoodsActivity.this, DetailActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//    }
-
     @Override
     public void onClick(View arg0) {
         switch (arg0.getId()) {
             case R.id.img_fanhui:
-                finish();
+                Intent i = new Intent();
+                i.setClass(this, TuiJian.class);
+                startActivity(i);
                 break;
         }
 
