@@ -19,7 +19,6 @@ import androidx.fragment.app.Fragment;
 import com.example.fitnessdemo.LZYZYH.TuiJian;
 import com.example.fitnessdemo.LZYZYH.adapter.ListOfGoodsAdapter;
 import com.example.fitnessdemo.LZYZYH.adapter.SearchAdapter;
-import com.example.fitnessdemo.LZYZYH.fragment.ProductFragment;
 import com.example.fitnessdemo.LZYZYH.model.ListOfGoods;
 import com.example.fitnessdemo.LZYZYH.model.Product;
 import com.example.fitnessdemo.R;

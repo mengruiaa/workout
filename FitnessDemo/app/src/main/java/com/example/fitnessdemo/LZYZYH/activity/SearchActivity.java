@@ -2,42 +2,26 @@ package com.example.fitnessdemo.LZYZYH.activity;
 /*
 搜索界面：模糊搜索searchview
  */
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
-import com.example.fitnessdemo.CLB.entity.Essay;
-import com.example.fitnessdemo.ConfigUtil;
 import com.example.fitnessdemo.LZYZYH.adapter.SearchAdapter;
-import com.example.fitnessdemo.LZYZYH.fragment.ProductFragment;
 import com.example.fitnessdemo.LZYZYH.model.Product;
 import com.example.fitnessdemo.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,36 +76,7 @@ public class SearchActivity extends AppCompatActivity  {
         Intent intent=getIntent();
         etProductSearch=intent.getStringExtra("etProductSearch");
         System.out.println("aaaa"+etProductSearch);
-       // initItem();
-//        new Thread() {
-//            @Override
-//            public void run() {
-//                super.run();
-//                try {
-//                    URL url = new URL(SERVER_HOME + "search");
-//                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//                    conn.setRequestMethod("POST");
-//                    //获取网络输出流
-//                    OutputStream out = conn.getOutputStream();
-//                    out.write(etProductSearch.getBytes());
-//                    out.close();
-//                    BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//                    String pro = reader.readLine();
-//                    System.out.println(pro);
-//                    gson=new Gson();
-//                    Type userListType = new TypeToken<ArrayList<Product>>(){}.getType();
-//                    list = gson.fromJson(pro, userListType);
-//                    Log.e("search",list.toString());
-//
-//                    out.close();
-//                } catch (MalformedURLException e) {
-//                    e.printStackTrace();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//        }.start();
+
 
         new Thread(){
             @Override
