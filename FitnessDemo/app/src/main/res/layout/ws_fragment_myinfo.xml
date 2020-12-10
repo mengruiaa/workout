@@ -62,17 +62,24 @@
                 android:layout_height="100dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/man"
-                />
+                android:background="@drawable/man" />
 
-            <TextView
-                android:id="@+id/myinfo_username"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="10dp"
-                android:text="          健身王子"
-                android:textSize="28sp" />
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/myinfo_userinfo">
+
+                <TextView
+                    android:id="@+id/myinfo_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="10dp"
+                    android:text="健身王子"
+                    android:textSize="28sp" />
+            </RelativeLayout>
+
 
             <ImageView
                 android:id="@+id/myinfo_userinfo"
@@ -91,6 +98,7 @@
             android:background="@drawable/rounded_editview3">
 
             <LinearLayout
+
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
