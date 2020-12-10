@@ -10,13 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorAAA" >
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="搜  索"
-            android:textColor="@color/colorWhite"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -34,7 +27,7 @@
         <ListView
             android:id="@+id/list_listofgoods"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:divider="#D6D6D6"
             android:dividerHeight="1dp"
             android:listSelector="#00000000" >
