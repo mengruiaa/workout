@@ -43,6 +43,8 @@ public class Info1Activity extends AppCompatActivity {
     private EditText infotwo;
     private EditText infothree;
     private Button btnnext;
+    private EditText username;
+
     private String sex = null;
     //定义Handler对象属性
     private Handler handler;
@@ -90,6 +92,7 @@ public class Info1Activity extends AppCompatActivity {
         imgthreeplus = findViewById(R.id.info_ageplus);
         infothree = findViewById(R.id.info_ageedit);
         btnnext =findViewById(R.id.info_next);
+        username = findViewById(R.id.edit_username);
     }
 
     class MyListener implements View.OnClickListener{
@@ -171,6 +174,8 @@ public class Info1Activity extends AppCompatActivity {
         int age =  Integer.parseInt(infothree.getText().toString());
         user.setAge(age);
         user.setSex(sex);
+        String name = username.getText().toString();
+        user.setName(name);
         System.out.println("用户信息" + user.toString().trim());
         String json = gson.toJson(user);
         //2.创建request对象

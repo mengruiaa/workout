@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fitnessdemo.LZYZYH.activity.DetailActivity;
+import com.example.fitnessdemo.LZYZYH.activity.PubuActivity;
 import com.example.fitnessdemo.LZYZYH.model.Fruit;
 import com.example.fitnessdemo.R;
 
@@ -52,8 +53,8 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Fruit fruit = mFruitList.get(position);
-                Intent intent = new Intent(parent.getContext(), DetailActivity.class);
-                intent.putExtra("etProductName", String.valueOf(fruit.geti()));
+                Intent intent = new Intent(parent.getContext(), PubuActivity.class);
+                intent.putExtra("etProductSearch", String.valueOf(fruit.geti()));
                 System.out.println("adapter:"+String.valueOf(fruit.geti()));
                 parent.getContext().startActivity(intent);
             }
@@ -63,8 +64,8 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Fruit fruit = mFruitList.get(position);
-                Intent intent = new Intent(parent.getContext(), DetailActivity.class);
-                intent.putExtra("etProductName", String.valueOf(fruit.geti()));
+                Intent intent = new Intent(parent.getContext(), PubuActivity.class);
+                intent.putExtra("etProductSearch", String.valueOf(fruit.geti()));
                 parent.getContext().startActivity(intent);
             }
         });

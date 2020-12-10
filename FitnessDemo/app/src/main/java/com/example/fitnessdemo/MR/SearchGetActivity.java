@@ -29,7 +29,7 @@ import okhttp3.Response;
 
 public class SearchGetActivity extends AppCompatActivity {
     //定义OKHTTPClient对象属性
-    private OkHttpClient okHttpClient=new OkHttpClient();;
+    private OkHttpClient okHttpClient=new OkHttpClient();
     private Gson gson=new Gson();
     private History history;
     private String search;

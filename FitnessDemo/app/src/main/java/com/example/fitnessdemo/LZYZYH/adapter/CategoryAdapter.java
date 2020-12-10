@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.fitnessdemo.LZYZYH.activity.CategoryActivity;
 import com.example.fitnessdemo.LZYZYH.model.Categoryl;
 import com.example.fitnessdemo.R;
 
@@ -19,10 +20,17 @@ import java.util.ArrayList;
 public class CategoryAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<Categoryl> list;
+    private int mall_list_item;
 
     public CategoryAdapter(Context mContext, ArrayList<Categoryl> list) {
         this.mContext = mContext;
         this.list = list;
+    }
+
+    public CategoryAdapter(CategoryActivity categoryActivity, ArrayList<Categoryl> list, int mall_list_item) {
+        this.mContext = mContext;
+        this.list = list;
+        this.mall_list_item = mall_list_item;
     }
 
     @Override

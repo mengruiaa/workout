@@ -11,15 +11,19 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.fitnessdemo.ConfigUtil;
 import com.example.fitnessdemo.MR.adapter.MyFragmentPagerAdapter;
 import com.example.fitnessdemo.MR.entity.Course;
 import com.example.fitnessdemo.MR.entity.CoursePictureShow;
+import com.example.fitnessdemo.MR.entity.CoursePlan;
 import com.example.fitnessdemo.MR.entity.Video;
 import com.example.fitnessdemo.MR.someFragments.IntroduceFragment;
+import com.example.fitnessdemo.MR.someFragments.PlanFragment;
 import com.example.fitnessdemo.MR.someFragments.VideoFragment;
 import com.example.fitnessdemo.R;
+import com.example.fitnessdemo.ZFT.Plan;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
@@ -37,7 +41,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+
 public class CourseDetailActivity extends AppCompatActivity {
+    private OkHttpClient okHttpClient=new OkHttpClient();
     private Gson gson=new Gson();
     private String courseName;
     private SlidingTabLayout tb;
@@ -48,7 +59,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what){
                 case 1:
-                    tb.setViewPager(mViewPager, new String[]{"课程简介", "视频列表","相关计划","相关商品"}, CourseDetailActivity.this, mFragments);
+                    tb.setViewPager(mViewPager, new String[]{"课程简介", "视频列表","相关计划"}, CourseDetailActivity.this, mFragments);
                     break;
             }
         }
@@ -68,9 +79,44 @@ public class CourseDetailActivity extends AppCompatActivity {
         courseName= intent.getStringExtra("courseName");
         mViewPager= (ViewPager) findViewById(R.id.viewPager);
         tb=findViewById(R.id.tabLayout_cs);
+        findViewById(R.id.btn_collect).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText( CourseDetailActivity.this, "收藏课程成功", Toast.LENGTH_SHORT).show();
+                new Thread(){
+                    @Override
+                    public void run() {
+                        addLikeCourses();
+                    }
+                }.start();
+            }
+        });
         getIntroduce();
 
     }
+
+    private void addLikeCourses() {
+        //2 创建Request对象
+        //1) 使用RequestBody封装请求数据
+        //获取待传输数据对应的MIME类型
+        MediaType type = MediaType.parse("text/plain");
+        //创建RequestBody对象
+        RequestBody reqBody = RequestBody.create(type,gson.toJson(new CoursePlan(ConfigUtil.user_Name,courseName)));
+        //2) 创建请求对象
+        Request request = new Request.Builder()
+                .url(ConfigUtil.SERVER_HOME + "AddLikeCourse")
+                .post(reqBody)
+                .build();
+        //3. 创建CALL对象
+        Call call = okHttpClient.newCall(request);
+        //4. 提交请求并获取响应
+        try {
+            call.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void getIntroduce() {
         new Thread(){
             @Override
@@ -105,8 +151,23 @@ public class CourseDetailActivity extends AppCompatActivity {
                     Type type2= new TypeToken<List<Video>>(){}.getType();
                     List<Video> cs2=gson.fromJson(result2,type2);
                     mFragments.add(new VideoFragment(cs2));
-                    mFragments.add(new VideoFragment(cs2));
-                    mFragments.add(new VideoFragment(cs2));
+                    //相关课程获取
+                    URL url3 = new URL(ConfigUtil.SERVER_HOME + "GetZftPlan");
+                    //获取网络输入流
+                    InputStream in3 = url3.openStream();
+                    BufferedReader reader3 = new BufferedReader(
+                            new InputStreamReader(in3, "utf-8"));
+                    //读取数据
+                    String result3 = reader3.readLine();
+                    in3.close();
+                    Type type3= new TypeToken<List<Plan>>(){}.getType();
+                    List<Plan> pz=gson.fromJson(result3,type3);
+                    mFragments.add(new PlanFragment(pz));
+
+
+
+
+
                     Message msg = handler.obtainMessage();
                     //设置Message对象的参数
                     msg.what = 1;

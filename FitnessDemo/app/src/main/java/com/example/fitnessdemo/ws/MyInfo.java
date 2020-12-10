@@ -108,6 +108,7 @@ public class MyInfo extends Fragment {
                         User user = new Gson().fromJson(result, User.class);
                         String str = user.getHeight()+"/"+user.getWeight();
                         tvwh.setText(str);
+                        username.setText(user.getName().trim());
                         break;
                 }
             }
