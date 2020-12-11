@@ -9,11 +9,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,9 +29,12 @@ import com.example.fitnessdemo.LZYZYH.activity.CategoryActivity;
 import com.example.fitnessdemo.LZYZYH.activity.ListOfGoodsActivity;
 import com.example.fitnessdemo.LZYZYH.activity.SearchActivity;
 import com.example.fitnessdemo.LZYZYH.adapter.FruitAdapter;
+import com.example.fitnessdemo.LZYZYH.adapter.MyAdapter;
 import com.example.fitnessdemo.LZYZYH.model.Fruit;
+import com.example.fitnessdemo.LZYZYH.model.Icon;
 import com.example.fitnessdemo.LZYZYH.model.ListOfGoods;
 import com.example.fitnessdemo.R;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -57,11 +63,18 @@ public class TuiJian extends Fragment {
     private EditText etProductSearch;
     private Button btnProductSearch;
 
+    private SmartRefreshLayout refreshlayout;
+
+    private MyAdapter mAdapter;
+
     private List<Fruit> fruitList = new ArrayList<Fruit>();
     private Map<String, ImageView> imageViewMap = new HashMap<>();
     private Map<String, TextView> textViewMap = new HashMap<>();
     private TextView findAll;
     private static String result;
+    private Context mContext;
+    private GridView grid_photo;
+    private ArrayList<Icon> mData = null;
 
 
     private LinearLayout cate1;
@@ -75,12 +88,49 @@ public class TuiJian extends Fragment {
         viewPager = view.findViewById(R.id.loopviewpager);
         ll_dots_container = view.findViewById(R.id.ll_dots_loop);
         product_item = view.findViewById(R.id.oneweek1);
-        cate1 = view.findViewById(R.id.cate1);
+      //  cate1 = view.findViewById(R.id.cate1);
         etProductSearch = view.findViewById(R.id.et_product_search);
         btnProductSearch = view.findViewById(R.id.btn_product_search);
         findAll = view.findViewById(R.id.findAll);
         initLoopView();  //实现轮播图
         productItemClick();
+
+        mContext = getContext();
+        grid_photo = (GridView) view.findViewById(R.id.grid_button_menu);
+
+        mData = new ArrayList<Icon>();
+        mData.add(new Icon(R.drawable.pinpai, "品牌精选"));
+        mData.add(new Icon(R.drawable.zhineng, "智能硬件"));
+        mData.add(new Icon(R.drawable.woman, "女子服饰"));
+        mData.add(new Icon(R.drawable.man, "男子服饰"));
+        mData.add(new Icon(R.drawable.sport, "运动装备"));
+        mData.add(new Icon(R.drawable.qingshi, "轻食代餐"));
+        mData.add(new Icon(R.drawable.huwai, "运动生活"));
+        mData.add(new Icon(R.drawable.shenghuo, "健身器材"));
+
+        mAdapter = new MyAdapter<Icon>(mData, R.layout.button_menu_item) {
+            @Override
+            public void bindView(ViewHolder holder, Icon  obj) {
+
+                holder.setImageResource(R.id.img_icon, obj.getiId());
+                holder.setText(R.id.txt_icon, obj.getiName());
+
+            }
+        };
+
+        grid_photo.setAdapter(mAdapter);
+
+        grid_photo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i4 = new Intent();
+                i4.putExtra("typeId",position+1+"");
+                i4.setClass(getContext(), CategoryActivity.class);
+                startActivity(i4);
+            }
+        });
+
+
 
         FileOutputStream out = null;
         BufferedWriter writer = null;
@@ -234,7 +284,7 @@ public class TuiJian extends Fragment {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    //下一条
+////                    下一条
 //                    getActivity().runOnUiThread(new Runnable() {
 //                        @Override
 //                        public void run() {
@@ -247,14 +297,6 @@ public class TuiJian extends Fragment {
 
     }
     private void productItemClick(){
-        cate1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i1 = new Intent();
-                i1.setClass(getContext(), CategoryActivity.class);
-                startActivity(i1);
-            }
-        });
         btnProductSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

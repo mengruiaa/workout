@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.fitnessdemo">
 
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <permission android:name="android.permission.DISABLE_KEYGUARD" />
+
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许应用程序联网（必须） -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许访问WiFi网络状态信息（必须） -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许读取手机状态（必须） -->
@@ -24,6 +27,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+<<<<<<< HEAD
         <activity android:name=".MR.MyLikeCoursesActivity"></activity>
         <activity android:name=".ws.SearchActivity" />
         <activity android:name=".ws.ShentiinfoActivity" />
@@ -34,12 +38,32 @@
         <activity android:name=".CLB.EssayDetailActivity" />
         <activity android:name=".ZFT.RecoActivity"></activity>
         <activity android:name=".CLB.ClockActivity" />
+=======
+
+        <activity android:name=".ZFT.AlterActivity"></activity>
+        <activity android:name=".MR.ZuixinActivity" />
+        <activity android:name=".MR.RemenActivity" />
+        <activity android:name=".MR.VideoActivity" />
+        <activity android:name=".ws.ShentiinfoActivity" />
+        <activity android:name=".ws.SearchActivity"></activity>
+        <activity android:name=".ZFT.ExerciseActivity" />
+        <activity android:name=".CLB.EssayDetailActivity" />
+        <activity android:name=".ZFT.RecoActivity" />
+        <activity android:name=".CLB.ClockActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+>>>>>>> 7ef4ebac512d47deb8d0309e56b8774a429718a5
         <activity android:name=".MR.AllCoursesActivity" />
         <activity android:name=".MR.SearchGetActivity" />
         <activity android:name=".ZFT.MotionActivity" />
         <activity android:name=".MR.SouSuoActivity" />
         <activity android:name=".ZFT.PlanInfoActivity" />
         <activity android:name=".MR.CourseDetailActivity" />
+<<<<<<< HEAD
         <activity android:name=".MR.ShouYeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,6 +75,14 @@
         <activity android:name=".ZFT.DataActivity" />
         <activity android:name=".CLB.Stair2Activity" />
         <activity android:name=".ZFT.PlanActivity" />
+=======
+        <activity android:name=".ZFT.RecoPlanActivity" />
+        <activity android:name=".ZFT.DataActivity" />
+        <activity android:name=".CLB.Stair2Activity" />
+        <activity android:name=".ZFT.PlanActivity" />
+        <activity android:name=".MR.ShouYeActivity">
+        </activity>
+>>>>>>> 7ef4ebac512d47deb8d0309e56b8774a429718a5
         <activity android:name=".ws.Info1Activity" />
         <activity android:name=".ws.CustomerserviceActivity" />
         <activity android:name=".ws.ProtocolActivity" />
@@ -60,7 +92,11 @@
         <activity android:name=".ws.FriendActivity" />
         <activity android:name=".ws.MainActivity" />
         <activity android:name=".CLB.EncyclopaediaActivity" />
+<<<<<<< HEAD
         <activity android:name=".ws.SplashActivity"></activity>
+=======
+        <activity android:name=".ws.SplashActivity" />
+>>>>>>> 7ef4ebac512d47deb8d0309e56b8774a429718a5
         <activity android:name=".LZYZYH.activity.DetailActivity" />
         <activity android:name=".LZYZYH.activity.CategoryActivity" />
         <activity android:name=".LZYZYH.activity.ListOfGoodsActivity" />
@@ -74,6 +110,10 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <receiver
+            android:name=".ZFT.AlarmReceiver"
+            android:process=":remote" />
     </application>
 
 </manifest>

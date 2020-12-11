@@ -2,20 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F0EEEE"
     android:orientation="vertical">
+    <ImageView
+        android:id="@+id/img_fanhui"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/back"/>
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="wrap_content"
+        >
+
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="1.5" >
+            android:layout_weight="1.5"
+            android:background="@drawable/et_shape"
+            android:layout_margin="5dp">
 
             <ListView
                 android:id="@+id/list_category"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:divider="#98938F"
                 android:dividerHeight="1dp"
                 android:listSelector="#00000000" >
@@ -24,28 +35,15 @@
 
         <RelativeLayout
             android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="3" >
-
-            <RelativeLayout
-                android:id="@+id/relative_souseshangping"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp" >
-
-                <ImageView
-                    android:id="@+id/img_shouse"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true" />
-            </RelativeLayout>
-
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@drawable/et_shape2"
+            android:padding="5dp"
+            android:layout_marginRight="5dp">
             <GridView
                 android:id="@+id/grid_category"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_below="@+id/relative_souseshangping"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:cacheColorHint="#00000000"

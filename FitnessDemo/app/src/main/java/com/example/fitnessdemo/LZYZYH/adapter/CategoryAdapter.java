@@ -27,7 +27,7 @@ public class CategoryAdapter extends BaseAdapter {
         this.list = list;
     }
 
-    public CategoryAdapter(CategoryActivity categoryActivity, ArrayList<Categoryl> list, int mall_list_item) {
+    public CategoryAdapter(Context mContext, ArrayList<Categoryl> list, int mall_list_item) {
         this.mContext = mContext;
         this.list = list;
         this.mall_list_item = mall_list_item;

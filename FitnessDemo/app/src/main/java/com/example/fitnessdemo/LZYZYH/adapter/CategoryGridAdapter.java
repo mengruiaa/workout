@@ -10,17 +10,21 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.fitnessdemo.LZYZYH.model.CategoryGrid;
+import com.example.fitnessdemo.LZYZYH.model.Categoryr;
 import com.example.fitnessdemo.R;
 
 import java.util.ArrayList;
 
+import static com.example.fitnessdemo.ConfigUtil.SERVER_HOME;
+
 public class CategoryGridAdapter extends BaseAdapter {
 
     private Context mContext;
-    private ArrayList<CategoryGrid> list;
+    private ArrayList<Categoryr> list;
 
-    public CategoryGridAdapter(Context mContext, ArrayList<CategoryGrid> list) {
+    public CategoryGridAdapter(Context mContext, ArrayList<Categoryr> list) {
         this.mContext = mContext;
         this.list = list;
     }
@@ -48,15 +52,15 @@ public class CategoryGridAdapter extends BaseAdapter {
             arg1 = LayoutInflater.from(mContext).inflate(R.layout.mall_category_gridview, null);
             heol.img_category_gridview = (ImageView) arg1.findViewById(R.id.img_category_gridview);
             heol.txt_categroy_gridview = (TextView) arg1.findViewById(R.id.txt_categroy_gridview);
-            heol.txt_categroy_gridview_jainjie = (TextView) arg1.findViewById(R.id.txt_categroy_gridview_jainjie);
             heol.txt_categroy_price = (TextView) arg1.findViewById(R.id.txt_category_price);
             arg1.setTag(heol);
         } else {
             heol = (ViewHeol) arg1.getTag();
         }
-        heol.img_category_gridview.setImageBitmap(list.get(arg0).getImg_grid());
-        heol.txt_categroy_gridview.setText(list.get(arg0).getTxt_name());
-        heol.txt_categroy_price.setText(list.get(arg0).getTxt_price()+"");
+        heol.txt_categroy_gridview.setText(list.get(arg0).getProduct_name());
+        heol.txt_categroy_price.setText(list.get(arg0).getProduct_price()+"");
+        Glide.with(arg1).load(SERVER_HOME + "image/"+list.get(arg0).getProduct_mainimage()).into(heol.img_category_gridview);
+
 
         return arg1;
     }
