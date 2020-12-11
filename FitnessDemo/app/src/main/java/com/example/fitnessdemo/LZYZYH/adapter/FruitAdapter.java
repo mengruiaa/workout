@@ -1,8 +1,4 @@
 package com.example.fitnessdemo.LZYZYH.adapter;
-/*
-瀑布流：未和数据库连接
- */
-
 import android.content.Intent;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -30,12 +26,14 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{
         View fruitView;
         ImageView fruitImage;
         TextView fruitName;
+        TextView fruitPrice;
 
         public ViewHolder(View view) {
             super(view);
             fruitView = view;
             fruitImage = (ImageView) view.findViewById(R.id.fruit_image);
             fruitName = (TextView) view.findViewById(R.id.fruit_name);
+            fruitPrice = view.findViewById(R.id.fruit_price);
         }
     }
 
@@ -54,7 +52,7 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{
                 int position = holder.getAdapterPosition();
                 Fruit fruit = mFruitList.get(position);
                 Intent intent = new Intent(parent.getContext(), DetailActivity.class);
-                intent.putExtra("etProductSearch", String.valueOf(fruit.getName()));
+                intent.putExtra("etProductSearch", fruit.getName());
                 System.out.println("adapter:"+String.valueOf(fruit.getName()));
                 parent.getContext().startActivity(intent);
             }
@@ -65,7 +63,7 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{
                 int position = holder.getAdapterPosition();
                 Fruit fruit = mFruitList.get(position);
                 Intent intent = new Intent(parent.getContext(), DetailActivity.class);
-                intent.putExtra("etProductSearch", String.valueOf(fruit.getName()));
+                intent.putExtra("etProductSearch", fruit.getName());
                 parent.getContext().startActivity(intent);
             }
         });
@@ -76,7 +74,8 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder holder, int position) {
         Fruit fruit = mFruitList.get(position);
         holder.fruitImage.setImageResource(fruit.getImageId());
-        holder.fruitName.setText(Html.fromHtml(fruit.getName()));
+        holder.fruitName.setText(fruit.getName());
+        holder.fruitPrice.setText(Html.fromHtml(fruit.getPrice()));
     }
 
     @Override
