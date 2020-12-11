@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/mrback3">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -19,6 +20,7 @@
         android:text="全部课程"
         android:layout_gravity="right"
         android:layout_marginTop="-40dp"
+        android:layout_marginRight="40dp"
         android:background="@drawable/search" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,17 +35,25 @@
             android:textColor="@android:color/black"
             android:layout_marginBottom="20dp"/>
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/mrslid"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:src="@drawable/mrzuoyou"
             android:layout_marginTop="20dp"/>
         <ImageView
             android:id="@+id/remenquanbu"
-            android:layout_width="50dp"
+            android:layout_width="20dp"
             android:layout_height="50dp"
             android:src="@drawable/mrdakai"
             android:layout_marginLeft="130dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更多"
+            android:textSize="15dp"
+            android:layout_margin="15dp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="20dp"/>
     </LinearLayout>
     <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"
@@ -62,17 +72,25 @@
         android:layout_margin="20dp"
         android:layout_marginTop="30dp"/>
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/mrslid"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:src="@drawable/mrzuoyou"
         android:layout_marginTop="20dp"/>
         <ImageView
             android:id="@+id/zuixinquanbu"
-            android:layout_width="50dp"
+            android:layout_width="20dp"
             android:layout_height="50dp"
             android:src="@drawable/mrdakai"
             android:layout_marginLeft="130dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更多"
+            android:textSize="15dp"
+            android:layout_margin="15dp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="20dp"/>
     </LinearLayout>
     <androidx.viewpager.widget.ViewPager
         android:layout_width="match_parent"

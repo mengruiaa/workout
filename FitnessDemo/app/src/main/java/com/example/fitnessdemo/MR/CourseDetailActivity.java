@@ -87,6 +87,8 @@ public class CourseDetailActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         addLikeCourses();
+//                        Intent intent1=new Intent(CourseDetailActivity.this,MyLikeCoursesActivity.class);
+//                        startActivity(intent1);
                     }
                 }.start();
             }
