@@ -63,10 +63,9 @@ public class CategoryActivity extends AppCompatActivity {
 
     private OkHttpClient okHttpClient=new OkHttpClient();
     Gson gson = new Gson();
-    List<Integer> t= new ArrayList<>();
+    private List<Integer> t= new ArrayList<>();
     CategoryAdapter adapter;
     private View view2;
-    int n ;
     private String typeId;
     private Handler handler= new Handler() {//handlerThread.getLooper()){
         @Override
@@ -74,9 +73,13 @@ public class CategoryActivity extends AppCompatActivity {
             switch (msg.what) {
                 case 1:
                     List<Integer>  strs= (List<Integer>) msg.obj;
-                    System.out.println("名字："+strs);
+                    System.out.println("左边的名字："+strs);
                     t=strs;
                     initItem();
+                    break;
+                case 2:
+                    CategoryGridAdapter categoryGridAdapter = new CategoryGridAdapter(getContext(), plist);
+                    grid_category.setAdapter(categoryGridAdapter);
                     break;
             }
         }
@@ -145,107 +148,85 @@ public class CategoryActivity extends AppCompatActivity {
             }
         }.start();
 
-    }
 
-//        new Thread() {
-//            @Override
-//            public void run() {
-//                super.run();
-//                try {
-//                    URL url = new URL(SERVER_HOME + "categoryl");
-//                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//                    conn.setRequestMethod("POST");
-//                    //获取网络输出流
-////                    OutputStream out = conn.getOutputStream();
-////                    out.write(productName.getBytes());
-//                    BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//                    String pro = reader.readLine();
-//                    System.out.println(pro+"lllllllllllllll");
-//                    gson=new Gson();
-//                    Type userListType = new TypeToken<ArrayList<Product>>(){}.getType();
-//                    list_category = gson.fromJson(pro, userListType);
-//                    Log.e("al",list_category.toString());
-//                    Message msg = handler.obtainMessage();
-//                    //设置Message对象的参数
-//                    msg.what = 1;
-//                    //发送Message
-//                    handler.sendMessage(msg);
-//                    //   out.close();
-//                } catch (MalformedURLException e) {
-//                    e.printStackTrace();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//
-//        }.start();
-//
-//    }
+    }
     private void initItem() {
         adapter = new CategoryAdapter(this,clist,R.layout.mall_category_listview);
         list_category.setAdapter(adapter);
-//        list_category.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(CategoryActivity.this,DetailActivity.class);
-//                intent.putExtra("etProductName",list.get(position).getProduct_name());
-//                startActivity(intent);
-//            }
-//        });
-
-        list_category.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+        new Thread(){
             @Override
+            public void run() {
+                MediaType type = MediaType.parse("text/plain");
+                RequestBody requestBody = RequestBody.create(type, t.get(0) +"");
+                System.out.println("position是"+0);
+                Request request = new Request.Builder()
+                        .url(SERVER_HOME + "Categoryr")
+                        .post(requestBody)
+                        .build();
+                //3. 创建CALL对象
+                Call call = okHttpClient.newCall(request);
+                //4. 提交请求并获取响应
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.i("clb", "请求失败");
+                    }
 
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String json = response.body().string();
+                        System.out.println("右面的json分类是"+json);
+                        Type type = new TypeToken<ArrayList<Categoryr>>(){}.getType();
+                        plist = gson.fromJson(json,type);
+                        System.out.println("右面分类是"+plist);
+                        Message msg = handler.obtainMessage();
+                        //设置Message对象的参数
+                        msg.what = 2;
+                        //发送Message
+                        handler.sendMessage(msg);
+                    }
+                });
+            }
+        }.start();
+        list_category.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, final int arg2, long arg3) {
-//                for(Integer s:t){
-//                    n = s;
-//                    System.out.println(n);
-                    new Thread(){
-                        @Override
-                        public void run() {
-                            MediaType type = MediaType.parse("text/plain");
-                            RequestBody requestBody = RequestBody.create(type,arg2+1+"");
-                            System.out.println(arg2);
-                            Request request = new Request.Builder()
-                                    .url(SERVER_HOME + "Categoryr")
-                                    .post(requestBody)
-                                    .build();
-                            //3. 创建CALL对象
-                            Call call = okHttpClient.newCall(request);
-                            //4. 提交请求并获取响应
-                            call.enqueue(new Callback() {
-                                @Override
-                                public void onFailure(Call call, IOException e) {
-                                    Log.i("clb", "请求失败");
-                                }
+                new Thread(){
+                    @Override
+                    public void run() {
+                        MediaType type = MediaType.parse("text/plain");
+                        RequestBody requestBody = RequestBody.create(type, t.get(arg2) +"");
+                        System.out.println("position是"+arg2);
+                        Request request = new Request.Builder()
+                                .url(SERVER_HOME + "Categoryr")
+                                .post(requestBody)
+                                .build();
+                        //3. 创建CALL对象
+                        Call call = okHttpClient.newCall(request);
+                        //4. 提交请求并获取响应
+                        call.enqueue(new Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) {
+                                Log.i("clb", "请求失败");
+                            }
 
-                                @Override
-                                public void onResponse(Call call, Response response) throws IOException {
-                                    String json = response.body().string();
-                                    System.out.println("右面的json分类是"+json);
-                                    Type type = new TypeToken<ArrayList<Categoryr>>(){}.getType();
-                                    plist = gson.fromJson(json,type);
-                                    System.out.println("右面分类是"+plist);
-                                    List<String> strs=new ArrayList<>();
-//                                for(Categoryl categoryl:clist){
-//                                    String categoryName = categoryl.getCategoryl_name();
-//                                    strs.add(categoryName);
-//                                }
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException {
+                                String json = response.body().string();
+                                System.out.println("右面的json分类是"+json);
+                                Type type = new TypeToken<ArrayList<Categoryr>>(){}.getType();
+                                plist = gson.fromJson(json,type);
+                                System.out.println("右面分类是"+plist);
+                                Message msg = handler.obtainMessage();
+                                //设置Message对象的参数
+                                msg.what = 2;
+                                //发送Message
+                                handler.sendMessage(msg);
+                            }
+                        });
+                    }
+                }.start();
 
-//                                Message msg = handler.obtainMessage();
-//                                //设置Message对象的参数
-//                                msg.what = 1;
-//                                msg.obj = strs;
-//                                //发送Message
-//                                handler.sendMessage(msg);
-                                }
-                            });
-                        }
-                    }.start();
-//                }
-                CategoryGridAdapter categoryGridAdapter = new CategoryGridAdapter(getContext(), plist);
-                grid_category.setAdapter(categoryGridAdapter);
             }
         });
         grid_category.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -257,72 +238,10 @@ public class CategoryActivity extends AppCompatActivity {
             }
         });
     }
-    // 初始化控件
-//    private void initUi() {
-//        list_category = (ListView) findViewById(R.id.list_category);
-//        grid_category = (GridView) findViewById(R.id.grid_category);
-//        list_category.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-//                TextView txt = (TextView) arg1.findViewById(R.id.txt_category_list);
-//                String name = txt.getText().toString();
-//                ArrayList<CategoryGrid> gridlist2 = new ArrayList<CategoryGrid>();
-//                if (name.equals("智能设备")) {
-//                    for (int i = 0; i < img_name.length; i++) {
-//                        CategoryGrid model = new CategoryGrid();
-//                        model.setImg_grid(ToolUtil.getPropThumnail(img_name[i], getContext()));
-//                        model.setTxt_name(txt_name[i]);
-//                        model.setTxt_name_jianjie(txt_name_jianjie[i]);
-//                        gridlist2.add(model);
-//                    }
-//                } else {
-//                    for (int i = 0; i < img_name.length; i++) {
-//                        CategoryGrid model = new CategoryGrid();
-//                        model.setImg_grid(ToolUtil.getPropThumnail(img_name[i], getContext()));
-//                        model.setTxt_name(txt_name[i] + i);
-//                        model.setTxt_name_jianjie(txt_name_jianjie[i]);
-//                        gridlist2.add(model);
-//                    }
-//                }
-//                CategoryGridAdapter categoryGridAdapter = new CategoryGridAdapter(getContext(), gridlist2);
-//                grid_category.setAdapter(categoryGridAdapter);
-//            }
-//        });
-//        grid_category.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-//                Intent intent = new Intent(arg1.getContext(), DetailActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//    }
-//
-//    // 数据
-//    private void initData() {
-//        list = new ArrayList<Categoryl>();
-//        for (int i = 0; i < name.length; i++) {
-//            Categoryl category = new Categoryl();
-//            category.setCategoryl_name(name[i]);
-//            list.add(category);
-//        }
-//        gridlist = new ArrayList<CategoryGrid>();
-//        for (int i = 0; i < img_name.length; i++) {
-//            CategoryGrid model = new CategoryGrid();
-//            model.setImg_grid(ToolUtil.getPropThumnail(img_name[i], this));
-//            model.setTxt_name(txt_name[i]);
-//            model.setTxt_name_jianjie(txt_name_jianjie[i]);
-//            gridlist.add(model);
-//        }
-//    }
-
     // 事件
 //    private void initEvent() {
 //        CategoryAdapter categoryAdapter = new CategoryAdapter(this, clist);
 //        list_category.setAdapter(categoryAdapter);
-////        CategoryGridAdapter categoryGridAdapter = new CategoryGridAdapter(this, gridlist);
-////        grid_category.setAdapter(categoryGridAdapter);
 //    }
 
 }

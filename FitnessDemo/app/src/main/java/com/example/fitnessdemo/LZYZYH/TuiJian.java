@@ -34,6 +34,7 @@ import com.example.fitnessdemo.LZYZYH.model.Fruit;
 import com.example.fitnessdemo.LZYZYH.model.Icon;
 import com.example.fitnessdemo.LZYZYH.model.ListOfGoods;
 import com.example.fitnessdemo.R;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -61,6 +62,8 @@ public class TuiJian extends Fragment {
     boolean isRunning = false;
     private EditText etProductSearch;
     private Button btnProductSearch;
+
+    private SmartRefreshLayout refreshlayout;
 
     private MyAdapter mAdapter;
 
@@ -120,7 +123,6 @@ public class TuiJian extends Fragment {
         grid_photo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(mContext, "你点击了~" + position + "~项", Toast.LENGTH_SHORT).show();
                 Intent i4 = new Intent();
                 i4.putExtra("typeId",position+1+"");
                 i4.setClass(getContext(), CategoryActivity.class);
@@ -282,7 +284,7 @@ public class TuiJian extends Fragment {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    //下一条
+////                    下一条
 //                    getActivity().runOnUiThread(new Runnable() {
 //                        @Override
 //                        public void run() {
@@ -295,14 +297,6 @@ public class TuiJian extends Fragment {
 
     }
     private void productItemClick(){
-//        cate1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i1 = new Intent();
-//                i1.setClass(getContext(), CategoryActivity.class);
-//                startActivity(i1);
-//            }
-//        });
         btnProductSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

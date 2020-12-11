@@ -53,9 +53,9 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Fruit fruit = mFruitList.get(position);
-                Intent intent = new Intent(parent.getContext(), PubuActivity.class);
-                intent.putExtra("etProductSearch", String.valueOf(fruit.geti()));
-                System.out.println("adapter:"+String.valueOf(fruit.geti()));
+                Intent intent = new Intent(parent.getContext(), DetailActivity.class);
+                intent.putExtra("etProductSearch", String.valueOf(fruit.getName()));
+                System.out.println("adapter:"+String.valueOf(fruit.getName()));
                 parent.getContext().startActivity(intent);
             }
         });
@@ -64,8 +64,8 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
                 Fruit fruit = mFruitList.get(position);
-                Intent intent = new Intent(parent.getContext(), PubuActivity.class);
-                intent.putExtra("etProductSearch", String.valueOf(fruit.geti()));
+                Intent intent = new Intent(parent.getContext(), DetailActivity.class);
+                intent.putExtra("etProductSearch", String.valueOf(fruit.getName()));
                 parent.getContext().startActivity(intent);
             }
         });

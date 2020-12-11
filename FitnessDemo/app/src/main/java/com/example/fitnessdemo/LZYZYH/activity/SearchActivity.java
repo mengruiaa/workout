@@ -71,7 +71,12 @@ public class SearchActivity extends AppCompatActivity  {
         }
         list_listofgoods = (ListView) findViewById(R.id.list_listofgoods);
         img_fanhui = (ImageView) findViewById(R.id.img_fanhui);
-//        img_fanhui.setOnClickListener(this);
+        img_fanhui.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SearchActivity.this.finish();
+            }
+        });
         list = new ArrayList<Product>();
         Intent intent=getIntent();
         etProductSearch=intent.getStringExtra("etProductSearch");
