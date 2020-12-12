@@ -19,7 +19,6 @@ import androidx.fragment.app.Fragment;
 import com.example.fitnessdemo.LZYZYH.TuiJian;
 import com.example.fitnessdemo.LZYZYH.adapter.ListOfGoodsAdapter;
 import com.example.fitnessdemo.LZYZYH.adapter.SearchAdapter;
-import com.example.fitnessdemo.LZYZYH.fragment.ProductFragment;
 import com.example.fitnessdemo.LZYZYH.model.ListOfGoods;
 import com.example.fitnessdemo.LZYZYH.model.Product;
 import com.example.fitnessdemo.R;
@@ -116,7 +115,7 @@ public class ListOfGoodsActivity extends Activity implements View.OnClickListene
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ListOfGoodsActivity.this,DetailActivity.class);
-                intent.putExtra("etProductName",list.get(position).getProduct_name());
+                intent.putExtra("etProductSearch",list.get(position).getProduct_name());
                 startActivity(intent);
             }
         });
@@ -125,15 +124,11 @@ public class ListOfGoodsActivity extends Activity implements View.OnClickListene
     public void onClick(View arg0) {
         switch (arg0.getId()) {
             case R.id.img_fanhui:
-                Intent i = new Intent();
-                i.setClass(this, TuiJian.class);
-                startActivity(i);
+                ListOfGoodsActivity.this.finish();
                 break;
         }
 
     }
 
     // 菜单
-
-
 }

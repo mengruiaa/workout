@@ -89,20 +89,21 @@
         android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout
-            android:orientation="vertical"
+        <RelativeLayout
             android:layout_marginRight="15dp"
             android:id="@+id/ll_clock_1"
             android:background="@drawable/sharp3"
             android:layout_width="150dp"
             android:layout_height="200dp">
             <ImageView
+                android:id="@+id/iv_clock_iv1"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/clb_jianshenbaike"
                 android:layout_width="80dp"
                 android:layout_height="80dp"/>
             <TextView
+                android:layout_below="@+id/iv_clock_iv1"
                 android:textStyle="bold"
                 android:layout_marginTop="50dp"
                 android:layout_marginLeft="20dp"
@@ -111,9 +112,8 @@
                 android:text="健身百科"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
+        </RelativeLayout>
+        <RelativeLayout
             android:background="@drawable/sharp4"
             android:layout_marginBottom="10dp"
             android:layout_toRightOf="@id/ll_clock_1"
@@ -121,6 +121,7 @@
             android:layout_width="match_parent"
             android:layout_height="65dp">
             <TextView
+                android:id="@+id/tv_clock_tv1"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:textStyle="bold"
@@ -130,15 +131,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <ImageView
+                android:layout_toRightOf="@+id/tv_clock_tv1"
                 android:layout_marginTop="13dp"
                 android:layout_marginLeft="60dp"
                 android:background="@drawable/clb_tuijianjihua"
                 android:layout_width="40dp"
                 android:layout_height="40dp"/>
 
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
+        </RelativeLayout>
+        <RelativeLayout
             android:background="@drawable/sharp5"
             android:layout_below="@id/ll_clock_2"
             android:layout_toRightOf="@id/ll_clock_1"
@@ -146,6 +147,7 @@
             android:layout_width="match_parent"
             android:layout_height="125dp">
             <TextView
+                android:id="@+id/tv_clock_tv2"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:textStyle="bold"
@@ -155,13 +157,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <ImageView
+                android:layout_toRightOf="@+id/tv_clock_tv2"
                 android:layout_marginTop="40dp"
                 android:layout_marginLeft="40dp"
                 android:background="@drawable/clb_jihua"
                 android:layout_width="80dp"
                 android:layout_height="80dp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </RelativeLayout>
 

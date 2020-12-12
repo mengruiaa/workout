@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.fitnessdemo.LZYZYH.TuiJian;
 import com.example.fitnessdemo.LZYZYH.adapter.SearchAdapter;
 import com.example.fitnessdemo.LZYZYH.model.Product;
 import com.example.fitnessdemo.R;
@@ -78,6 +79,8 @@ public class DetailActivity extends AppCompatActivity {
     private String product_link;
     private OkHttpClient okHttpClient=new OkHttpClient();
 
+    private ImageView iv ;
+
     private Product goods;
 
         private Handler handler = new Handler() {
@@ -99,6 +102,16 @@ public class DetailActivity extends AppCompatActivity {
         if (getSupportActionBar() != null){
             getSupportActionBar().hide();
         }
+        iv = findViewById(R.id.img_fanhui);
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent i = new Intent();
+//                i.setClass(DetailActivity.this, TuiJian.class);
+//                startActivity(i);
+                DetailActivity.this.finish();
+            }
+        });
         Intent intent = getIntent();
         etProductSearch = intent.getStringExtra("etProductSearch");
         System.out.println(etProductSearch+"!!!!!!!!!!!!");
@@ -127,6 +140,8 @@ public class DetailActivity extends AppCompatActivity {
                         gson = new GsonBuilder().serializeNulls().create();
                         Type type = new TypeToken<ArrayList<Product>>(){}.getType();
                         List<Product> lists = gson.fromJson(json,type);
+                        System.out.println("数组的大小是"+lists.size());
+                        System.out.println("数组是"+lists);
                         pro = lists.get(0);
                         Message msg = handler.obtainMessage();
                         //设置Message对象的参数
@@ -200,17 +215,5 @@ public class DetailActivity extends AppCompatActivity {
                 .apply(requestOptions)
                 .into(pimg6);
     }
-//    private void initItem() {
-//        adapter = new SearchAdapter(goodsList, R.layout.mall_list_item, this);
-//        lvShowAllGoods.setAdapter(adapter);
-//        lvShowAllGoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(DetailActivity.this, DetailActivity.class);
-//                intent.putExtra("etProductName", goodsList.get(position).getProduct_name());
-//                startActivity(intent);
-//            }
-//        });
-//    }
 
 }
