@@ -4,14 +4,12 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fitnessdemo.LZYZYH.activity.DetailActivity;
-import com.example.fitnessdemo.LZYZYH.activity.PubuActivity;
 import com.example.fitnessdemo.LZYZYH.model.Fruit;
 import com.example.fitnessdemo.R;
 
@@ -20,7 +18,6 @@ import java.util.List;
 public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{
 
     private List<Fruit> mFruitList;
-    private EditText etProductName;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         View fruitView;
