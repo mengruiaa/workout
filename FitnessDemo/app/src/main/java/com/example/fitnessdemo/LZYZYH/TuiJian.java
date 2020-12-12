@@ -293,12 +293,12 @@ public class TuiJian extends Fragment {
                         e.printStackTrace();
                     }
 ////                    下一条
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
-                        }
-                    });
+//                    getActivity().runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+//                        }
+//                    });
                 }
             }
         }.start();
