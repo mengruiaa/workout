@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +19,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.app.hubert.guide.NewbieGuide;
+import com.app.hubert.guide.model.GuidePage;
 import com.bumptech.glide.Glide;
 import com.example.fitnessdemo.ConfigUtil;
 import com.example.fitnessdemo.MR.AllCoursesActivity;
@@ -169,6 +173,23 @@ public class CourseS extends Fragment {
                     startActivity(intent);
                 }
             });
+            Animation enterAnimation = new AlphaAnimation(0f, 1f);
+            enterAnimation.setDuration(600);
+            enterAnimation.setFillAfter(true);
+
+            Animation exitAnimation = new AlphaAnimation(1f, 0f);
+            exitAnimation.setDuration(600);
+            exitAnimation.setFillAfter(true);
+            NewbieGuide.with(this)
+                    .setLabel("mengrui01")
+                    .addGuidePage(GuidePage.newInstance()
+ //                           .setBackgroundColor(0xE6E6FA66)
+                            .addHighLight(root.findViewById(R.id.sousuo))
+                            .setLayoutRes(R.layout.view_guide_simple,R.id.guan)
+                            .setEnterAnimation(enterAnimation)//进入动画
+                            .setExitAnimation(exitAnimation))
+                    .alwaysShow(true)
+                    .show();
             return root;
         }else {
             return root;

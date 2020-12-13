@@ -25,6 +25,9 @@ import com.example.fitnessdemo.CLB.entity.Essay;
 import com.example.fitnessdemo.CLB.fragment.FirstFragment;
 import com.example.fitnessdemo.CLB.fragment.SecondFragment;
 import com.example.fitnessdemo.ConfigUtil;
+import com.example.fitnessdemo.MR.entity.Course;
+import com.example.fitnessdemo.MR.entity.CoursePictureShow;
+import com.example.fitnessdemo.MR.someFragments.ListFragment;
 import com.example.fitnessdemo.R;
 import com.flyco.tablayout.SlidingTabLayout;
 import com.google.gson.Gson;
@@ -56,6 +59,8 @@ public class Stair2Activity extends AppCompatActivity {
     private ImageView ivBack;
     //关注按钮
     private Button btn_guanzhu;
+    //item名字1
+    private String itemName;
     //二级词条名称,简介，人数
     private TextView tvName;
     private TextView tv_brief;
@@ -69,6 +74,8 @@ public class Stair2Activity extends AppCompatActivity {
     private OkHttpClient okHttpClient;
     //文章显示
     private List<Essay> essays;
+    //相关课程显示
+    private List<CoursePictureShow> cpss=new ArrayList<>();
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -77,9 +84,12 @@ public class Stair2Activity extends AppCompatActivity {
                     //赋值
                     essays = (List<Essay>)msg.obj;
                     System.out.println("essays:"+essays);
-                    setDate();
+                    //获取数据课程
+                    initDate2(ConfigUtil.SERVER_HOME+"GetCourseByEssay");
                     break;
                 case 2:
+
+                    setDate();
                     break;
             }
         }
@@ -108,7 +118,7 @@ public class Stair2Activity extends AppCompatActivity {
             }
         });
         Intent intent = getIntent();
-        String itemName = intent.getStringExtra("itemName");
+        itemName = intent.getStringExtra("itemName");
         String attentionNumber="";
         String brief="";
 //        tv_brief.setText(brief);
@@ -128,7 +138,8 @@ public class Stair2Activity extends AppCompatActivity {
         slViewPage=findViewById(R.id.vp00);
         slFragments = new ArrayList<>();
         //获取数据
-        initDate(ConfigUtil.SERVER_HOME+"EssayListServlet",itemName);
+        initDate(ConfigUtil.SERVER_HOME+"EssayListServlet");
+
 //        setDate();
         btn_guanzhu = findViewById(R.id.clb_btn_stair2_1);
         btn_guanzhu.setOnClickListener(new View.OnClickListener() {
@@ -153,21 +164,61 @@ public class Stair2Activity extends AppCompatActivity {
 
     }
 
+    private void initDate2(final String s) {
+        new Thread(){
+            @Override
+            public void run() {
+                MediaType type = MediaType.parse("text/plain");
+                RequestBody requestBody = RequestBody.create(type,itemName);
+                Request request = new Request.Builder()
+                        .url(s)
+                        .post(requestBody)
+                        .build();
+                //3. 创建CALL对象
+                Call call = okHttpClient.newCall(request);
+                //4. 提交请求并获取响应
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.i("clb", "请求失败");
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String result = response.body().string();
+//                        System.out.println("??"+result);
+                        Type type= new TypeToken<List<Course>>(){}.getType();
+                        List<Course> cs=gson.fromJson(result,type);
+                        for(Course c:cs){
+                            CoursePictureShow cps=new CoursePictureShow(c.getCourse_id(),c.getName(),ConfigUtil.SERVER_HOME +c.getPicture());
+                            cpss.add(cps);
+                        }
+                        Message msg = handler.obtainMessage();
+                        msg.what = 2;
+                        handler.sendMessage(msg);
+
+                    }
+                });
+            }
+        }.start();
+
+    }
+
     private void setDate() {
         slFragments.add(new FirstFragment(essays));
 //        slFragments.add(new SecondFragment());
-        slFragments.add(new SecondFragment());
+        slFragments.add(new ListFragment(cpss));
         //     无需编写适配器，一行代码关联TabLayout与ViewPager（看这里看这里）
         slidingTabLayout.setViewPager(slViewPage, new String[]{"官方必读", "免费课程"}, this, slFragments);
 
     }
 
-    private void initDate(final String s, final String itemname) {
+    private void initDate(final String s) {
         new Thread(){
             @Override
             public void run() {
                 MediaType type = MediaType.parse("text/plain");
-                RequestBody requestBody = RequestBody.create(type,itemname);
+                RequestBody requestBody = RequestBody.create(type,itemName);
                 Request request = new Request.Builder()
                         .url(s)
                         .post(requestBody)

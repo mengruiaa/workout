@@ -16,32 +16,35 @@
      android:layout_height="50dp"/>
      -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/sharp6"
+    android:background="#ffffffff"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".CLB.ClockActivity">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/btn_setClock"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button"
-            android:layout_margin="20dp"
-            android:text="设置闹钟" />
         <ToggleButton
             android:id="@+id/btn_enClk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"
             android:checked="false"
             android:background="@drawable/small_button" />
-    </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_setClock"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/btn_enClk"
+            android:layout_toLeftOf="@+id/btn_enClk"
+            android:background="@drawable/button"
+            android:text="设置闹钟" />
+    </RelativeLayout>
     <TextView
         android:id="@+id/clb_tv_begin_run"
         android:gravity="center"
@@ -59,6 +62,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:background="@drawable/clb_nijintianyundonglema"/>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
