@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -87,11 +88,11 @@ public class ShowYe extends Fragment {
 //    private Button btnKonw;
 //    private String userName;
     //健身百科对象
-    private LinearLayout llClock1;
+    private RelativeLayout llClock1;
     //推荐计划对象
-    private LinearLayout llClock2;
+    private RelativeLayout llClock2;
     //我的计划对象
-    private LinearLayout llClock3;
+    private RelativeLayout llClock3;
     private int timeUsedInSec = 0;
     private boolean paused  =false;
     private String timeUsed ;
