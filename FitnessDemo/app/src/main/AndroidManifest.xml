@@ -39,8 +39,9 @@
         <activity android:name=".ZFT.ExerciseActivity" />
         <activity android:name=".CLB.EssayDetailActivity" />
         <activity android:name=".ZFT.RecoActivity"></activity>
-        <activity android:name=".CLB.ClockActivity" />
+        <activity android:name=".CLB.ClockActivity" >
 
+        </activity>
 
         <activity android:name=".MR.AllCoursesActivity" />
         <activity android:name=".MR.SearchGetActivity" />
@@ -59,6 +60,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".ZFT.PlanActivity"></activity>
         <activity android:name=".ws.Info1Activity" />
         <activity android:name=".ws.CustomerserviceActivity" />

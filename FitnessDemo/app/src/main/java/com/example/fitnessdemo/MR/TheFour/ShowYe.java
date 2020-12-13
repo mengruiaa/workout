@@ -11,12 +11,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -96,9 +98,11 @@ public class ShowYe extends Fragment {
     private int timeUsedInSec = 0;
     private boolean paused  =false;
     private String timeUsed ;
-    private TextView timeText;
-    private ImageView ivStop;
-    private ImageView ivBegin;
+    //跑步
+    private TextView beginRun;
+    //自定义PopupWindow
+    private PopupWindow popupWindow;
+    private TextView timeText1;
     private Message message;
     private int condition = 0;
     private Handler uiHandler = new Handler() {
@@ -156,43 +160,9 @@ public class ShowYe extends Fragment {
                 startActivity(intent);
             }
         });
-        timeText = root.findViewById(R.id.timeText);
-        ivStop = root.findViewById(R.id.iv_pp_stop);
-        ivBegin = root.findViewById(R.id.iv_pp_begin);
+
 
 //        uiHandler.sendMessage(message);
-        ivBegin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                message = uiHandler.obtainMessage();
-                message.what = 1;
-                if(condition ==0){
-                    //开始计时
-                    uiHandler.sendMessage(message);
-                    ivBegin.setBackground(getResources().getDrawable(R.drawable.clb_zanting2));
-                    condition = 1;
-
-                }else{
-                    //结束计时
-                    uiHandler.removeMessages(1);
-                    ivBegin.setBackground(getResources().getDrawable(R.drawable.clb_begin4));
-                    condition = 0;
-                }
-
-//                showPop();
-
-            }
-        });
-        ivStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                timeUsedInSec = 0;
-                uiHandler.removeMessages(1);
-                ivBegin.setBackground(getResources().getDrawable(R.drawable.clb_begin4));
-                //更新数据
-                timeText.setText("00:00:00:00");
-            }
-        });
 
 
         shakeSenseValue = getResources().getString(R.string.shakeSenseValue_2);
@@ -209,13 +179,90 @@ public class ShowYe extends Fragment {
         btn_enClk.setOnClickListener(buttonListener);
 
         loadData();
+
+        //开始跑步
+        beginRun  =root.findViewById(R.id.clb_tv_begin_run);
+        beginRun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPop();
+                message = uiHandler.obtainMessage();
+                message.what = 1;
+                uiHandler.sendMessage(message);
+            }
+        });
         return root;
+    }
+    /**
+     * 点击弹框
+     *
+     * @param
+     */
+    public void showPop() {
+        View contentView = null;
+        //设置contentView
+        if (popupWindow == null) {
+            contentView = LayoutInflater.from(getContext()).inflate(R.layout.clb_pop_clock, null);
+            popupWindow = new PopupWindow(contentView, RelativeLayout.LayoutParams.MATCH_PARENT,
+                    RelativeLayout.LayoutParams.MATCH_PARENT, true);
+            popupWindow.setFocusable(true);
+            popupWindow.setOutsideTouchable(false);
+            popupWindow.setClippingEnabled(false);
+        } else {
+            contentView = popupWindow.getContentView();
+        }
+        //暂停所在的布局
+        final LinearLayout llzanting = contentView.findViewById(R.id.clb_ll_zanting);
+        //开始结束所在的布局
+        final LinearLayout llthis = contentView.findViewById(R.id.clb_ll_this);
+        ImageView ivZanTing = contentView.findViewById(R.id.clb_iv_zanting);
+        ImageView ivStop = contentView.findViewById(R.id.pop_iv_stop);
+        ImageView ivBegin = contentView.findViewById(R.id.pop_iv_begin);
+        timeText1 = contentView.findViewById(R.id.timeText1);
+        ivZanTing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                uiHandler.removeMessages(1);
+                llzanting.setVisibility(View.GONE);
+                llthis.setVisibility(View.VISIBLE);
+            }
+        });
+        ivBegin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                message = uiHandler.obtainMessage();
+                message.what = 1;
+                uiHandler.sendMessage(message);
+                llzanting.setVisibility(View.VISIBLE);
+                llthis.setVisibility(View.GONE);
+
+            }
+        });
+        ivStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                timeUsedInSec = 0;
+                uiHandler.removeMessages(1);
+                //更新数据
+                timeText1.setText("00:00:00:00");
+                llzanting.setVisibility(View.VISIBLE);
+                llthis.setVisibility(View.GONE);
+                popupWindow.dismiss();
+
+
+            }
+        });
+        //显示PopupWindow
+        View rootview = LayoutInflater.from(getContext()).inflate(R.layout.activity_clock, null);
+        popupWindow.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
+//        popupWindow.setElevation(1000f);//我将动画位置设置为1000f
+//        popupWindow.setOutsideTouchable(true);//设置点击外部区域可以取消popupWindow
     }
     private void updateClockUI() {
 //        minText.setText(getMin()+":");
 //        secText.setText(getSec());
 //        misText.setText(getMis());
-        timeText.setText(timeUsed);
+        timeText1.setText(timeUsed);
     }
     public void addTimeUsed() {
         timeUsedInSec=timeUsedInSec+1;
