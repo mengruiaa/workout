@@ -25,7 +25,7 @@
         android:textSize="20dp"
         android:text="胸肌一"
         android:textColor="@android:color/black"
-        android:layout_marginLeft="80dp"/>
+        android:layout_marginLeft="110dp"/>
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"

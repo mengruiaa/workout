@@ -11,8 +11,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.app.hubert.guide.NewbieGuide;
+import com.app.hubert.guide.model.GuidePage;
+import com.bumptech.glide.Glide;
 import com.example.fitnessdemo.ConfigUtil;
 import com.example.fitnessdemo.MR.adapter.MyFragmentPagerAdapter;
 import com.example.fitnessdemo.MR.entity.Course;
@@ -51,6 +57,7 @@ public class CourseDetailActivity extends AppCompatActivity {
     private OkHttpClient okHttpClient=new OkHttpClient();
     private Gson gson=new Gson();
     private String courseName;
+    private Course cs;
     private SlidingTabLayout tb;
     private ViewPager mViewPager;
     private ArrayList<Fragment> mFragments=new ArrayList<>();
@@ -59,6 +66,8 @@ public class CourseDetailActivity extends AppCompatActivity {
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what){
                 case 1:
+                    ImageView picture=findViewById(R.id.picture_top);
+                    Glide.with(CourseDetailActivity.this).load(ConfigUtil.SERVER_HOME +cs.getPicture()).into(picture);
                     tb.setViewPager(mViewPager, new String[]{"课程简介", "视频列表","相关计划"}, CourseDetailActivity.this, mFragments);
                     break;
             }
@@ -94,7 +103,23 @@ public class CourseDetailActivity extends AppCompatActivity {
             }
         });
         getIntroduce();
+        Animation enterAnimation = new AlphaAnimation(0f, 1f);
+        enterAnimation.setDuration(600);
+        enterAnimation.setFillAfter(true);
 
+        Animation exitAnimation = new AlphaAnimation(1f, 0f);
+        exitAnimation.setDuration(600);
+        exitAnimation.setFillAfter(true);
+        NewbieGuide.with(this)
+                .setLabel("courseDetail")
+                .addGuidePage(GuidePage.newInstance()
+                        //                           .setBackgroundColor(0xE6E6FA66)
+                        .addHighLight(tb)
+                        .setLayoutRes(R.layout.view_guide_simple2,R.id.guan)
+                        .setEnterAnimation(enterAnimation)//进入动画
+                        .setExitAnimation(exitAnimation))
+                .alwaysShow(true)
+                .show();
     }
 
     private void addLikeCourses() {
@@ -138,7 +163,7 @@ public class CourseDetailActivity extends AppCompatActivity {
                             new InputStreamReader(in, "utf-8"));
                     //读取字符信息
                     String result = reader.readLine();
-                    Course cs=gson.fromJson(result,Course.class);
+                    cs=gson.fromJson(result,Course.class);
                     in.close();
                     mFragments.add(new IntroduceFragment(cs));
                     //拿视频

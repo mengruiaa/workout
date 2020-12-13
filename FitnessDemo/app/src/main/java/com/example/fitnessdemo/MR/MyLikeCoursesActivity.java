@@ -1,8 +1,10 @@
 package com.example.fitnessdemo.MR;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,11 +13,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.fitnessdemo.ConfigUtil;
 import com.example.fitnessdemo.MR.adapter.CourseListAdapter;
 import com.example.fitnessdemo.MR.entity.Course;
 import com.example.fitnessdemo.MR.entity.CoursePictureShow;
+import com.example.fitnessdemo.MR.entity.CoursePlan;
 import com.example.fitnessdemo.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -32,17 +36,65 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+
 public class MyLikeCoursesActivity extends AppCompatActivity {
     private Gson gson=new Gson();
+    private OkHttpClient okHttpClient=new OkHttpClient();
+    private CourseListAdapter adapter;
+    private ListView listView;
     private List<CoursePictureShow> cpss=new ArrayList<>();
     private Handler handler= new Handler(){//handlerThread.getLooper()){
         @Override
         public void handleMessage(@NonNull Message msg) {
             switch (msg.what){
                 case 1:
-                    CourseListAdapter adapter=new CourseListAdapter(MyLikeCoursesActivity.this,cpss,R.layout.mr_course_picture_item);
-                    ListView listView=findViewById(R.id.shoucang);
+                    adapter=new CourseListAdapter(MyLikeCoursesActivity.this,cpss,R.layout.mr_course_picture_item);
+                    listView=findViewById(R.id.shoucang);
                     listView.setAdapter(adapter);
+                    //listView长按事件
+                    listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+                        @Override
+                        public boolean onItemLongClick(AdapterView<?> parent, View view,
+                                                       final int position, long id) {
+                            //定义AlertDialog.Builder对象，当长按列表项的时候弹出确认删除对话框
+                            AlertDialog.Builder builder=new AlertDialog.Builder(MyLikeCoursesActivity.this);
+                            builder.setMessage("确定删除?");
+                            builder.setTitle("提示");
+
+                            //添加AlertDialog.Builder对象的setPositiveButton()方法
+                            builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    deleteMyLike(cpss.get(position).getName());
+                                    if(cpss.remove(position)!=null){
+                                        System.out.println("success");
+                                    }else {
+                                        System.out.println("failed");
+                                    }
+                                    adapter.notifyDataSetChanged();
+                                    Toast.makeText(getBaseContext(), "删除此课程", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                            //添加AlertDialog.Builder对象的setNegativeButton()方法
+                            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+
+                            builder.create().show();
+                            return true;
+                        }
+                    });
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -51,10 +103,39 @@ public class MyLikeCoursesActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
+
                     break;
             }
         }
     };
+
+    private void deleteMyLike(final String courseName) {
+        new Thread(){
+            @Override
+            public void run() {
+                //2 创建Request对象
+                //1) 使用RequestBody封装请求数据
+                //获取待传输数据对应的MIME类型
+                MediaType type = MediaType.parse("text/plain");
+                //创建RequestBody对象
+                RequestBody reqBody = RequestBody.create(type,gson.toJson(new CoursePlan(ConfigUtil.user_Name,courseName)));
+                //2) 创建请求对象
+                Request request = new Request.Builder()
+                        .url(ConfigUtil.SERVER_HOME + "DeleteLikeCourse")
+                        .post(reqBody)
+                        .build();
+                //3. 创建CALL对象
+                Call call = okHttpClient.newCall(request);
+                //4. 提交请求并获取响应
+                try {
+                    call.execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
