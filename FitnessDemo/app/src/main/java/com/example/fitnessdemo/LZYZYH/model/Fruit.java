@@ -5,11 +5,13 @@ public class Fruit {
     private String name;
     private int i;
     private int imageId;
+    private String price;
 
-    public Fruit(String name, int imageId, int i) {
+    public Fruit(String name, int imageId, int i,String price) {
         this.name = name;
         this.i=i;
         this.imageId = imageId;
+        this.price = price;
     }
 
     public String getName() {return name; }
@@ -17,5 +19,5 @@ public class Fruit {
     public int getImageId() {
         return imageId;
     }
-
+    public String getPrice(){return price;}
 }

@@ -137,22 +137,30 @@ public class TuiJian extends Fragment {
         try {
             out = getActivity().openFileOutput("data", Context.MODE_PRIVATE);
             writer = new BufferedWriter(new OutputStreamWriter(out));
-            writer.write("<font color='black'><b>野小兽智能动感单车家用室内减肥器材超静音健身车小米有品M1-Pro器材</b></font><<br/><font color='red'>￥1998</font>\n");
-            writer.write("a\n");
-            writer.write("<font color='black'><b>小米米家走步机多功能家用折叠小型室内健身跑步机</b></font><br/><br/><font color='red'>￥1799</font>\n");
-            writer.write("g\n");
-            writer.write("<font color='black'><b>麦瑞克家用多功能踏步机磁控健身器瘦腿瘦身健步踩踏板机室内静音</b></font><br/><br/><font color='red'>￥729</font>\n");
+            writer.write("免打孔家用单杠健身引体向上室内体育用品门上墙体");
+            writer.write("\n<font color='red'>￥49.9</font>\n");
+            writer.write("ag\n");
+            writer.write("小米体脂秤2智能精准减肥电子称迷你健康家用体重秤脂肪秤");
+            writer.write("\n<font color='red'>￥99</font>\n");
+            writer.write("j\n");
+            writer.write("麦瑞克家用多功能踏步机磁控健身器瘦腿瘦身健步踩踏板机室内静音");
+            writer.write("\n<font color='red'>￥729</font>\n");
             writer.write("f\n");
-            writer.write("<font color='black'><b>VFU高强度背心大胸防下垂运动内衣跑步防震聚拢文胸定型健身bra女</b></font><br/><br/><font color='red'>￥188</font>\n");
-            writer.write("o\n");
-            writer.write("<font color='black'><b>野小兽智能动感单车家用室内减肥器材</b></font><br/><br/><font color='red'>￥1999</font>\n");
-            writer.write("ad\n");
-            writer.write("<font color='black'><b>小米米家走步机多功能家用折叠小型室内健身跑步机</b></font><br/><br/><font color='red'>￥1799</font>\n");
+            writer.write("安德玛官方UA Armour男硬汉装运动健身修身紧身裤1289577");
+            writer.write("\n<font color='red'>￥169</font>\n");
+            writer.write("ac\n");
+            writer.write("迪卡侬计数跳绳成人运动专用男女健身专业燃脂儿童小学生绳子FICS");
+            writer.write("\n<font color='red'>￥59.9</font>\n");
             writer.write("ae\n");
-            writer.write("<font color='black'><b>麦瑞克家用多功能踏步机磁控健身器瘦腿瘦身健步踩踏板机室内静音</b></font><br/><br/><font color='red'>￥729</font>\n");
-            writer.write("f\n");
-            writer.write("<font color='black'><b>VFU高强度背心大胸防下垂运动内衣跑步防震聚拢文胸定型健身bra女</b></font><br/><font color='red'>￥188</font>\n");
+            writer.write("迪卡侬悬挂式训练带多功能拉力绳正品家用健身阻力带力量训练CROB");
+            writer.write("\n<font color='red'>￥99.9</font>\n");
+            writer.write("ai\n");
+            writer.write("VFU高强度背心大胸防下垂运动内衣跑步防震聚拢文胸定型健身bra女");
+            writer.write("\n<font color='red'>￥188</font>\n");
             writer.write("o\n");
+            writer.write("小米米家走步机多功能家用折叠小型室内健身跑步机");
+            writer.write("\n<font color='red'>￥1799</font>\n");
+            writer.write("g\n");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -325,9 +333,9 @@ public class TuiJian extends Fragment {
         ArrayList<String> a=load();
         for (int i = 0; i < a.size(); ) {
             //Fruit apple =new Fruit("apple",R.drawable.apple_pic);
-            Fruit apple = new Fruit(a.get(i), getResources().getIdentifier(a.get(i+1),"drawable", "com.example.fitnessdemo"),i);
+            Fruit apple = new Fruit(a.get(i), getResources().getIdentifier(a.get(i+2),"drawable", "com.example.fitnessdemo"),i,a.get(i+1));
             fruitList.add(apple);
-            i+=2;
+            i+=3;
 
         }
     }

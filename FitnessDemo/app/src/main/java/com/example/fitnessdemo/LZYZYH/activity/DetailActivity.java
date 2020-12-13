@@ -140,6 +140,8 @@ public class DetailActivity extends AppCompatActivity {
                         gson = new GsonBuilder().serializeNulls().create();
                         Type type = new TypeToken<ArrayList<Product>>(){}.getType();
                         List<Product> lists = gson.fromJson(json,type);
+                        System.out.println("数组的大小是"+lists.size());
+                        System.out.println("数组是"+lists);
                         pro = lists.get(0);
                         Message msg = handler.obtainMessage();
                         //设置Message对象的参数

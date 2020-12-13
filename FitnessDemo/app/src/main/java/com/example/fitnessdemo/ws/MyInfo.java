@@ -30,6 +30,7 @@ import androidx.fragment.app.Fragment;
 import com.example.fitnessdemo.ConfigUtil;
 import com.example.fitnessdemo.MR.ShouYeActivity;
 import com.example.fitnessdemo.R;
+import com.example.fitnessdemo.ZFT.UserPlanActivity;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
@@ -93,8 +94,8 @@ public class MyInfo extends Fragment {
         root = inflater.inflate(R.layout.ws_fragment_myinfo, container, false);
         findview();
         setListener();
-        initinfo();
-        initHandler();
+//        initinfo();
+//        initHandler();
         return root;
     }
 
@@ -223,6 +224,9 @@ public class MyInfo extends Fragment {
                     startActivity(intent);
                     break;
                 case R.id.user_plan:
+                    intent.setClass(getContext(), UserPlanActivity.class);
+                    intent.putExtra("userName",ConfigUtil.user_Name);
+                    startActivity(intent);
                     break;
                 case R.id.user_help:
                     break;

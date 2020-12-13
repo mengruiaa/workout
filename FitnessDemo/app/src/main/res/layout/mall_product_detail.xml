@@ -40,8 +40,7 @@
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            android:src="@drawable/a"/>
+            android:layout_gravity="center"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,7 +62,6 @@
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1998"
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp" />
 
@@ -85,7 +83,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="1211"
                     android:textColor="@color/colorTextColor2"
                     android:textSize="16sp" />
             </RelativeLayout>
@@ -179,7 +176,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorTextColor2"
-                    android:text="灰色，白色，黑色"
                     android:textSize="16dp" />
             </LinearLayout>
 
@@ -209,43 +205,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/a1"/>
+                android:adjustViewBounds="true"/>
 
             <ImageView
                 android:id="@+id/img2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:src="@drawable/a2"/>
+                android:adjustViewBounds="true"/>
 
             <ImageView
                 android:id="@+id/img3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:src="@drawable/a3"/>
+                android:adjustViewBounds="true"/>
 
             <ImageView
                 android:id="@+id/img4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:src="@drawable/a4"/>
+                android:adjustViewBounds="true"/>
 
             <ImageView
                 android:id="@+id/img5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:src="@drawable/a5"/>
+                android:adjustViewBounds="true"/>
 
             <ImageView
                 android:id="@+id/img6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:src="@drawable/a6"
                 />
         </LinearLayout>
         <LinearLayout
