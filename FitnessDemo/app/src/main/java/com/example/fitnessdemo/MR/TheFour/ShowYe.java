@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -70,8 +71,8 @@ public class ShowYe extends Fragment {
     {
         sharedData = getActivity().getSharedPreferences("main_activity", Context.MODE_PRIVATE);
         edit = sharedData.edit();
-        btn.setText(sharedData.getString("time",
-                sdf.format(new Date(c.getTimeInMillis()))));
+//        btn.setText(sharedData.getString("time",
+//                sdf.format(new Date(c.getTimeInMillis()))));
         btn_enClk.setChecked(sharedData.getBoolean("on_off", false));
     }
 
@@ -87,11 +88,11 @@ public class ShowYe extends Fragment {
 //    private Button btnKonw;
 //    private String userName;
     //健身百科对象
-    private LinearLayout llClock1;
+    private RelativeLayout llClock1;
     //推荐计划对象
-    private LinearLayout llClock2;
+    private RelativeLayout llClock2;
     //我的计划对象
-    private LinearLayout llClock3;
+    private RelativeLayout llClock3;
     private int timeUsedInSec = 0;
     private boolean paused  =false;
     private String timeUsed ;
@@ -201,7 +202,7 @@ public class ShowYe extends Fragment {
 
         ButtonListener buttonListener = new ButtonListener();	// 注册设置时间按钮监听事件
         btn = (Button)root.findViewById(R.id.btn_setClock);
-        btn.setText(timeOnBtn);
+//        btn.setText(timeOnBtn);
         btn.setOnClickListener(buttonListener);
 
         btn_enClk = (ToggleButton) root.findViewById(R.id.btn_enClk); // 注册开启关闭按钮监听事件

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.solver.GoalRow;
 
 import android.app.Service;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.RingtoneManager;
@@ -13,6 +14,7 @@ import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.fitnessdemo.ConfigUtil;
 import com.example.fitnessdemo.MR.ShouYeActivity;
 import com.example.fitnessdemo.MR.TheFour.ShowYe;
 import com.example.fitnessdemo.R;
@@ -31,6 +33,10 @@ public class AlterActivity extends AppCompatActivity {
         btnGoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(AlterActivity.this, UserPlanActivity.class);
+                intent.putExtra("userName", ConfigUtil.user_Name);
+                startActivity(intent);
                 if (ShowYe.getAlarmStyle()){
                     mMediaPlayer.stop();
                 }else {

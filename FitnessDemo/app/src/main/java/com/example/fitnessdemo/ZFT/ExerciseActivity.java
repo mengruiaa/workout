@@ -359,6 +359,7 @@ public class ExerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mPopWindow.dismiss();
+                MotionActivity.button.setVisibility(View.VISIBLE);
                 finish();
             }
         });

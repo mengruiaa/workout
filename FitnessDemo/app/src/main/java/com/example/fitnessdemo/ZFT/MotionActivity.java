@@ -39,7 +39,7 @@ public class MotionActivity extends AppCompatActivity {
     private TextView tvHead;
     private TextView tvDesc;
     private Button btnStarMotion;
-    private NbButton button;
+    public static NbButton button;
     private ScrollView srcontent;
     private Handler h;
     private Animator animator;
@@ -107,6 +107,7 @@ public class MotionActivity extends AppCompatActivity {
 
             }
         });
+        button.setVisibility(View.GONE);
     }
 
     private void ClockIn(final String s) {

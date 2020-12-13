@@ -32,7 +32,7 @@ import java.util.List;
 public class UserPlanActivity extends AppCompatActivity {
     public static TextView tvNote;
     public static Button btnAdd;
-
+    private Button btnBack;
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -72,6 +72,12 @@ public class UserPlanActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClass(UserPlanActivity.this,PlanActivity.class);
                 startActivity(intent);
+                finish();
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 finish();
             }
         });
@@ -117,5 +123,6 @@ public class UserPlanActivity extends AppCompatActivity {
     private void findViews() {
         tvNote = findViewById(R.id.zft_note);
         btnAdd = findViewById(R.id.btn_zft_addToPlan);
+        btnBack = findViewById(R.id.btn_zft_back);
     }
 }
