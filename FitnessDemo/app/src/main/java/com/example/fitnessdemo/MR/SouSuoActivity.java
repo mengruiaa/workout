@@ -2,15 +2,12 @@ package com.example.fitnessdemo.MR;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,11 +17,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.fitnessdemo.ConfigUtil;
-import com.example.fitnessdemo.MR.adapter.MyFragmentPagerAdapter;
-import com.example.fitnessdemo.MR.entity.Course;
-import com.example.fitnessdemo.MR.entity.CoursePictureShow;
 import com.example.fitnessdemo.MR.entity.History;
-import com.example.fitnessdemo.MR.someFragments.ListFragment;
 import com.example.fitnessdemo.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

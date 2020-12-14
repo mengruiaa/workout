@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorG"
     tools:context=".ZFT.UserPlanActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <Button
-            android:id="@+id/btn_zft_back"
+            android:id="@+id/btn_zft_history_back"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="5dp"

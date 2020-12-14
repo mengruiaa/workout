@@ -28,8 +28,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.fitnessdemo.ConfigUtil;
-import com.example.fitnessdemo.MR.ShouYeActivity;
-import com.example.fitnessdemo.MR.entity.History;
 import com.example.fitnessdemo.R;
 import com.example.fitnessdemo.ZFT.HistoryActivity;
 import com.example.fitnessdemo.ZFT.UserPlanActivity;
@@ -222,6 +220,7 @@ public class MyInfo extends Fragment {
         friends.setOnClickListener(myListener);
         plans.setOnClickListener(myListener);
         helps.setOnClickListener(myListener);
+        tvHistory.setOnClickListener(myListener);
     }
 
     private void findview() {
@@ -240,6 +239,7 @@ public class MyInfo extends Fragment {
         helps = root.findViewById(R.id.user_help);
         tvwh = root.findViewById(R.id.tv_weightheight);
         tvTime = root.findViewById(R.id.tv_historyTime);
+        tvHistory = root.findViewById(R.id.tv_my_history);
     }
 
     class MyListener implements View.OnClickListener {

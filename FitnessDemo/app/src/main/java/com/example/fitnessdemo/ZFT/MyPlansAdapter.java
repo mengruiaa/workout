@@ -28,8 +28,6 @@ import java.util.List;
 
 public class MyPlansAdapter extends RecyclerView.Adapter<MyPlansAdapter.ViewHolder>{
     private List<Plan> mPlan;
-    private TextView tvNote;
-    private Button btnAdd;
     static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView myImage;
         Button btnDelete;

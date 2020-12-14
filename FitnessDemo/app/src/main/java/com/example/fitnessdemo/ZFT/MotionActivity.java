@@ -186,7 +186,6 @@ public class MotionActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void gotoNew(String planName) {
         button.gotoNew();
-
         final Intent intent=new Intent(this, DataActivity.class);
         intent.putExtra("planName", planName);
         int xc=(button.getLeft()+button.getRight())/2;
