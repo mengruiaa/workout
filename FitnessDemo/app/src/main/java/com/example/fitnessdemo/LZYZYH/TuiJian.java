@@ -25,6 +25,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.fitnessdemo.LZYZYH.Oneweek.OneWeek1;
+import com.example.fitnessdemo.LZYZYH.Oneweek.OneWeek2;
+import com.example.fitnessdemo.LZYZYH.Oneweek.OneWeek3;
 import com.example.fitnessdemo.LZYZYH.activity.CategoryActivity;
 import com.example.fitnessdemo.LZYZYH.activity.ListOfGoodsActivity;
 import com.example.fitnessdemo.LZYZYH.activity.SearchActivity;
@@ -75,7 +78,9 @@ public class TuiJian extends Fragment {
     private Context mContext;
     private GridView grid_photo;
     private ArrayList<Icon> mData = null;
-
+    private Button button1;
+    private Button button2;
+    private Button button3;
 
     private LinearLayout cate1;
 
@@ -87,11 +92,13 @@ public class TuiJian extends Fragment {
                 false);
         viewPager = view.findViewById(R.id.loopviewpager);
         ll_dots_container = view.findViewById(R.id.ll_dots_loop);
-        product_item = view.findViewById(R.id.oneweek1);
-      //  cate1 = view.findViewById(R.id.cate1);
         etProductSearch = view.findViewById(R.id.et_product_search);
         btnProductSearch = view.findViewById(R.id.btn_product_search);
         findAll = view.findViewById(R.id.findAll);
+        button1 = view.findViewById(R.id.oneweek1);
+        button2 = view.findViewById(R.id.oneweek2);
+        button3 = view.findViewById(R.id.oneweek3);
+        onClick();//一周严选
         initLoopView();  //实现轮播图
         productItemClick();
 
@@ -326,6 +333,40 @@ public class TuiJian extends Fragment {
         });
 
     }
+
+    /*
+一周严选
+ */
+    private void onClick() {
+        MyListener listener = new MyListener();
+        button1.setOnClickListener(listener);
+        button2.setOnClickListener(listener);
+        button3.setOnClickListener(listener);
+    }
+
+    class MyListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.oneweek1:
+                    Intent intent1 = new Intent();
+                    intent1.setClass(getContext(), OneWeek1.class);
+                    startActivity(intent1);
+                    break;
+                case R.id.oneweek2:
+                    Intent intent2 = new Intent();
+                    intent2.setClass(getContext(), OneWeek2.class);
+                    startActivity(intent2);
+                    break;
+                case R.id.oneweek3:
+                    Intent intent3 = new Intent();
+                    intent3.setClass(getContext(), OneWeek3.class);
+                    startActivity(intent3);
+                    break;
+            }
+        }
+    }
+
     /*
     家庭健身房
      */
