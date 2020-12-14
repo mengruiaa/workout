@@ -142,6 +142,9 @@
 <!--&gt;>>>>>> 7ef4ebac512d47deb8d0309e56b8774a429718a5-->
 >>>>>>> 2935abb34dabc9ca06abd306d3549cf55a442455
 >>>>>>> 5269a7e1079c068c7684941eaf4992aca76b4c8e
+        <activity android:name=".LZYZYH.Oneweek.OneWeek1" />
+        <activity android:name=".LZYZYH.Oneweek.OneWeek2" />
+        <activity android:name=".LZYZYH.Oneweek.OneWeek3" />   
         <activity android:name=".LZYZYH.activity.DetailActivity" />
         <activity android:name=".LZYZYH.activity.CategoryActivity" />
         <activity android:name=".LZYZYH.activity.ListOfGoodsActivity" />
