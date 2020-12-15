@@ -8,7 +8,7 @@ public class User {
     private int weight;
     private int age;
     private String sex;
-
+    private String img;
     public User() {
         super();
     }
@@ -24,6 +24,24 @@ public class User {
         this.sex = sex;
     }
 
+
+    public User(String name, String phone, String pwd, int height, int weight, int age, String sex, String img) {
+        super();
+        this.name = name;
+        this.phone = phone;
+        this.pwd = pwd;
+        this.height = height;
+        this.weight = weight;
+        this.age = age;
+        this.sex = sex;
+        this.img = img;
+    }
+
+    public User(String phone, String pwd) {
+        super();
+        this.phone = phone;
+        this.pwd = pwd;
+    }
 
     public String getName() {
         return name;
@@ -81,16 +99,23 @@ public class User {
         this.sex = sex;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", pwd='" + pwd + '\'' +
-                ", height=" + height +
-                ", weight=" + weight +
-                ", age=" + age +
-                ", sex='" + sex + '\'' +
-                '}';
+        return "User [name=" + name + ", phone=" + phone + ", pwd=" + pwd + ", height=" + height + ", weight=" + weight
+                + ", age=" + age + ", sex=" + sex + ", img=" + img + "]";
     }
+
+
+
+
+
+
 }

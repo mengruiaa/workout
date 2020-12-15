@@ -1,17 +1,16 @@
 package com.example.fitnessdemo;
 
-public class ConfigUtil {
-<<<<<<< HEAD
-    public final static String SERVER_HOME = "http://192.168.43.165:8080/JSZS/";
+import android.graphics.Bitmap;
+
+public class
+ConfigUtil {
+    public final static String SERVER_HOME = "http://192.168.43.17:8080/JSZS/";
     public static String user_Name ="";
     public static String bobo ="";
+    public static Bitmap user_Img = null;
 //    public final static String SERVER_HOME = "http://10.7.89.163:8080/WorkOut/";
-//    public static String user_Name ="15701228161";
-=======
-
-    public final static String SERVER_HOME = "http://192.168.137.1:8080/JSZS/";
-    public static String user_Name ="";
-    public static String bobo ="";
-
->>>>>>> f3ec087ff50e4123991ce73423af25b56e0b4d37
+//    public static String user_Name =
+// 10.7.89.133  192.168.31.28
+//10.7.88.169    192.168.137.1
+//    "15701228161";
 }

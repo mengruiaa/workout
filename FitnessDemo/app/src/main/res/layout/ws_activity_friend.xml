@@ -10,7 +10,7 @@
         android:background="#584f60">
 
         <ImageView
-            android:id="@+id/iv_back"
+            android:id="@+id/iv_backfriend"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_centerVertical="true"
@@ -20,13 +20,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/iv_back"
+            android:layout_toRightOf="@+id/iv_backfriend"
             android:gravity="center"
             android:text="我的好友"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
 
         <ImageView
+            android:id="@+id/iv_friend"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
@@ -35,6 +36,9 @@
             android:padding="6dp"
             android:src="@drawable/sousuo" />
     </RelativeLayout>
-
+    <ListView
+        android:id="@+id/lv_myfriend"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

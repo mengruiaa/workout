@@ -61,8 +61,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/man" />
+                android:layout_marginLeft="10dp" />
 
             <RelativeLayout
                 android:layout_width="200dp"
@@ -76,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginLeft="10dp"
-                    android:text="健身王子"
+                    android:text=""
                     android:textSize="28sp" />
             </RelativeLayout>
 
@@ -310,6 +309,14 @@
             </LinearLayout>
 
         </LinearLayout>
+
+
+        <com.youth.banner.Banner
+            android:background="#F5F5F5"
+            android:padding="10dp"
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="101dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
