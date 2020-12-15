@@ -109,6 +109,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+                String finish = "no";
                 int position = 0;
                 for (int i = 0;i<motions.size();i++){
                     if (motions.get(i).getMotionName().equals(motion.getMotionName())){
@@ -116,19 +117,31 @@ public class ExerciseActivity extends AppCompatActivity {
                         break;
                     }
                 }
+                if ((position == motions.size() - 1) && total == motion.getMotionCount()){
+                    Toast.makeText(getApplicationContext(),"去打卡吧",Toast.LENGTH_SHORT).show();
+                    showPopupWindow();
+                    finish = "yes";
+//                    finish();
+                }
                 final int finalPosition = position;
                 if (total < motion.getMotionCount()){
                     motion = motions.get(finalPosition);
                     total++;
-                }else if(total == motion.getMotionCount()){
+                }else if(total == motion.getMotionCount() && (position != motions.size() - 1)){
                     motion = motions.get(finalPosition+1);
                     total = 1;
                 }
+
                 n = motion.getMotionTime();
                 Glide.with(getApplicationContext()).asGif().load(ConfigUtil.SERVER_HOME + motion.getMotionImg()).into(ivMotion);
                 tvMotionName.setText(motion.getMotionName());
                 tvHard.setText("难度: " + motion.getMotionStar());
-                countDownTimer.start();
+//                countDownTimer.start();
+                if (finish.equals("yes")){
+                    countDownTimer.cancel();
+                }else {
+                    countDownTimer.start();
+                }
             }
         };
         countDownTimer.start();
@@ -221,6 +234,7 @@ public class ExerciseActivity extends AppCompatActivity {
         ivNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String finish = "no";
                 flag = false;
                 ivStart.setImageResource(R.drawable.stop);
                 countDownTimer.cancel();
@@ -235,6 +249,7 @@ public class ExerciseActivity extends AppCompatActivity {
                 if ((position == motions.size() - 1) && total == motion.getMotionCount()){
                     Toast.makeText(getApplicationContext(),"去打卡吧",Toast.LENGTH_SHORT).show();
                     showPopupWindow();
+                    finish = "yes";
 //                    finish();
                 }
                 final int finalPosition = position;
@@ -264,7 +279,12 @@ public class ExerciseActivity extends AppCompatActivity {
 
                     }
                 };
-                countDownTimer.start();
+//                countDownTimer.start();
+                if (finish.equals("yes")){
+                    countDownTimer.cancel();
+                }else {
+                    countDownTimer.start();
+                }
             }
         });
         GetMotionInfo(ConfigUtil.SERVER_HOME + "GetMotionInfo" + "?motionName=" + motion.getMotionName());
@@ -344,6 +364,7 @@ public class ExerciseActivity extends AppCompatActivity {
         }.start();
     }
     private void showPopupWindow() {
+//        countDownTimer.cancel();
         View contentView = LayoutInflater.from(ExerciseActivity.this).inflate(R.layout.zft_popuplayout, null);
         Button btn = contentView.findViewById(R.id.btn_yes);
 
@@ -359,6 +380,7 @@ public class ExerciseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mPopWindow.dismiss();
+                MotionActivity.button.setVisibility(View.VISIBLE);
                 finish();
             }
         });

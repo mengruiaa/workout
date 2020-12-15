@@ -23,7 +23,6 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.fitnessdemo.CLB.entity.Cyclopedia1;
 import com.example.fitnessdemo.CLB.entity.Essay;
 import com.example.fitnessdemo.CLB.fragment.FirstFragment;
-import com.example.fitnessdemo.CLB.fragment.SecondFragment;
 import com.example.fitnessdemo.ConfigUtil;
 import com.example.fitnessdemo.MR.entity.Course;
 import com.example.fitnessdemo.MR.entity.CoursePictureShow;
@@ -86,6 +85,7 @@ public class Stair2Activity extends AppCompatActivity {
                     System.out.println("essays:"+essays);
                     //获取数据课程
                     initDate2(ConfigUtil.SERVER_HOME+"GetCourseByEssay");
+//                    setDate();
                     break;
                 case 2:
 

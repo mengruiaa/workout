@@ -28,8 +28,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+<<<<<<< HEAD
         <activity android:name=".MR.FrendLikeCoursesActivity"></activity>
         <activity android:name=".MR.MyLikeCoursesActivity" />
+=======
+<<<<<<< HEAD
+        <activity android:name=".CLB.TestPhotoActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ZFT.HistoryActivity" />
+        <activity android:name=".ZFT.UserPlanActivity" />
+        <activity android:name=".MR.MyLikeCoursesActivity" />
+=======
+        <activity android:name=".ZFT.HistoryActivity"></activity>
+        <activity android:name=".ZFT.UserPlanActivity" />
+        <activity android:name=".MR.MyLikeCoursesActivity"></activity>
+>>>>>>> b360de2494f4796915fe5f8f8d2c48e0a52b8029
+>>>>>>> 2be38920cff04952d0ece3faf383de9d965e7494
         <activity android:name=".ws.SearchActivity" />
         <activity android:name=".ws.ShentiinfoActivity" />
         <activity android:name=".MR.ZuixinActivity" />
@@ -37,10 +56,22 @@
         <activity android:name=".MR.VideoActivity" />
         <activity android:name=".ZFT.ExerciseActivity" />
         <activity android:name=".CLB.EssayDetailActivity" />
+<<<<<<< HEAD
         <activity android:name=".ZFT.RecoActivity" />
         <activity android:name=".CLB.ClockActivity" />
         <activity android:name=".ZFT.AlterActivity" />
         <activity android:name=".ZFT.UserPlanActivity" />
+=======
+<<<<<<< HEAD
+        <activity android:name=".ZFT.RecoActivity" />
+        <activity android:name=".CLB.ClockActivity" />
+        <activity android:name=".ZFT.AlterActivity" />
+=======
+        <activity android:name=".ZFT.RecoActivity"></activity>
+        <activity android:name=".CLB.ClockActivity" />
+        <activity android:name=".ZFT.AlterActivity"></activity>
+>>>>>>> b360de2494f4796915fe5f8f8d2c48e0a52b8029
+>>>>>>> 2be38920cff04952d0ece3faf383de9d965e7494
         <activity android:name=".MR.AllCoursesActivity" />
         <activity android:name=".MR.SearchGetActivity" />
         <activity android:name=".ZFT.MotionActivity" />
@@ -51,11 +82,7 @@
         <activity android:name=".ZFT.DataActivity" />
         <activity android:name=".CLB.Stair2Activity" />
         <activity android:name=".MR.ShouYeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ZFT.PlanActivity" />
         <activity android:name=".ws.Info1Activity" />
@@ -67,7 +94,26 @@
         <activity android:name=".ws.FriendActivity" />
         <activity android:name=".ws.MainActivity" />
         <activity android:name=".CLB.EncyclopaediaActivity" />
+<<<<<<< HEAD
         <activity android:name=".ws.SplashActivity" />
+=======
+        <activity android:name=".ws.SplashActivity" /> <!-- <<<<<<< HEAD -->
+        <!-- <activity android:name=".ws.SplashActivity"></activity> -->
+        <!-- ======= -->
+        <!-- <activity android:name=".ws.SplashActivity" /> -->
+        <!-- &gt;>>>>>> 7ef4ebac512d47deb8d0309e56b8774a429718a5 -->
+=======
+        <activity android:name=".CLB.EncyclopaediaActivity" />
+        <activity android:name=".ws.SplashActivity" />
+        <activity android:name=".LZYZYH.Oneweek.OneWeek1" />
+        <activity android:name=".LZYZYH.Oneweek.OneWeek2" />
+        <activity android:name=".LZYZYH.Oneweek.OneWeek3" />   
+<<<<<<< HEAD
+=======
+>>>>>>> 206ee172ce92c89d546837cef914d90fbcadb932
+>>>>>>> b360de2494f4796915fe5f8f8d2c48e0a52b8029
+>>>>>>> bff2067b7e80c3f3e9f8983219c9456f548111f5
+>>>>>>> 2be38920cff04952d0ece3faf383de9d965e7494
         <activity android:name=".LZYZYH.activity.DetailActivity" />
         <activity android:name=".LZYZYH.activity.CategoryActivity" />
         <activity android:name=".LZYZYH.activity.ListOfGoodsActivity" />
@@ -81,7 +127,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
         <receiver
             android:name=".ZFT.AlarmReceiver"
             android:process=":remote" />

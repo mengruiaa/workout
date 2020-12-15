@@ -73,8 +73,8 @@ public class ShowYe extends Fragment {
     {
         sharedData = getActivity().getSharedPreferences("main_activity", Context.MODE_PRIVATE);
         edit = sharedData.edit();
-        btn.setText(sharedData.getString("time",
-                sdf.format(new Date(c.getTimeInMillis()))));
+//        btn.setText(sharedData.getString("time",
+//                sdf.format(new Date(c.getTimeInMillis()))));
         btn_enClk.setChecked(sharedData.getBoolean("on_off", false));
     }
 
@@ -172,7 +172,7 @@ public class ShowYe extends Fragment {
 
         ButtonListener buttonListener = new ButtonListener();	// 注册设置时间按钮监听事件
         btn = (Button)root.findViewById(R.id.btn_setClock);
-        btn.setText(timeOnBtn);
+//        btn.setText(timeOnBtn);
         btn.setOnClickListener(buttonListener);
 
         btn_enClk = (ToggleButton) root.findViewById(R.id.btn_enClk); // 注册开启关闭按钮监听事件

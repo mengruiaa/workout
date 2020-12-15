@@ -18,7 +18,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/sharp6"
+    android:background="@drawable/clb_shouyebackground"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".CLB.ClockActivity">
@@ -42,26 +42,22 @@
             android:checked="false"
             android:background="@drawable/small_button" />
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
     <TextView
         android:id="@+id/clb_tv_begin_run"
         android:gravity="center"
-        android:textColor="#EF6C35"
+        android:textColor="#ffffff"
         android:textStyle="bold"
         android:textSize="42sp"
         android:text="开始跑步"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
-    <ImageView
-        android:layout_gravity="center"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:background="@drawable/clb_nijintianyundonglema"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="100dp"/>
     <RelativeLayout
         android:layout_margin="20dp"
         android:layout_width="match_parent"
@@ -69,7 +65,7 @@
         <RelativeLayout
             android:layout_marginRight="15dp"
             android:id="@+id/ll_clock_1"
-            android:background="@drawable/sharp3"
+            android:background="@drawable/clb_img2"
             android:layout_width="150dp"
             android:layout_height="200dp">
             <ImageView
@@ -91,7 +87,7 @@
                 android:layout_height="wrap_content"/>
         </RelativeLayout>
         <RelativeLayout
-            android:background="@drawable/sharp4"
+            android:background="@drawable/clb_img1"
             android:layout_marginBottom="10dp"
             android:layout_toRightOf="@id/ll_clock_1"
             android:id="@+id/ll_clock_2"
@@ -117,7 +113,7 @@
 
         </RelativeLayout>
         <RelativeLayout
-            android:background="@drawable/sharp5"
+            android:background="@drawable/clb_img3"
             android:layout_below="@id/ll_clock_2"
             android:layout_toRightOf="@id/ll_clock_1"
             android:id="@+id/ll_clock_3"

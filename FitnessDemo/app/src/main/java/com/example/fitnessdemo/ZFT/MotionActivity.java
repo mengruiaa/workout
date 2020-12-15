@@ -39,7 +39,7 @@ public class MotionActivity extends AppCompatActivity {
     private TextView tvHead;
     private TextView tvDesc;
     private Button btnStarMotion;
-    private NbButton button;
+    public static NbButton button;
     private ScrollView srcontent;
     private Handler h;
     private Animator animator;
@@ -107,6 +107,7 @@ public class MotionActivity extends AppCompatActivity {
 
             }
         });
+        button.setVisibility(View.GONE);
     }
 
     private void ClockIn(final String s) {
@@ -185,7 +186,6 @@ public class MotionActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void gotoNew(String planName) {
         button.gotoNew();
-
         final Intent intent=new Intent(this, DataActivity.class);
         intent.putExtra("planName", planName);
         int xc=(button.getLeft()+button.getRight())/2;

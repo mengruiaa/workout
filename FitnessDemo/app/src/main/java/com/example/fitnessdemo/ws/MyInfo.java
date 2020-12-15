@@ -28,17 +28,23 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.fitnessdemo.ConfigUtil;
-import com.example.fitnessdemo.MR.ShouYeActivity;
 import com.example.fitnessdemo.R;
+import com.example.fitnessdemo.ZFT.HistoryActivity;
 import com.example.fitnessdemo.ZFT.UserPlanActivity;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -67,7 +73,9 @@ public class MyInfo extends Fragment {
     private TextView helps;
     private TextView tvwh;
     private PopupWindow pw;
-
+    //zft
+    private TextView tvTime;
+    private TextView tvHistory;
     private Gson gson = new Gson();
     //定义OKHTTPClient对象属性
     private OkHttpClient okHttpClient = new OkHttpClient();
@@ -95,8 +103,46 @@ public class MyInfo extends Fragment {
         findview();
         setListener();
 //        initinfo();
-//        initHandler();
+        initHandler();
+        getHistoryTime(ConfigUtil.SERVER_HOME + "GetHistoryTimeServlet" + "?user_phone=" + ConfigUtil.user_Name);
         return root;
+    }
+
+    private void getHistoryTime(final String s) {
+        new Thread(){
+            @Override
+            public void run() {
+                //使用网络连接，接收服务端发送的字符串
+                try {
+                    //创建URL对象
+                    URL url = new URL(s);
+                    //获取URLConnection连接对象
+                    URLConnection conn = url.openConnection();
+                    //获取网络输入流
+                    InputStream in = conn.getInputStream();
+                    //使用字符流读取
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(in, "utf-8"));
+                    //读取字符信息
+                    String str = reader.readLine();
+                    //关闭流
+                    reader.close();
+                    in.close();
+                    //借助于Message，把收到的字符串显示在页面上
+                    //创建Message对象
+                    Message msg = new Message();
+                    //设置Message对象的参数
+                    msg.what = 2;
+                    msg.obj = str;
+                    //发送Message
+                    handler.sendMessage(msg);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
     }
 
     private void initHandler() {
@@ -111,6 +157,10 @@ public class MyInfo extends Fragment {
                         tvwh.setText(str);
                         username.setText(user.getName().trim());
                         break;
+                    case 2:
+                        String res = (String)msg.obj;
+                        int total = Integer.parseInt(res);
+                        tvTime.setText(total+"");
                 }
             }
         };
@@ -170,6 +220,7 @@ public class MyInfo extends Fragment {
         friends.setOnClickListener(myListener);
         plans.setOnClickListener(myListener);
         helps.setOnClickListener(myListener);
+        tvHistory.setOnClickListener(myListener);
     }
 
     private void findview() {
@@ -187,6 +238,8 @@ public class MyInfo extends Fragment {
         plans = root.findViewById(R.id.user_plan);
         helps = root.findViewById(R.id.user_help);
         tvwh = root.findViewById(R.id.tv_weightheight);
+        tvTime = root.findViewById(R.id.tv_historyTime);
+        tvHistory = root.findViewById(R.id.tv_my_history);
     }
 
     class MyListener implements View.OnClickListener {
@@ -229,6 +282,10 @@ public class MyInfo extends Fragment {
                     startActivity(intent);
                     break;
                 case R.id.user_help:
+                    break;
+                case R.id.tv_my_history:
+                    intent.setClass(getContext(), HistoryActivity.class);
+                    startActivity(intent);
                     break;
             }
         }
@@ -459,6 +516,11 @@ public class MyInfo extends Fragment {
         } else {
             return false;
         }
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        getHistoryTime(ConfigUtil.SERVER_HOME + "GetHistoryTimeServlet" + "?user_phone=" + ConfigUtil.user_Name);
     }
 
 }
