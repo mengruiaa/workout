@@ -90,7 +90,6 @@
 
         <TextView
             android:id="@+id/name"
-            android:text="野小兽智能动感单车家用室内减肥器材超静音健身车小米有品M1-Pro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -210,31 +209,31 @@
             <ImageView
                 android:id="@+id/img2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:adjustViewBounds="true"/>
 
             <ImageView
                 android:id="@+id/img3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:adjustViewBounds="true"/>
 
             <ImageView
                 android:id="@+id/img4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:adjustViewBounds="true"/>
 
             <ImageView
                 android:id="@+id/img5"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:adjustViewBounds="true"/>
 
             <ImageView
                 android:id="@+id/img6"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 />
         </LinearLayout>
@@ -244,14 +243,16 @@
             android:orientation="horizontal">
             <Button
                 android:id="@+id/addcar"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:layout_gravity="left"
                 android:text="我想要" />
             <Button
                 android:id="@+id/product_shoucang"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_gravity="right"
                 android:text="收藏" />
         </LinearLayout>

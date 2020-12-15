@@ -64,152 +64,6 @@
                 android:layout_height="200dp"
                 android:numColumns="4"
                 />
-<!--            <LinearLayout-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content">-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:id="@+id/cate1"-->
-
-<!--                    android:gravity="center">-->
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:src="@drawable/pinpai"-->
-
-<!--                        android:padding="7dp"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="品牌精选"/>-->
-<!--                </LinearLayout>-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:id="@+id/cate2"-->
-
-<!--                    android:gravity="center">-->
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:src="@drawable/zhineng"-->
-<!--                        android:padding="7dp"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="智能硬件"/>-->
-
-<!--                </LinearLayout>-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:gravity="center">-->
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:src="@drawable/woman"-->
-<!--                        android:padding="7dp"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:id="@+id/cate3"-->
-<!--                        android:text="女子服饰"/>-->
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:gravity="center">-->
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:src="@drawable/man"-->
-<!--                        android:padding="7dp"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:id="@+id/cate4"-->
-<!--                        android:text="男子服饰"/>-->
-<!--                </LinearLayout>-->
-
-<!--            </LinearLayout>-->
-<!--            <LinearLayout-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content">-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:gravity="center">-->
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:src="@drawable/sport"-->
-<!--                        android:padding="7dp"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:id="@+id/cate5"-->
-<!--                        android:text="运动装备"/>-->
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:gravity="center">-->
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:src="@drawable/qingshi"-->
-<!--                        android:padding="7dp"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:id="@+id/cate6"-->
-<!--                        android:text="轻食代餐"/>-->
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:gravity="center">-->
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:src="@drawable/huwai"-->
-<!--                        android:padding="7dp"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:id="@+id/cate7"-->
-<!--                        android:text="运动生活"/>-->
-<!--                </LinearLayout>-->
-
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:gravity="center">-->
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:src="@drawable/shenghuo"-->
-<!--                        android:padding="7dp"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:id="@+id/cate8"-->
-<!--                        android:text="健身器材"/>-->
-<!--                </LinearLayout>-->
-
-<!--            </LinearLayout>-->
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -247,81 +101,90 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_gravity="center"
                 android:gravity="center"
                 android:background="@drawable/et_shape">
                 <LinearLayout
+                    android:layout_marginRight="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:id="@+id/oneweek1"
                     android:padding="5dp">
-                    <ImageView
+                    <Button
+                        android:id="@+id/oneweek1"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/pic1"/>
+                        android:background="@drawable/ab" />
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Nike 耐克男子紧身裤速干健身"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="智能筋膜枪R15"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="￥199"
+                        android:text="￥229"
+                        android:textSize="12sp"
                         android:textColor="@color/colorAccent"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1321人加购"/>
+                        android:textSize="12sp"
+                        android:text="4723人加购"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:id="@+id/oneweek2"
                     android:padding="5dp">
-                    <ImageView
+                    <Button
+                        android:background="@drawable/z"
+                        android:id="@+id/oneweek2"
                         android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/pic2"/>
+                        android:layout_height="100dp"/>
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Nike 耐克男子上衣健身速干"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="蓝牙智能音箱T"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="￥398"
+                        android:text="￥399"
+                        android:textSize="12sp"
                         android:textColor="@color/colorAccent"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="121人加购"/>
+                        android:textSize="12sp"
+                        android:text="307人加购"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:id="@+id/oneweek3"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="5dp">
-                    <ImageView
+                    <Button
+                        android:id="@+id/oneweek3"
+                        android:background="@drawable/q"
                         android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/a"/>
+                        android:layout_height="100dp"/>
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Nike 耐克女子运动健身内衣"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="家用健身车T2"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="￥1998"
+                        android:text="￥249"
+                        android:textSize="12sp"
                         android:textColor="@color/colorAccent"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="342人加购"/>
+                        android:textSize="12sp"
+                        android:text="5534人加购"/>
                 </LinearLayout>
             </LinearLayout>
             <TextView

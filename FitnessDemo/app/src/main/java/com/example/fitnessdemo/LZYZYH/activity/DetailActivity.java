@@ -22,9 +22,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.fitnessdemo.ConfigUtil;
 import com.example.fitnessdemo.LZYZYH.TuiJian;
 import com.example.fitnessdemo.LZYZYH.adapter.SearchAdapter;
 import com.example.fitnessdemo.LZYZYH.model.Product;
+import com.example.fitnessdemo.MR.CourseDetailActivity;
+import com.example.fitnessdemo.MR.entity.CoursePlan;
 import com.example.fitnessdemo.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,6 +54,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import static com.example.fitnessdemo.ConfigUtil.SERVER_HOME;
+import static com.example.fitnessdemo.ConfigUtil.user_Name;
 
 
 public class DetailActivity extends AppCompatActivity {
@@ -69,30 +73,36 @@ public class DetailActivity extends AppCompatActivity {
     private ImageView pimg5;
     private TextView proName;
     private ImageView pimg6;
-    private Button paddCar;
+    private Button proShoucang;
     private Gson gson;
     private List<Product> goodsList;
     private ListView lvShowAllGoods;
     private SearchAdapter adapter;
     private String etProductSearch;
     private Product pro;
+    private Button procar;
     private String product_link;
     private OkHttpClient okHttpClient=new OkHttpClient();
 
+    private String url;
     private ImageView iv ;
 
     private Product goods;
 
-        private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(@NonNull Message msg) {
-            switch (msg.what) {
-                case 1:
-              //      Log.e("lzzzz",goodsList.toString());
-                    goods = pro;
-                    setDate();
-                    break;
-            }
+    private Handler handler = new Handler() {
+    @Override
+    public void handleMessage(@NonNull Message msg) {
+        switch (msg.what) {
+            case 1:
+                goods = pro;
+                setDate();
+                break;
+            case 2:
+                Intent i1 = new Intent(DetailActivity.this,UrlDetailActivity.class);
+                i1.putExtra("url",url);
+                startActivity(i1);
+                break;
+        }
         }
     };
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -106,9 +116,6 @@ public class DetailActivity extends AppCompatActivity {
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent i = new Intent();
-//                i.setClass(DetailActivity.this, TuiJian.class);
-//                startActivity(i);
                 DetailActivity.this.finish();
             }
         });
@@ -153,8 +160,104 @@ public class DetailActivity extends AppCompatActivity {
                 });
             }
         }.start();
+
+        proShoucang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new Thread(){
+                    @Override
+                    public void run() {
+                        addShoucang();
+                    }
+                }.start();
+                Toast.makeText( DetailActivity.this, "收藏成功", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        procar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new Thread(){
+                    @Override
+                    public void run() {
+                        urlGo();
+                    }
+                }.start();
+             //   Toast.makeText( DetailActivity.this, "收藏成功", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
 
+    private void addShoucang() {
+        System.out.println("已经运行了");
+        System.out.println("mingzi"+etProductSearch);
+        new Thread(){
+            @Override
+            public void run() {
+                MediaType type = MediaType.parse("text/plain");
+                RequestBody requestBody = RequestBody.create(type,user_Name+"&&&"+etProductSearch);
+                Request request = new Request.Builder()
+                        .url(SERVER_HOME + "AddShoucangServlet")
+                        .post(requestBody)
+                        .build();
+                //3. 创建CALL对象
+                Call call = okHttpClient.newCall(request);
+                //4. 提交请求并获取响应
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.i("clb", "请求失败");
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                    }
+                });
+            }
+        }.start();
+
+    }
+    private void urlGo(){
+        new Thread(){
+            @Override
+            public void run() {
+                MediaType type = MediaType.parse("text/plain");
+                RequestBody requestBody = RequestBody.create(type,etProductSearch);
+                Request request = new Request.Builder()
+                        .url(SERVER_HOME + "search")
+                        .post(requestBody)
+                        .build();
+                //3. 创建CALL对象
+                Call call = okHttpClient.newCall(request);
+                //4. 提交请求并获取响应
+                call.enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        Log.i("clb", "请求失败");
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String json = response.body().string();
+                        gson = new GsonBuilder().serializeNulls().create();
+                        Type type = new TypeToken<ArrayList<Product>>(){}.getType();
+                        List<Product> lists = gson.fromJson(json,type);
+                        pro = lists.get(0);
+                        url = pro.getProduct_link();
+                        Message msg = handler.obtainMessage();
+                        //设置Message对象的参数
+                        msg.what = 2;
+                        msg.obj = url;
+                        //发送Message
+                        handler.sendMessage(msg);
+                    }
+                });
+            }
+        }.start();
+
+    }
     private void findViews() {
         ivShow = findViewById(R.id.iv_show);
         proColor = findViewById(R.id.color);
@@ -168,8 +271,11 @@ public class DetailActivity extends AppCompatActivity {
         pimg4=findViewById(R.id.img4);
         pimg5=findViewById(R.id.img5);
         pimg6=findViewById(R.id.img6);
-
+        proShoucang=findViewById(R.id.product_shoucang);
+        procar = findViewById(R.id.addcar);
     }
+
+
 
     private void setDate() {
         proName.setText(goods.getProduct_name());

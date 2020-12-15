@@ -23,8 +23,9 @@
         android:textColor="@color/colorBlack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:lineSpacingExtra="3sp"/>
+        android:lineSpacingExtra="5sp"/>
     <TextView
+        android:layout_marginTop="5dp"
         android:layout_below="@+id/tv_planInfo"
         android:id="@+id/tv_peopleWhoCan"
         android:layout_width="match_parent"
@@ -37,6 +38,7 @@
         android:layout_marginRight="5dp"
         android:lineSpacingExtra="3sp"/>
     <TextView
+        android:layout_marginTop="5dp"
         android:layout_below="@+id/tv_peopleWhoCan"
         android:id="@+id/tv_planTime"
         android:layout_width="match_parent"
