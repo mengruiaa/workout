@@ -118,7 +118,6 @@ public class CourseDetailActivity extends AppCompatActivity {
                         .setLayoutRes(R.layout.view_guide_simple2,R.id.guan)
                         .setEnterAnimation(enterAnimation)//进入动画
                         .setExitAnimation(exitAnimation))
-                .alwaysShow(true)
                 .show();
     }
 

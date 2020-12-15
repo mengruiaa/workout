@@ -18,10 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-<<<<<<< HEAD
-=======
 import android.widget.PopupWindow;
->>>>>>> 2935abb34dabc9ca06abd306d3549cf55a442455
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
