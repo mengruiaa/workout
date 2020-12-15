@@ -1,36 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:background="#ffffff"
+    android:background="@drawable/sharp5"
     android:layout_height="match_parent">
     <TextView
         android:textSize="35dp"
-        android:textColor="#fff200"
+        android:textColor="#ffffff"
         android:gravity="center"
         android:layout_marginTop="200dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="于海龙牛逼"/>
-    <View
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
-    <LinearLayout
-        android:layout_marginTop="150dp"
+        android:text="烁哥牛逼"/>
+    <TextView
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:id="@+id/timeText1"
+        android:text="00:00:00"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <RelativeLayout
+        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:layout_marginLeft="60dp"
-            android:background="@drawable/clb_stop3"
-            android:layout_width="120dp"
-            android:layout_height="120dp"/>
-        <ImageView
-            android:layout_marginLeft="50dp"
-            android:background="@drawable/clb_begin3"
-            android:layout_width="120dp"
-            android:layout_height="120dp"/>
+        <LinearLayout
+            android:id="@+id/clb_ll_zanting"
+            android:visibility="visible"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/clb_iv_zanting"
+                android:background="@drawable/clb_zanting2"
+                android:layout_width="120dp"
+                android:layout_height="120dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/clb_ll_this"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/pop_iv_stop"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/clb_stop3"
+                android:layout_width="120dp"
+                android:layout_height="120dp"/>
+            <ImageView
+                android:id="@+id/pop_iv_begin"
+                android:layout_marginLeft="50dp"
+                android:background="@drawable/clb_begin3"
+                android:layout_width="120dp"
+                android:layout_height="120dp"/>
 
 
-    </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
 
 
 </LinearLayout>

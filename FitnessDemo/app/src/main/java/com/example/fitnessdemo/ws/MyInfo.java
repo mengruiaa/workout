@@ -33,25 +33,37 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.fitnessdemo.ConfigUtil;
-import com.example.fitnessdemo.MR.ShouYeActivity;
 import com.example.fitnessdemo.R;
+import com.example.fitnessdemo.ZFT.HistoryActivity;
+import com.example.fitnessdemo.ZFT.UserPlanActivity;
 import com.google.gson.Gson;
 import com.youth.banner.Banner;
 import com.youth.banner.Transformer;
 
 import org.jetbrains.annotations.NotNull;
 
+<<<<<<< HEAD
 import java.io.ByteArrayOutputStream;
+=======
+import java.io.BufferedReader;
+>>>>>>> 2f78f7eab25b8ea81046292043f2943b673b1853
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+<<<<<<< HEAD
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+=======
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+>>>>>>> 2f78f7eab25b8ea81046292043f2943b673b1853
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -80,8 +92,14 @@ public class MyInfo extends Fragment {
     private TextView helps;
     private TextView tvwh;
     private PopupWindow pw;
+<<<<<<< HEAD
     private Uri mUritempFile;
 
+=======
+    //zft
+    private TextView tvTime;
+    private TextView tvHistory;
+>>>>>>> 2f78f7eab25b8ea81046292043f2943b673b1853
     private Gson gson = new Gson();
     //定义OKHTTPClient对象属性
     private OkHttpClient okHttpClient = new OkHttpClient();
@@ -110,8 +128,9 @@ public class MyInfo extends Fragment {
         root = inflater.inflate(R.layout.ws_fragment_myinfo, container, false);
         findview();
         setListener();
-        initinfo();
+//        initinfo();
         initHandler();
+<<<<<<< HEAD
         //设置轮播图
         setBanner();
         return root;
@@ -148,6 +167,47 @@ public class MyInfo extends Fragment {
     public void onStop() {
         super.onStop();
         banner.stopAutoPlay();
+=======
+        getHistoryTime(ConfigUtil.SERVER_HOME + "GetHistoryTimeServlet" + "?user_phone=" + ConfigUtil.user_Name);
+        return root;
+    }
+
+    private void getHistoryTime(final String s) {
+        new Thread(){
+            @Override
+            public void run() {
+                //使用网络连接，接收服务端发送的字符串
+                try {
+                    //创建URL对象
+                    URL url = new URL(s);
+                    //获取URLConnection连接对象
+                    URLConnection conn = url.openConnection();
+                    //获取网络输入流
+                    InputStream in = conn.getInputStream();
+                    //使用字符流读取
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(in, "utf-8"));
+                    //读取字符信息
+                    String str = reader.readLine();
+                    //关闭流
+                    reader.close();
+                    in.close();
+                    //借助于Message，把收到的字符串显示在页面上
+                    //创建Message对象
+                    Message msg = new Message();
+                    //设置Message对象的参数
+                    msg.what = 2;
+                    msg.obj = str;
+                    //发送Message
+                    handler.sendMessage(msg);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+>>>>>>> 2f78f7eab25b8ea81046292043f2943b673b1853
     }
 
     private void initHandler() {
@@ -168,6 +228,7 @@ public class MyInfo extends Fragment {
                         username.setText(user.getName().trim());
                         break;
                     case 2:
+<<<<<<< HEAD
                         if (null != ConfigUtil.user_Img){
                             Glide.with(getContext())
                                     .load(ConfigUtil.user_Img)
@@ -181,6 +242,11 @@ public class MyInfo extends Fragment {
                                     .into(ivtoouxiang);
                         }
                         break;
+=======
+                        String res = (String)msg.obj;
+                        int total = Integer.parseInt(res);
+                        tvTime.setText(total+"");
+>>>>>>> 2f78f7eab25b8ea81046292043f2943b673b1853
                 }
             }
         };
@@ -261,6 +327,7 @@ public class MyInfo extends Fragment {
         friends.setOnClickListener(myListener);
         plans.setOnClickListener(myListener);
         helps.setOnClickListener(myListener);
+        tvHistory.setOnClickListener(myListener);
     }
 
     private void findview() {
@@ -278,6 +345,8 @@ public class MyInfo extends Fragment {
         plans = root.findViewById(R.id.user_plan);
         helps = root.findViewById(R.id.user_help);
         tvwh = root.findViewById(R.id.tv_weightheight);
+        tvTime = root.findViewById(R.id.tv_historyTime);
+        tvHistory = root.findViewById(R.id.tv_my_history);
     }
 
     class MyListener implements View.OnClickListener {
@@ -317,8 +386,15 @@ public class MyInfo extends Fragment {
                     startActivityForResult(intent, 2);
                     break;
                 case R.id.user_plan:
+                    intent.setClass(getContext(), UserPlanActivity.class);
+                    intent.putExtra("userName",ConfigUtil.user_Name);
+                    startActivity(intent);
                     break;
                 case R.id.user_help:
+                    break;
+                case R.id.tv_my_history:
+                    intent.setClass(getContext(), HistoryActivity.class);
+                    startActivity(intent);
                     break;
             }
         }
@@ -707,6 +783,11 @@ public class MyInfo extends Fragment {
         } else {
             return false;
         }
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        getHistoryTime(ConfigUtil.SERVER_HOME + "GetHistoryTimeServlet" + "?user_phone=" + ConfigUtil.user_Name);
     }
 
 }

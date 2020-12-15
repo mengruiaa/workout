@@ -72,11 +72,11 @@
 
         </LinearLayout>
         <ImageView
+            android:layout_gravity="center"
             android:id="@+id/clb_iv_essay_pitcure"
-            android:background="@drawable/lanrenshipu1"
             android:layout_margin="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_width="300dp"
+            android:layout_height="150dp"/>
         <TextView
             android:id="@+id/clb_tv_essay_url"
             android:text="可能对很多人来说，减肥就是我告诉你吃多少完事了，但其实没这么简单....对此我想到了一个生动形象的例子！：\n在和读者们互相伤害多次后，我灵光一闪（终于开窍），不如写一篇零基础实操减肥手册吧！\n

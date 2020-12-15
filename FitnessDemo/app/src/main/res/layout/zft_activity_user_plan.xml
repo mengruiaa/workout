@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ZFT.UserPlanActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btn_zft_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/zft_back"/>
+        <LinearLayout
+            android:id="@+id/ll_userPlan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="65dp"
+            android:background="@color/colorBlue"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/zft_user_plan"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:lineSpacingExtra="5sp"
+                android:text="My Plan"
+                android:textColor="#ffffff"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/user_plan_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="5dp"
+                android:text="The plans you've added"
+                android:textColor="#fefefe"
+                android:textSize="13sp"
+                android:layout_below="@+id/pic_chose_title"/>
+<!--            <ImageView-->
+<!--                android:id="@+id/pic_chose_icon"-->
+<!--                android:layout_width="52dp"-->
+<!--                android:layout_height="74dp"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_marginRight="25dp"-->
+<!--                android:layout_marginTop="65dp"-->
+<!--                android:src="@drawable/apphead"/>-->
+        </LinearLayout>
+
+        <TextView
+            android:layout_below="@+id/ll_userPlan"
+            android:gravity="center"
+            android:id="@+id/zft_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="您还没有添加计划请去添加哟~~~"
+            android:layout_marginTop="15dp"/>
+        <Button
+            android:id="@+id/btn_zft_addToPlan"
+            android:layout_below="@id/zft_note"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/add_shape"
+            android:text="+"
+            android:textColor="@color/colorWhite"
+            android:textSize="34sp"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rl_userPlan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_zft_addToPlan"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+</ScrollView>

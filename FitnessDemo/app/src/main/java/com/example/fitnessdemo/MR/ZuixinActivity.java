@@ -23,6 +23,7 @@ public class ZuixinActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();//隐藏掉整个ActionBar
         setContentView(R.layout.activity_zuixin);
         Intent intent=getIntent();
         String r=intent.getStringExtra("zuixin");

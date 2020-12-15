@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<TextView
+    android:layout_margin="50dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="20dp"
+    android:text="如果觉得课程看完很感兴趣可以直接去相关计划里添加计划跟着老师一起实践哦~~"
+    android:textColor="@android:color/holo_orange_dark"/>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="130dp"
+        android:src="@drawable/jiantoumr"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="320dp"
+        android:rotation="135"/>
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="知道了"
+        android:textSize="20dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:background="@drawable/search"
+        android:id="@+id/guan"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"/>
+
+</LinearLayout>

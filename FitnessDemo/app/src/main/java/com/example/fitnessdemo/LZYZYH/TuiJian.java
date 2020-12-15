@@ -9,11 +9,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,13 +25,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.fitnessdemo.LZYZYH.Oneweek.OneWeek1;
+import com.example.fitnessdemo.LZYZYH.Oneweek.OneWeek2;
+import com.example.fitnessdemo.LZYZYH.Oneweek.OneWeek3;
 import com.example.fitnessdemo.LZYZYH.activity.CategoryActivity;
 import com.example.fitnessdemo.LZYZYH.activity.ListOfGoodsActivity;
 import com.example.fitnessdemo.LZYZYH.activity.SearchActivity;
 import com.example.fitnessdemo.LZYZYH.adapter.FruitAdapter;
+import com.example.fitnessdemo.LZYZYH.adapter.MyAdapter;
 import com.example.fitnessdemo.LZYZYH.model.Fruit;
+import com.example.fitnessdemo.LZYZYH.model.Icon;
 import com.example.fitnessdemo.LZYZYH.model.ListOfGoods;
 import com.example.fitnessdemo.R;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -57,12 +66,21 @@ public class TuiJian extends Fragment {
     private EditText etProductSearch;
     private Button btnProductSearch;
 
+    private SmartRefreshLayout refreshlayout;
+
+    private MyAdapter mAdapter;
+
     private List<Fruit> fruitList = new ArrayList<Fruit>();
     private Map<String, ImageView> imageViewMap = new HashMap<>();
     private Map<String, TextView> textViewMap = new HashMap<>();
     private TextView findAll;
     private static String result;
-
+    private Context mContext;
+    private GridView grid_photo;
+    private ArrayList<Icon> mData = null;
+    private Button button1;
+    private Button button2;
+    private Button button3;
 
     private LinearLayout cate1;
 
@@ -74,35 +92,82 @@ public class TuiJian extends Fragment {
                 false);
         viewPager = view.findViewById(R.id.loopviewpager);
         ll_dots_container = view.findViewById(R.id.ll_dots_loop);
-        product_item = view.findViewById(R.id.oneweek1);
-        cate1 = view.findViewById(R.id.cate1);
         etProductSearch = view.findViewById(R.id.et_product_search);
         btnProductSearch = view.findViewById(R.id.btn_product_search);
         findAll = view.findViewById(R.id.findAll);
+        button1 = view.findViewById(R.id.oneweek1);
+        button2 = view.findViewById(R.id.oneweek2);
+        button3 = view.findViewById(R.id.oneweek3);
+        onClick();//一周严选
         initLoopView();  //实现轮播图
         productItemClick();
+
+        mContext = getContext();
+        grid_photo = (GridView) view.findViewById(R.id.grid_button_menu);
+
+        mData = new ArrayList<Icon>();
+        mData.add(new Icon(R.drawable.pinpai, "品牌精选"));
+        mData.add(new Icon(R.drawable.zhineng, "智能硬件"));
+        mData.add(new Icon(R.drawable.woman, "女子服饰"));
+        mData.add(new Icon(R.drawable.man, "男子服饰"));
+        mData.add(new Icon(R.drawable.sport, "运动装备"));
+        mData.add(new Icon(R.drawable.qingshi, "轻食代餐"));
+        mData.add(new Icon(R.drawable.huwai, "运动生活"));
+        mData.add(new Icon(R.drawable.shenghuo, "健身器材"));
+
+        mAdapter = new MyAdapter<Icon>(mData, R.layout.button_menu_item) {
+            @Override
+            public void bindView(ViewHolder holder, Icon  obj) {
+
+                holder.setImageResource(R.id.img_icon, obj.getiId());
+                holder.setText(R.id.txt_icon, obj.getiName());
+
+            }
+        };
+
+        grid_photo.setAdapter(mAdapter);
+
+        grid_photo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i4 = new Intent();
+                i4.putExtra("typeId",position+1+"");
+                i4.setClass(getContext(), CategoryActivity.class);
+                startActivity(i4);
+            }
+        });
+
+
 
         FileOutputStream out = null;
         BufferedWriter writer = null;
         try {
             out = getActivity().openFileOutput("data", Context.MODE_PRIVATE);
             writer = new BufferedWriter(new OutputStreamWriter(out));
-            writer.write("<font color='black'><b>野小兽智能动感单车家用室内减肥器材超静音健身车小米有品M1-Pro器材</b></font><<br/><font color='red'>￥1998</font>\n");
-            writer.write("a\n");
-            writer.write("<font color='black'><b>小米米家走步机多功能家用折叠小型室内健身跑步机</b></font><br/><br/><font color='red'>￥1799</font>\n");
-            writer.write("g\n");
-            writer.write("<font color='black'><b>麦瑞克家用多功能踏步机磁控健身器瘦腿瘦身健步踩踏板机室内静音</b></font><br/><br/><font color='red'>￥729</font>\n");
+            writer.write("免打孔家用单杠健身引体向上室内体育用品门上墙体");
+            writer.write("\n<font color='red'>￥49.9</font>\n");
+            writer.write("ag\n");
+            writer.write("小米体脂秤2智能精准减肥电子称迷你健康家用体重秤脂肪秤");
+            writer.write("\n<font color='red'>￥99</font>\n");
+            writer.write("j\n");
+            writer.write("麦瑞克家用多功能踏步机磁控健身器瘦腿瘦身健步踩踏板机室内静音");
+            writer.write("\n<font color='red'>￥729</font>\n");
             writer.write("f\n");
-            writer.write("<font color='black'><b>VFU高强度背心大胸防下垂运动内衣跑步防震聚拢文胸定型健身bra女</b></font><br/><br/><font color='red'>￥188</font>\n");
-            writer.write("o\n");
-            writer.write("<font color='black'><b>野小兽智能动感单车家用室内减肥器材</b></font><br/><br/><font color='red'>￥1999</font>\n");
-            writer.write("ad\n");
-            writer.write("<font color='black'><b>小米米家走步机多功能家用折叠小型室内健身跑步机</b></font><br/><br/><font color='red'>￥1799</font>\n");
+            writer.write("安德玛官方UA Armour男硬汉装运动健身修身紧身裤1289577");
+            writer.write("\n<font color='red'>￥169</font>\n");
+            writer.write("ac\n");
+            writer.write("迪卡侬计数跳绳成人运动专用男女健身专业燃脂儿童小学生绳子FICS");
+            writer.write("\n<font color='red'>￥59.9</font>\n");
             writer.write("ae\n");
-            writer.write("<font color='black'><b>麦瑞克家用多功能踏步机磁控健身器瘦腿瘦身健步踩踏板机室内静音</b></font><br/><br/><font color='red'>￥729</font>\n");
-            writer.write("f\n");
-            writer.write("<font color='black'><b>VFU高强度背心大胸防下垂运动内衣跑步防震聚拢文胸定型健身bra女</b></font><br/><font color='red'>￥188</font>\n");
+            writer.write("迪卡侬悬挂式训练带多功能拉力绳正品家用健身阻力带力量训练CROB");
+            writer.write("\n<font color='red'>￥99.9</font>\n");
+            writer.write("ai\n");
+            writer.write("VFU高强度背心大胸防下垂运动内衣跑步防震聚拢文胸定型健身bra女");
+            writer.write("\n<font color='red'>￥188</font>\n");
             writer.write("o\n");
+            writer.write("小米米家走步机多功能家用折叠小型室内健身跑步机");
+            writer.write("\n<font color='red'>￥1799</font>\n");
+            writer.write("g\n");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -234,7 +299,7 @@ public class TuiJian extends Fragment {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    //下一条
+////                    下一条
 //                    getActivity().runOnUiThread(new Runnable() {
 //                        @Override
 //                        public void run() {
@@ -247,14 +312,6 @@ public class TuiJian extends Fragment {
 
     }
     private void productItemClick(){
-        cate1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i1 = new Intent();
-                i1.setClass(getContext(), CategoryActivity.class);
-                startActivity(i1);
-            }
-        });
         btnProductSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -276,6 +333,40 @@ public class TuiJian extends Fragment {
         });
 
     }
+
+    /*
+一周严选
+ */
+    private void onClick() {
+        MyListener listener = new MyListener();
+        button1.setOnClickListener(listener);
+        button2.setOnClickListener(listener);
+        button3.setOnClickListener(listener);
+    }
+
+    class MyListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.oneweek1:
+                    Intent intent1 = new Intent();
+                    intent1.setClass(getContext(), OneWeek1.class);
+                    startActivity(intent1);
+                    break;
+                case R.id.oneweek2:
+                    Intent intent2 = new Intent();
+                    intent2.setClass(getContext(), OneWeek2.class);
+                    startActivity(intent2);
+                    break;
+                case R.id.oneweek3:
+                    Intent intent3 = new Intent();
+                    intent3.setClass(getContext(), OneWeek3.class);
+                    startActivity(intent3);
+                    break;
+            }
+        }
+    }
+
     /*
     家庭健身房
      */
@@ -283,9 +374,9 @@ public class TuiJian extends Fragment {
         ArrayList<String> a=load();
         for (int i = 0; i < a.size(); ) {
             //Fruit apple =new Fruit("apple",R.drawable.apple_pic);
-            Fruit apple = new Fruit(a.get(i), getResources().getIdentifier(a.get(i+1),"drawable", "com.example.fitnessdemo"),i);
+            Fruit apple = new Fruit(a.get(i), getResources().getIdentifier(a.get(i+2),"drawable", "com.example.fitnessdemo"),i,a.get(i+1));
             fruitList.add(apple);
-            i+=2;
+            i+=3;
 
         }
     }

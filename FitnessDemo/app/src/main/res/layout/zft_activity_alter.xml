@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg3"
+    tools:context=".ZFT.AlterActivity">
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/clock"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/timeUp"
+        android:layout_marginBottom="100dp"/>
+    <Button
+        android:id="@+id/btn_goto_workout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Goto WorkOut"
+        android:background="@drawable/start_shape"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/timeUp"
+        android:layout_above="@+id/btn_goto_workout"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time To Exercise"
+        android:textColor="@color/colorWhite"
+        android:textSize="36dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
+</RelativeLayout>

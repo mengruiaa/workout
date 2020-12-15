@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView android:layout_height="match_parent"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/mrback3">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -72,6 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/introduce"
-        android:lineSpacingExtra="10dp"/>
+        android:lineSpacingExtra="10dp"
+        android:layout_margin="30dp"/>
 </LinearLayout>
 </ScrollView>

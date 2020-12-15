@@ -214,6 +214,7 @@
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/tv_historyTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1234"
@@ -229,6 +230,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tv_my_history"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"

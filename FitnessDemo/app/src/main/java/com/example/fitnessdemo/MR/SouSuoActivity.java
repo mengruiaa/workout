@@ -2,15 +2,12 @@ package com.example.fitnessdemo.MR;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,11 +17,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.fitnessdemo.ConfigUtil;
-import com.example.fitnessdemo.MR.adapter.MyFragmentPagerAdapter;
-import com.example.fitnessdemo.MR.entity.Course;
-import com.example.fitnessdemo.MR.entity.CoursePictureShow;
 import com.example.fitnessdemo.MR.entity.History;
-import com.example.fitnessdemo.MR.someFragments.ListFragment;
 import com.example.fitnessdemo.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -41,9 +34,17 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+
 public class SouSuoActivity extends AppCompatActivity {
+    private OkHttpClient okHttpClient=new OkHttpClient();
     private List<String> mStrs=new ArrayList<>() ;
     private List<String> hiss=new ArrayList<>() ;
+    private History historyOne;
     private ArrayAdapter adapter;
     private ArrayAdapter adapter2;
     private SearchView mSearchView;
@@ -84,9 +85,10 @@ public class SouSuoActivity extends AppCompatActivity {
                         // 当点击搜索按钮时触发该方法
                         @Override
                         public boolean onQueryTextSubmit(String query) {
-                            Intent intent=new Intent(SouSuoActivity.this,SearchGetActivity.class);
-                            intent.setAction("addc");
-                            intent.putExtra("name",query);
+                            historyOne=new History(ConfigUtil.user_Name,query);
+                            addSearchHistory();
+                            Intent intent=new Intent(SouSuoActivity.this,CourseDetailActivity.class);
+                            intent.putExtra("courseName",query);
                             startActivity(intent);
                             return true;
                         }
@@ -120,9 +122,8 @@ public class SouSuoActivity extends AppCompatActivity {
 
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            Intent intent=new Intent(getApplicationContext(), SearchGetActivity.class);
-                            intent.setAction("ssmr");
-                            intent.putExtra("searchName",hiss.get(position));
+                            Intent intent=new Intent(getApplicationContext(), CourseDetailActivity.class);
+                            intent.putExtra("courseName",hiss.get(position));
                             startActivity(intent);
                         }
                     });
@@ -130,6 +131,33 @@ public class SouSuoActivity extends AppCompatActivity {
             }
         }
     };
+
+    private void addSearchHistory() {
+        new Thread(){
+            @Override
+            public void run() {
+                //2 创建Request对象
+                //1) 使用RequestBody封装请求数据
+                //获取待传输数据对应的MIME类型
+                MediaType type = MediaType.parse("text/plain");
+                //创建RequestBody对象
+                RequestBody reqBody = RequestBody.create(type,gson.toJson(historyOne));
+                //2) 创建请求对象
+                Request request = new Request.Builder()
+                        .url(ConfigUtil.SERVER_HOME + "AddHistory")
+                        .post(reqBody)
+                        .build();
+                //3. 创建CALL对象
+                Call call = okHttpClient.newCall(request);
+                //4. 提交请求并获取响应
+                try {
+                    call.execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

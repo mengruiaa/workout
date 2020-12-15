@@ -4,13 +4,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/ll_root">
+    android:id="@+id/ll_root"
+    android:background="@drawable/mrback3">
     <ImageView
         android:id="@+id/fanhui"
         android:layout_width="30dp"
         android:layout_height="50dp"
         android:src="@drawable/mrfanhui"/>
     <ImageView
+        android:id="@+id/picture_top"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:src="@drawable/mrjsbeijing"/>

@@ -16,74 +16,67 @@
      android:layout_height="50dp"/>
      -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/sharp6"
+    android:background="@drawable/clb_shouyebackground"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".CLB.ClockActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_setClock"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:layout_margin="20dp"
+            android:text="设置闹钟" />
+        <ToggleButton
+            android:id="@+id/btn_enClk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:checked="false"
+            android:background="@drawable/small_button" />
+    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="100dp"/>
     <TextView
+        android:id="@+id/clb_tv_begin_run"
         android:gravity="center"
-        android:textColor="#EF6C35"
+        android:textColor="#ffffff"
         android:textStyle="bold"
         android:textSize="42sp"
         android:text="开始跑步"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <LinearLayout
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/iv_pp_stop"
-            android:background="@drawable/clb_stop3"
-            android:layout_width="100dp"
-            android:layout_height="100dp"/>
-        <ImageView
-            android:id="@+id/iv_pp_begin"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/clb_begin4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-
-    </LinearLayout>
-    <TextView
-        android:textColor="#ffffff"
-        android:gravity="center"
-        android:textSize="50sp"
-        android:id="@+id/timeText"
-        android:text="00:00:00"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
     <View
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="100dp"/>
     <RelativeLayout
         android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <LinearLayout
-            android:orientation="vertical"
+        <RelativeLayout
             android:layout_marginRight="15dp"
             android:id="@+id/ll_clock_1"
-            android:background="@drawable/sharp3"
+            android:background="@drawable/clb_img2"
             android:layout_width="150dp"
             android:layout_height="200dp">
             <ImageView
+                android:id="@+id/iv_clock_iv1"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:background="@drawable/clb_jianshenbaike"
                 android:layout_width="80dp"
                 android:layout_height="80dp"/>
             <TextView
+                android:layout_below="@+id/iv_clock_iv1"
                 android:textStyle="bold"
                 android:layout_marginTop="50dp"
                 android:layout_marginLeft="20dp"
@@ -92,16 +85,16 @@
                 android:text="健身百科"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:background="@drawable/sharp4"
+        </RelativeLayout>
+        <RelativeLayout
+            android:background="@drawable/clb_img1"
             android:layout_marginBottom="10dp"
             android:layout_toRightOf="@id/ll_clock_1"
             android:id="@+id/ll_clock_2"
             android:layout_width="match_parent"
             android:layout_height="65dp">
             <TextView
+                android:id="@+id/tv_clock_tv1"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:textStyle="bold"
@@ -111,22 +104,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <ImageView
+                android:layout_toRightOf="@+id/tv_clock_tv1"
                 android:layout_marginTop="13dp"
                 android:layout_marginLeft="60dp"
                 android:background="@drawable/clb_tuijianjihua"
                 android:layout_width="40dp"
                 android:layout_height="40dp"/>
 
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:background="@drawable/sharp5"
+        </RelativeLayout>
+        <RelativeLayout
+            android:background="@drawable/clb_img3"
             android:layout_below="@id/ll_clock_2"
             android:layout_toRightOf="@id/ll_clock_1"
             android:id="@+id/ll_clock_3"
             android:layout_width="match_parent"
             android:layout_height="125dp">
             <TextView
+                android:id="@+id/tv_clock_tv2"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:textStyle="bold"
@@ -136,13 +130,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <ImageView
+                android:layout_toRightOf="@+id/tv_clock_tv2"
                 android:layout_marginTop="40dp"
                 android:layout_marginLeft="40dp"
                 android:background="@drawable/clb_jihua"
                 android:layout_width="80dp"
                 android:layout_height="80dp"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </RelativeLayout>
 
