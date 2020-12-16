@@ -1,7 +1,7 @@
 package com.example.fitnessdemo;
 
 public class ConfigUtil {
-<<<<<<< HEAD
+
 
 
     public final static String SERVER_HOME = "http://192.168.137.1:8080/JSZS/";
@@ -12,8 +12,4 @@ public class ConfigUtil {
 //    public static String bobo ="";
 //    public final static String SERVER_HOME = "http://10.7.89.163:8080/WorkOut/";
 //    public static String user_Name ="15701228161";
-=======
-    public final static String SERVER_HOME = "http://10.7.89.163:8080/WorkOut/";
-    public static String user_Name ="15158633056";
->>>>>>> b360de2494f4796915fe5f8f8d2c48e0a52b8029
 }
