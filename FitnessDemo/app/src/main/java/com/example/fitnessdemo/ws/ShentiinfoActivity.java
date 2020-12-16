@@ -52,7 +52,7 @@ public class ShentiinfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent.putExtra("return","您的信息我以成功收到!!");
-                setResult(22,intent);
+                setResult(3,intent);
                 finish();
             }
         });

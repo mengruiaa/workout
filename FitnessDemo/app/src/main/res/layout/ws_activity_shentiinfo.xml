@@ -241,7 +241,7 @@
                     android:id="@+id/ws_infotv7"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="体重"
+                    android:text="体脂率"
                     android:textSize="18dp"
                     android:layout_marginLeft="10dp"
                     android:gravity="center"

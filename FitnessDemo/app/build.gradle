@@ -105,9 +105,12 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     //动态权限申请库
     implementation 'pub.devrel:easypermissions:1.3.0'
+<<<<<<< HEAD
+=======
 
 
     //刷新加载
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-32'
 
+>>>>>>> 2f78f7eab25b8ea81046292043f2943b673b1853
 }
