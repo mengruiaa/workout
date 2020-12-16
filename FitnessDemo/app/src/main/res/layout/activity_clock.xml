@@ -141,6 +141,13 @@
 
     </RelativeLayout>
 
-
-
+    <Button
+        android:layout_gravity="center"
+        android:background="@drawable/shape"
+        android:id="@+id/btn_action"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="➕制作我的个人计划"
+        android:textSize="18sp"
+        android:textColor="@color/colorWhite"/>
 </LinearLayout>

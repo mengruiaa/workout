@@ -31,6 +31,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.fitnessdemo.CLB.EncyclopaediaActivity;
 import com.example.fitnessdemo.R;
+import com.example.fitnessdemo.ZFT.ActionLibraryActivity;
 import com.example.fitnessdemo.ZFT.AlarmReceiver;
 import com.example.fitnessdemo.ZFT.PlanActivity;
 import com.example.fitnessdemo.ZFT.RecoActivity;
@@ -41,6 +42,7 @@ import java.util.Calendar;
 
 
 public class ShowYe extends Fragment {
+    private Button btnActin;
     //闹钟设置
     private Button btn;									// 申明设置时钟按钮
     private ToggleButton btn_enClk;						// 申明开启\关闭按钮
@@ -133,6 +135,15 @@ public class ShowYe extends Fragment {
         llClock1 = root.findViewById(R.id.ll_clock_1);
         llClock2 = root.findViewById(R.id.ll_clock_2);
         llClock3 = root.findViewById(R.id.ll_clock_3);
+        btnActin = root.findViewById(R.id.btn_action);
+        btnActin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(getContext(), ActionLibraryActivity.class);
+                startActivity(intent);
+            }
+        });
         //跳转健身百科
         llClock1.setOnClickListener(new View.OnClickListener() {
             @Override

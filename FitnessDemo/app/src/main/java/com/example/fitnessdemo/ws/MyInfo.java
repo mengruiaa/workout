@@ -42,29 +42,22 @@ import com.youth.banner.Transformer;
 
 import org.jetbrains.annotations.NotNull;
 
-<<<<<<< HEAD
 import java.io.ByteArrayOutputStream;
-=======
 import java.io.BufferedReader;
->>>>>>> 2f78f7eab25b8ea81046292043f2943b673b1853
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-<<<<<<< HEAD
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-=======
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
->>>>>>> 2f78f7eab25b8ea81046292043f2943b673b1853
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -92,14 +85,10 @@ public class MyInfo extends Fragment {
     private TextView helps;
     private TextView tvwh;
     private PopupWindow pw;
-<<<<<<< HEAD
     private Uri mUritempFile;
-
-=======
     //zft
     private TextView tvTime;
     private TextView tvHistory;
->>>>>>> 2f78f7eab25b8ea81046292043f2943b673b1853
     private Gson gson = new Gson();
     //定义OKHTTPClient对象属性
     private OkHttpClient okHttpClient = new OkHttpClient();
@@ -128,11 +117,11 @@ public class MyInfo extends Fragment {
         root = inflater.inflate(R.layout.ws_fragment_myinfo, container, false);
         findview();
         setListener();
-//        initinfo();
+        initinfo();
         initHandler();
-<<<<<<< HEAD
         //设置轮播图
         setBanner();
+        getHistoryTime(ConfigUtil.SERVER_HOME + "GetHistoryTimeServlet" + "?user_phone=" + ConfigUtil.user_Name);
         return root;
     }
 
@@ -167,9 +156,6 @@ public class MyInfo extends Fragment {
     public void onStop() {
         super.onStop();
         banner.stopAutoPlay();
-=======
-        getHistoryTime(ConfigUtil.SERVER_HOME + "GetHistoryTimeServlet" + "?user_phone=" + ConfigUtil.user_Name);
-        return root;
     }
 
     private void getHistoryTime(final String s) {
@@ -196,7 +182,7 @@ public class MyInfo extends Fragment {
                     //创建Message对象
                     Message msg = new Message();
                     //设置Message对象的参数
-                    msg.what = 2;
+                    msg.what = 3;
                     msg.obj = str;
                     //发送Message
                     handler.sendMessage(msg);
@@ -207,7 +193,6 @@ public class MyInfo extends Fragment {
                 }
             }
         }.start();
->>>>>>> 2f78f7eab25b8ea81046292043f2943b673b1853
     }
 
     private void initHandler() {
@@ -228,7 +213,6 @@ public class MyInfo extends Fragment {
                         username.setText(user.getName().trim());
                         break;
                     case 2:
-<<<<<<< HEAD
                         if (null != ConfigUtil.user_Img){
                             Glide.with(getContext())
                                     .load(ConfigUtil.user_Img)
@@ -242,11 +226,11 @@ public class MyInfo extends Fragment {
                                     .into(ivtoouxiang);
                         }
                         break;
-=======
+                    case 3:
                         String res = (String)msg.obj;
                         int total = Integer.parseInt(res);
                         tvTime.setText(total+"");
->>>>>>> 2f78f7eab25b8ea81046292043f2943b673b1853
+                        break;
                 }
             }
         };

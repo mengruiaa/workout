@@ -71,7 +71,7 @@ public class HistoryActivity extends AppCompatActivity {
         tvDiary = findViewById(R.id.tv_zft_diary);
         btnGotoPlan = findViewById(R.id.btn_zft_gotoPlan);
         btnBack = findViewById(R.id.btn_zft_history_back);
-        getHistory(ConfigUtil.SERVER_HOME + "GetHistory" + "?user_phone=" + ConfigUtil.user_Name);
+        getHistory(ConfigUtil.SERVER_HOME + "GetHistoryServlet" + "?user_phone=" + ConfigUtil.user_Name);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
