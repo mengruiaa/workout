@@ -16,6 +16,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.fitnessdemo.ConfigUtil;
+import com.example.fitnessdemo.LZYZYH.activity.AddTuijianActivity;
+import com.example.fitnessdemo.MR.ShouYeActivity;
 import com.example.fitnessdemo.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -151,9 +153,15 @@ public class FriendActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = getIntent();
-                setResult(6, intent);
-                finish();
+//                Intent intent = getIntent();
+//                setResult(6, intent);
+//                finish();
+                Intent intent =new Intent(FriendActivity.this, ShouYeActivity.class);
+                intent.setAction("ws");
+                startActivity(intent);
+
+//                FriendActivity.this.finish();
+
             }
         });
     }

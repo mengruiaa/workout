@@ -139,7 +139,19 @@ public class MyLikeCoursesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //取消应用标题栏
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         setContentView(R.layout.activity_my_like_courses);
+        findViewById(R.id.tianjia).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(MyLikeCoursesActivity.this,AllCoursesActivity.class);
+                startActivity(intent);
+                MyLikeCoursesActivity.this.finish();
+            }
+        });
         getMyLikeCourses();
 
     }

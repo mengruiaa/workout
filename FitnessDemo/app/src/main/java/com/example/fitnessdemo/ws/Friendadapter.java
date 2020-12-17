@@ -120,6 +120,7 @@ public class Friendadapter extends BaseAdapter {
                 intent.setClass(myContext,FriendinfoActivity.class);
                 intent.putExtra("name",usersShowList.get(position).getPhone());
                 intent.setAction("search");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 myContext.startActivity(intent);
             }
         });

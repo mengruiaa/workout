@@ -33,7 +33,7 @@ public class VideoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        root = inflater.inflate(R.layout.mr_list_fragment, container, false);
+        root = inflater.inflate(R.layout.mr_list_fragment3, container, false);
         VideoListAdapter adapter=new VideoListAdapter(getContext(),vs,R.layout.mr_video_item);
         ListView listView=root.findViewById(R.id.course_list);
         listView.setAdapter(adapter);

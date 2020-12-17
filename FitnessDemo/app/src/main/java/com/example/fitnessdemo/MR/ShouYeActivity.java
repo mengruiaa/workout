@@ -1,5 +1,6 @@
 package com.example.fitnessdemo.MR;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -42,12 +43,12 @@ public class ShouYeActivity extends AppCompatActivity {
 //        bundle.putString("userName",ConfigUtil.user_Name);
         initFragmentTabHost();
         //推送发货消息，客户端显示订单页面
-//        Intent intent=getIntent();
-//        String action=intent.getAction();
-//        if("fahuo".equals(action)){
-//            //订单是第三个fragment
-//            tabHost.setCurrentTab(2);
-//        }
+        Intent intent=getIntent();
+        String action=intent.getAction();
+        if("ws".equals(action)){
+            //订单是第三个fragment
+            tabHost.setCurrentTab(3);
+        }
     }
     private void initFragmentTabHost(){
         tabHost.setup(this, getSupportFragmentManager(),

@@ -369,10 +369,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/ws"
+                android:drawableTop="@drawable/productws2"
                 android:drawablePadding="10dp"
                 android:gravity="center_horizontal"
-                android:text="帮助中心"
+                android:text="我的商品"
                 android:textSize="18sp" />
 
         </LinearLayout>

@@ -9,5 +9,5 @@
         android:layout_height="wrap_content"
         android:id="@+id/course_list"
         android:dividerHeight="30dp"
-        android:divider="@android:color/white"/>
+        android:divider="@drawable/mrback3"/>
 </LinearLayout>

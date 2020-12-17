@@ -49,9 +49,10 @@
         android:id="@+id/clb_tv_begin_run"
         android:gravity="center"
         android:textColor="#ffffff"
-        android:textStyle="bold"
+        android:textStyle="italic"
         android:textSize="42sp"
-        android:text="开始跑步"
+
+        android:text="Running"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

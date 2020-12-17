@@ -33,6 +33,8 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.fitnessdemo.ConfigUtil;
+import com.example.fitnessdemo.LZYZYH.activity.AddTuijianActivity;
+import com.example.fitnessdemo.MR.MyLikeCoursesActivity;
 import com.example.fitnessdemo.R;
 import com.example.fitnessdemo.ZFT.HistoryActivity;
 import com.example.fitnessdemo.ZFT.UserPlanActivity;
@@ -351,8 +353,8 @@ public class MyInfo extends Fragment {
                     showEditPhotoWindow(view);
                     break;
                 case R.id.myinfo_userinfo:
-                    intent.setClass(getContext(), ShentiinfoActivity.class);
-                    startActivity(intent);
+//                    intent.setClass(getContext(), ShentiinfoActivity.class);
+//                    startActivity(intent);
                     break;
                 case R.id.myinfo_pay:
                     break;
@@ -364,6 +366,10 @@ public class MyInfo extends Fragment {
                     startActivityForResult(intent, 1);
                     break;
                 case R.id.user_shoucang:
+                    intent.setClass(getContext(), MyLikeCoursesActivity.class);
+                    intent.putExtra("userName",ConfigUtil.user_Name);
+                    startActivity(intent);
+
                     break;
                 case R.id.user_friend:
                     intent.setClass(getContext(), FriendActivity.class);
@@ -375,6 +381,8 @@ public class MyInfo extends Fragment {
                     startActivity(intent);
                     break;
                 case R.id.user_help:
+                    intent.setClass(getContext(), AddTuijianActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.tv_my_history:
                     intent.setClass(getContext(), HistoryActivity.class);

@@ -56,11 +56,6 @@
         <activity android:name=".ZFT.PlanInfoActivity" />
         <activity android:name=".MR.CourseDetailActivity" />
         <activity android:name=".MR.ShouYeActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ZFT.RecoPlanActivity" />
         <activity android:name=".ZFT.DataActivity" />
@@ -76,11 +71,17 @@
         <activity android:name=".ws.MainActivity" />
         <activity android:name=".CLB.EncyclopaediaActivity" />
         <activity android:name=".ws.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".LZYZYH.Oneweek.OneWeek1" />
         <activity android:name=".LZYZYH.Oneweek.OneWeek2" />
         <activity android:name=".LZYZYH.Oneweek.OneWeek3" />
+        <activity android:name=".LZYZYH.activity.AddTuijianActivity"/>
+        <activity android:name=".LZYZYH.activity.UrlDetailActivity"/>
         <activity android:name=".LZYZYH.activity.DetailActivity" />
         <activity android:name=".LZYZYH.activity.CategoryActivity" />
         <activity android:name=".LZYZYH.activity.ListOfGoodsActivity" />

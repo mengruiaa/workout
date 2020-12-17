@@ -104,7 +104,6 @@ public class MotionActivity extends AppCompatActivity {
                         gotoNew(plan.getPlanName());
                     }
                 },3000);
-
             }
         });
         button.setVisibility(View.GONE);
@@ -207,7 +206,6 @@ public class MotionActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-
             }
 
             @Override
@@ -229,6 +227,5 @@ public class MotionActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-
     }
 }

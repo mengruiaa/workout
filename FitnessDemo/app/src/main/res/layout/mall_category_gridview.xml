@@ -8,8 +8,8 @@
 <!--分两列-->
     <ImageView
         android:id="@+id/img_category_gridview"
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
+        android:layout_width="110dp"
+        android:layout_height="110dp" />
 
     <TextView
         android:id="@+id/txt_categroy_gridview"
