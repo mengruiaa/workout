@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/mrback3">
+    android:background="@drawable/bg2">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,6 +16,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/zuixin"
-        android:dividerHeight="30dp"
-        android:divider="@drawable/mrback3"/>
+        android:dividerHeight="30dp" />
 </LinearLayout>
