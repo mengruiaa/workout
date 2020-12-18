@@ -364,6 +364,7 @@ public class MyInfo extends Fragment {
                     intent.putExtra("info", result);
                     intent.setClass(getContext(), ShentiinfoActivity.class);
                     startActivityForResult(intent, 1);
+                    getActivity().finish();
                     break;
                 case R.id.user_shoucang:
                     intent.setClass(getContext(), MyLikeCoursesActivity.class);

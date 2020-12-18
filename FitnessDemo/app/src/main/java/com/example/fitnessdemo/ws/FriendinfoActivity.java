@@ -106,9 +106,7 @@ public class FriendinfoActivity extends AppCompatActivity {
         }else {
             username = intent.getStringExtra("name");
             Log.i("ws", "onCreate: "+username);
-            foucsname.setText("已" +
-                    "" +
-                    "关注");
+            foucsname.setText("已关注");
         }
         initListener();
         initinfo();
